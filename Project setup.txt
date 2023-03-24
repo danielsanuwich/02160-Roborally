@@ -1,0 +1,21 @@
+- Download javafx SDK from  "https://gluonhq.com/products/javafx/" and extract it to a folder similarly as java JDK.
+
+- (Eclipse) Navigate to  >> Project > Properties > Java Build Path > Libraries > Classpath >> Press "Add External JARs"
+
+- Navigate to > "C:\<javafx-root>\lib" and select all the JAR files
+where <javafx-root> = the folder you extracted the sdk files
+
+- Press "Apply and Close"
+
+
+
+- (Eclipse) Expand Run > Run Configurations > Arguments > VM Arguments
+
+- add the arguments below:
+
+--module-path="<javafx-root>\lib" --add-modules="javafx.base,javafx.controls,javafx.media,…"
+
+
+
+Run :)
+
