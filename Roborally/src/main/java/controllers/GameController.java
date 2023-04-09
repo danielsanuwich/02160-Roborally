@@ -45,14 +45,12 @@ public class GameController extends VBox {
 	
 	private void addListeners() {
 		endTurnButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
 			public void handle(ActionEvent event) {
 				game.nextPhase();
 			}
 		});
 		
 		exitButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
 			public void handle(ActionEvent event) {
 				Scene scene = new Scene(new MenuController(), 800, 600);
 				

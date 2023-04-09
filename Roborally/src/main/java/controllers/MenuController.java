@@ -39,7 +39,6 @@ public class MenuController extends VBox {
 	private void addListeners() {
 
 		startGameButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
 			public void handle(ActionEvent event) {
 								
 				Scene scene = new Scene(new GameController(), 800, 600);
@@ -53,7 +52,6 @@ public class MenuController extends VBox {
 
 		// TODO: properly handle exit
 		exitButton.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
 			public void handle(ActionEvent event) {
 				System.out.println("Exit pressed");
 			}

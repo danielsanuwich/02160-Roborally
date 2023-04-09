@@ -1,3 +1,4 @@
+/*
 public class StartingPositionPicker {
     private Robot robot;
     private GameBoard gameBoard;
@@ -13,3 +14,4 @@ public class StartingPositionPicker {
         }
     }
 }
+*/

@@ -1,4 +1,4 @@
-
+/*
 public class Robot {
     private Position currentPosition;
 	
@@ -10,3 +10,4 @@ public class Robot {
 		return currentPosition;
 	}	
 }
+*/

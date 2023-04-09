@@ -1,6 +1,3 @@
-
-
-
 @tag
 Feature: As a player I want to pick my robots starting position
 
@@ -23,7 +20,4 @@ Feature: As a player I want to pick my robots starting position
     And picked position is within the board
     When picking starting position
     Then game returns a error response message that the startposition for robot has already been placed    
-    
-  
-    
     

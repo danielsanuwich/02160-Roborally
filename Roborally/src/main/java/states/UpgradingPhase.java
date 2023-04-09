@@ -8,17 +8,14 @@ public class UpgradingPhase implements GamePhase{
 		//testMethod();
 	}
 	
-	@Override
 	public void next(Game game) {
 		game.setPhase(new ProgrammingPhase());
 	}
 
-	@Override
 	public void previous(Game game) {
 		System.out.println("Game is in root state");
 	}
 
-	@Override
 	public void printStatus() {
 		System.out.println("Upgrading phase");
 	}
