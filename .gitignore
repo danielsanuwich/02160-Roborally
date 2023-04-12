@@ -12,3 +12,7 @@
 # Log file
 # *.log
 
+
+
+.vscode
+.DS_Store
