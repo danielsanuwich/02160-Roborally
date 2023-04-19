@@ -1,6 +1,8 @@
 package src.main.java.app.Model;
 
+
 import src.main.java.app.Model.cards.*;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,28 +12,20 @@ import java.util.List;
 public class Player {
 
     // An array to hold the cards in the player's hand
-    private final Card[] cardHand = new Card[9]; //Amount of card at hand
-
+    private final Card[] cardHand = new Card[9]; 
     // An array to hold the cards in the player's programming slots
-    private final Card[] programmingSlots = new Card[5]; //Amount of programmingslot
-
+    private final Card[] programmingSlots = new Card[5]; 
     // An array to keep track of which programming slots are locked
-    private final boolean[] programmingSlotsLocked = new boolean[5];
-
+    private final boolean[] programmingSlotsLocked = new boolean[5]; 
     // The player's robot
-    private final Robot robot;
-
+    private final Robot robot; 
     // A boolean flag to indicate whether the player has won or lost
     public boolean wonOrLost = false;
-
     // A list to hold the deck of cards
     private final List<Card> deck;
 
     public Player(Robot robot) {
-        // Constructor to create a new player with the given robot
         this.robot = robot;
-
-        // Initialize the deck of cards
         deck = deckOfCards();
     }
 
@@ -96,32 +90,27 @@ public class Player {
     }
 
     public void setCardinProgrammingSlot(int programmingSlot, Card programCard) {
-        // Set a card in a specific
-    	programming slot
-    	programmingSlots[programmingSlot] = programCard;
-    	}
+        // Set a card in a specific programming slot 
+        programmingSlots[programmingSlot] = programCard;
+    }
+
     public Card getCardInProgrammingSlot(int slot) {
-        // Get the card in a specific programming slot
         return programmingSlots[slot];
     }
 
     public void setCardinHand(int handSlot, Card programCard) {
-        // Set a card in a specific hand slot
         cardHand[handSlot] = programCard;
     }
 
     public Card getCardinHand(int handSlot) {
-        // Get the card in a specific hand slot
         return cardHand[handSlot];
     }
 
     public Card[] getProgrammingSlots() {
-        // Get the array of cards in the player's programming slots
         return programmingSlots;
     }
 
     public void dealCards() {
-        // Deal cards from the deck to the player's hand
         Arrays.fill(cardHand, null);
         Collections.shuffle(deck);
         for (int i = 0; i < robot.getState().getHp() - 1; i++) {
@@ -130,12 +119,10 @@ public class Player {
     }
 
     public Robot getRobot() {
-        // Get the player's robot
         return robot;
     }
 
     public void fillEmptySlots() {
-        // Fill any empty programming slots with cards from the player's hand
         for (Card card : programmingSlots) {
             if (card == null) {
                 int randomPick = (int) (Math.random() * 9);
@@ -149,3 +136,4 @@ public class Player {
             }
         }
     }
+}

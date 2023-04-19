@@ -1,17 +1,18 @@
+
 class Position{
     private int x;
     private int y;
     
     // position constructor
-    public void Position(int xi; int yi){
+    public Position(int xi, int yi){
         x = xi; 
         y = yi;
     }
 
     // position setter
-    public void setPosition(int xi; int yi){
-        this.x = abs(xi);
-        this.y = abs(yi);
+    public void setPosition(int xi, int yi){
+        this.x = xi;
+        this.y = yi;
     }
     
     // position getters

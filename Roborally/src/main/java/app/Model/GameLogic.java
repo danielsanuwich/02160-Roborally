@@ -7,7 +7,7 @@ public class GameLogic{
     }
 
     // move method
-    private Position move(Position pos1; Direction initDirection; int stepsToMove) {
+    private Position move(Position pos1, Direction initDirection, int stepsToMove) {
         // base case 
         if(stepsToMove == 0) {
             return pos1;
@@ -42,7 +42,7 @@ public class GameLogic{
                 }
             }
             else { // position is odd
-                switch(this.direction % 6){
+                switch(initDirection.getDirection % 6){
                     case 0:
                         pos1.setX(pos1.getX() + 0);
                         pos1.setY(pos1.getY() - 1);
@@ -69,6 +69,7 @@ public class GameLogic{
                     break;
                 }
             }
+            return move(pos1, initDirection, stepsToMove-1); // make recursive call
         }
     }
 
@@ -77,21 +78,21 @@ public class GameLogic{
 
 
         // specify stating attributes for the robots
-        Position initialPos1 = new Postion(5;5);
-        Position initialPos2 = new Postion(5;4);
-        Direction initialDirection1 = newDirection(0);
-        Direction initialDirection2 = newDirection(0);
+        Position initialPos1 = new Postion(5,5);
+        Position initialPos2 = new Postion(5,4);
+        Direction initialDirection1 = new Direction(0);
+        Direction initialDirection2 = new Direction(0);
         int initialHealth = 10;
 
         // 
 
         // make robots 
-        Robot robot1 = new Robot(initialPosition1;initialDirection1;initialHealth;1;"Alice");
-        Robot robot2 = new Robot(initialPosition2;initialDirection2;initialHealth;2;"Bob");
+        Robot robot1 = new Robot(initialPos1,initialDirection1,initialHealth,1,"Alice");
+        Robot robot2 = new Robot(initialPos2,initialDirection2,initialHealth,2,"Bob");
 
 
         // make gameboard
-        GameBoard board = new GameBoard(10;10);
+        GameBoard board = new GameBoard(10,10);
 
     }
 
@@ -103,15 +104,15 @@ public class GameLogic{
     }
 
     // robot movement function to allow for bumping and pushing 
-    private void moveRobots(Robot robot; Direction directionToMove){
-        Position nextPosition = move(robot.getPosition; directionToMove; 1)  // find next position given current position and a direction
+    private void moveRobots(Robot robot, Direction directionToMove){
+        Position nextPosition = move(robot.getPosition, directionToMove, 1)  // find next position given current position and a direction
 
         if(robotsAtThisPosition(nextPosition) == 1){ // if robot 1 in the way, move it out of the way
-            moveRobots(robot1; directionToMove);
+            moveRobots(robot1, directionToMove);
         }
 
         if(robotsAtThisPosition(nextPosition) == 2){ // if robot 2 in the way, move it out of the way
-            moveRobots(robot2; directionToMove);
+            moveRobots(robot2, directionToMove);
         }
         
         robot.setPosition = nextPostition; // move desired robot
@@ -120,7 +121,7 @@ public class GameLogic{
 
 
     // update robot attributes based on tile position 
-    private void updateRobot(Robot robot; GameBoard gb){
+    private void updateRobot(Robot robot, GameBoard gb){
         Tile currentTile = gb.getTile(robot.getPosition);
         switch(currentTile.getType) { // check the tile type which the robot is on
             case (BASE_TILE):
@@ -131,12 +132,12 @@ public class GameLogic{
                 break;
             case (CONVEYOR_NORMAL):
                 // move robot by one in direction of the conveyer
-                moveRobots(robot;currentTile.getDirection);
+                moveRobots(robot,currentTile.getDirection);
                 break;
             case (CONVEYOR_EXPRESS):
                 // move robot by one twice in direction of the conveyer
-                moveRobots(robot;currentTile.getDirection);
-                moveRobots(robot;currentTile.getDirection);
+                moveRobots(robot.currentTile.getDirection);
+                moveRobots(robot.currentTile.getDirection);
                 break;
             case (GEAR_CLOCKWISE):
                 // rotate robot clockwise (right)
