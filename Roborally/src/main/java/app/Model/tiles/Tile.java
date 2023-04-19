@@ -13,22 +13,33 @@ public class Tile{
 
 
     private Position position; // stores the position of the tile 
-    private int direction; // stores direction of tile 
-    private boolean isHole = false; // stores void/hole property of tile 
+    private Direction direction; // stores direction of tile 
 
     // tile class constructor 
     public Tile(Position inputPosition; TileType type; Direction inputDirection = 0){
-        position.x = inputPosition.x;
-        position.y = inputPosition.y;
+        this.position.setPosition(inputPosition.getX, inputPosition.getY);
         this.TileType = type; 
-        if(type == Hole){
-            isHole = true;
-        } 
-        direction = inputDirection % 6; 
     }
 
     // Tile setters 
+    public void setPosition(Position initPosition){
+        this.position = initPosition;
+    }    
+    public void setType(X initType){
+        this.TileType = initType;
+    }    
+    public void setDirection(X initDirection){
+        this.direction = initDirection;
+    }
 
     // Tile getters 
-
+    public Position getPosition(){
+        return this.position;
+    }
+    public TileType getType(){
+        return this.TileType;
+    }
+    public Direction getDirection(){
+        return this.direction;
+    }    
 }
