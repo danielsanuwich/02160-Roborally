@@ -1,25 +1,23 @@
-package src.main.java.app.Model;
-
-
-import src.main.java.app.Model.cards.*;
-
+package app.Model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import app.Model.cards.Card;
+
 public class Player {
 
     // An array to hold the cards in the player's hand
-    private final Card[] cardHand = new Card[9]; 
+    private final Card[] cardHand = new Card[9];
     // An array to hold the cards in the player's programming slots
-    private final Card[] programmingSlots = new Card[5]; 
+    private final Card[] programmingSlots = new Card[5];
     // An array to keep track of which programming slots are locked
-    private final boolean[] programmingSlotsLocked = new boolean[5]; 
+    private final boolean[] programmingSlotsLocked = new boolean[5];
     // The player's robot
-    private final Robot robot; 
-    // A boolean flag to indicate whether the player has won or lost
+    private final Robot robot;
+    // Condition to win
     public boolean wonOrLost = false;
     // A list to hold the deck of cards
     private final List<Card> deck;
@@ -28,7 +26,6 @@ public class Player {
         this.robot = robot;
         deck = deckOfCards();
     }
-
     public List<Card> deckOfCards() {
         // Create and shuffle a new deck of cards
         List<Card> cards = new ArrayList<>();
@@ -42,12 +39,13 @@ public class Player {
                 cards.add(Card.MOVE_TWO);
             }
             cards.add(Card.MOVE_ONE);
-            cards.add(Card.ROTATE_LEFT);
-            cards.add(Card.ROTATE_RIGHT);
+            cards.add(Card.GEAR_CLOCKWISE);
+            cards.add(Card.GEAR_COUNTERCLOCKWISE);
         }
         Collections.shuffle(cards);
         return cards;
     }
+
 
     public void placeCardFromHandToSlot(int handSlot) {
         // Move a card from the player's hand to an open programming slot
@@ -78,6 +76,7 @@ public class Player {
         // Clear all programming slots and lock the necessary slots based on the robot's HP
         Arrays.fill(programmingSlotsLocked, false);
 
+        //TODO: Implement logic for state of robot to check hp in order to deal a card
         int hp = robot.getState().getHp();
         for (int i = 5; i >= hp && i >= 1; i--) {
             programmingSlotsLocked[i - 1] = true;
@@ -110,6 +109,7 @@ public class Player {
         return programmingSlots;
     }
 
+    //TODO: Implement logic for state of robot to check hp in order to deal a card
     public void dealCards() {
         Arrays.fill(cardHand, null);
         Collections.shuffle(deck);

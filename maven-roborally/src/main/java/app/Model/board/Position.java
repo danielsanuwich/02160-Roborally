@@ -1,3 +1,5 @@
+package app.Model.board;
+
 
 public class Position{
     private int x;

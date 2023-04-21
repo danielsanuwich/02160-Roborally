@@ -1,3 +1,9 @@
+package app.Model;
+
+import app.Model.board.Direction;
+import app.Model.board.GameBoard;
+import app.Model.board.Position;
+
 public class GameLogic{
 
     // is even helper method for the move method 
@@ -78,8 +84,8 @@ public class GameLogic{
 
 
         // specify stating attributes for the robots
-        Position initialPos1 = new Postion(5,5);
-        Position initialPos2 = new Postion(5,4);
+        Position initialPos1 = new Position(5,5);
+        Position initialPos2 = new Position(5,4);
         Direction initialDirection1 = new Direction(0);
         Direction initialDirection2 = new Direction(0);
         int initialHealth = 10;
@@ -162,118 +168,9 @@ public class GameLogic{
         
     }
 
-public class Player{
-
-    // player attributes 
-    private int playerNumber;
-    private String playerName;
-
-    // player constrcutor 
-    public class Player(int num, String name){
-        this.playerNumber = num;
-        this.playerName = name;
-    }
-
-    // player setters 
-    public void setPlayerNumber(int num){
-        this.playerNumber = num;
-    }
-    public void setPlayerName(String name){
-        this.playerName = name;
-    }
-
-    // player getters
-    public int getPlayerNumber(){
-        return this.playerNumber;
-    }
-    public String getPlayerName(){
-        return this.playerName;
-    }
-}
-
-public class Card{
-    // card attribute 
-    private Player cardPlayer;
-
-    // card constructor
-    public Card(Player inputPlayer){
-        this.cardPlayer = inputPlayer;
-    }
-
-    // card setter
-    public void setCardPlayer(Player inputPlayer){
-        this.cardPlayer = inputPlayer;
-    }
-
-    // card getter
-    public Player getCardPlayer(){
-        return this.cardPlayer;
-    }
-
-}
-
-
-public class ProgramCard extends Card{
-
-// programCard attributes
-private int turnAmount;
-private int moveSteps;
-
-// programCard constructor
-public ProgramCard(int turnAmount, int moveAmount){
-
-    // card can only move or turn; not both
-    if(turnAmount == 0){
-        this.moveSteps = moveAmount;
-    }else{
-        this.turnAmount = turnAmount;
-    }
-
-}
-
-// programCard getters
-public int getTurnAmount(){
-    return this.turnAmount;
-}
-public int getMoveAmount(){
-    return this.moveAmount;
-}
-
-}
-
-
-public class UpgradeCard extends Card{
-    
-// upgradeCard attributes
-
-
-// upgradeCard constructor
-
-
-// upgradeCard setters
-
-
-// upgradeCard getters
-
-
-
-}
-
-
-
 
     // specify what happens each turn
-public void ExcecuteTurn(Card card){
-    // check which type of card it is 
-    
-    // move card:
-    
 
-
-    // update card:
-
-
-}
 
 
 }
