@@ -10,8 +10,8 @@ public class Card {
     public static final Card MOVE_TWO = new Card("MOVE TWO");
     public static final Card MOVE_THREE = new Card("MOVE THREE");
     public static final Card BACK_UP = new Card("BACK UP");
-    public static final Card ROTATE_RIGHT = new Card("ROTATE RIGHT");
-    public static final Card ROTATE_LEFT = new Card("ROTATE LEFT");
+    public static final Card GEAR_CLOCKWISE = new Card("GEAR_CLOCKWISE");
+    public static final Card GEAR_COUNTERCLOCKWISE = new Card("GEAR COUNTERCLOCKWISE");
     public static final Card U_TURN = new Card("U TURN");
 
     // Private constructor to restrict instantiation from outside the class

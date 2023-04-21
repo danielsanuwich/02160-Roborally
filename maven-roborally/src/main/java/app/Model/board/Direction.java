@@ -1,3 +1,5 @@
+package app.Model.board;
+
 public class Direction{
     private int direction;
 

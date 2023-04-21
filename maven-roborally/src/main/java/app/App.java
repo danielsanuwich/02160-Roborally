@@ -1,7 +1,7 @@
 package app;
 
-import controllers.MenuController;
-import controllers.SceneController;
+import app.controllers.MenuController;
+import app.controllers.SceneController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

@@ -1,5 +1,7 @@
-//Import position
-//import tile
+package app.Model.board;
+
+import app.Model.tiles.Tile;
+import app.Model.tiles.Tile.TileType;
 
 public class GameBoard {
 
@@ -15,10 +17,8 @@ public class GameBoard {
         // Initialize the game board
         for (int i = 0; i < xDim; i++) {
             for (int j = 0; j < yDim; j++) {
-                gameBoard[i][j] = new Tile();
-                gameBoard[i][j].setPosition(new Position(i, j));
-                gameBoard[i][j].setType(TileType.BASE_TILE);
-                gameBoard[i][j].setDirection(0);
+                Position currentPosition = new Position(i, j);
+                gameBoard[i][j] = new Tile(currentPosition, TileType.BASE_TILE);
             }
         }
 
