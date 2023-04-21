@@ -8,7 +8,6 @@ public class Tile {
         BASE_TILE,
         HOLE,
         CONVEYOR_NORMAL,
-        CONVEYOR_EXPRESS,
         GEAR_CLOCKWISE,
         GEAR_COUNTERCLOCKWISE,
         REPAIR_ONE,

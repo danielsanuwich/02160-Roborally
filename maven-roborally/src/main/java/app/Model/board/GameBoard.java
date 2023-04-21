@@ -26,7 +26,18 @@ public class GameBoard {
         // ...
     }
 
+    // board getters
     public Tile getTile(Position pos) {
         return gameBoard[pos.getX()][pos.getY()];
+    }
+    
+    //TODO Make other tiles
+    //TODO Make hole around edges
+    //TODO Make start point in each corner
+    
+    
+    public Position getNearestRespawn(Position initialPosition) {
+    	if
+    	//TODO 4x if x,y within bounds then spawn to startquadrant
     }
 }

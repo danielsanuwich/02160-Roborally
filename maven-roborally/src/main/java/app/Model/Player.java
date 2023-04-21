@@ -46,18 +46,17 @@ public class Player {
         return cards;
     }
 
-
     public void placeCardFromHandToSlot(int handSlot) {
         // Move a card from the player's hand to an open programming slot
         placeCardInFirstOpenSlot(handSlot, cardHand, programmingSlots);
     }
 
-    public void undoProgrammingSlotPlacement(int programmingSlot) {
-        // Move a card from a locked programming slot back to the player's hand
-        if (!programmingSlotsLocked[programmingSlot]) {
-            placeCardInFirstOpenSlot(programmingSlot, programmingSlots, cardHand);
-        }
-    }
+//    public void undoProgrammingSlotPlacement(int programmingSlot) {
+//        // Move a card from a locked programming slot back to the player's hand
+//        if (!programmingSlotsLocked[programmingSlot]) {
+//            placeCardInFirstOpenSlot(programmingSlot, programmingSlots, cardHand);
+//        }
+//    }
 
     private void placeCardInFirstOpenSlot(int cardSlotInOriginArray, Card[] originArray, Card[] destinationArray) {
         // Helper method to move a card from one array to another
@@ -76,8 +75,7 @@ public class Player {
         // Clear all programming slots and lock the necessary slots based on the robot's HP
         Arrays.fill(programmingSlotsLocked, false);
 
-        //TODO: Implement logic for state of robot to check hp in order to deal a card
-        int hp = robot.getState().getHp();
+        int hp = robot.getHealth();
         for (int i = 5; i >= hp && i >= 1; i--) {
             programmingSlotsLocked[i - 1] = true;
         }
@@ -109,18 +107,17 @@ public class Player {
         return programmingSlots;
     }
 
-    //TODO: Implement logic for state of robot to check hp in order to deal a card
     public void dealCards() {
         Arrays.fill(cardHand, null);
         Collections.shuffle(deck);
-        for (int i = 0; i < robot.getState().getHp() - 1; i++) {
+        for (int i = 0; i < robot.getHealth() - 1; i++) {
             cardHand[i] = deck.get(i);
         }
     }
 
-    public Robot getRobot() {
-        return robot;
-    }
+//    public Robot getRobot() {
+//        return robot;
+//    }
 
     public void fillEmptySlots() {
         for (Card card : programmingSlots) {

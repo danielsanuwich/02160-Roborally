@@ -16,6 +16,16 @@ public class Position{
         this.x = xi;
         this.y = yi;
     }
+ 
+    // position setter
+    public void setX (int xi){
+        this.x = xi;
+    }
+  
+    // position setter
+    public void setY (int yi){
+        this.y = yi;
+    }
     
     // position getters
     public int getX(){
@@ -24,4 +34,6 @@ public class Position{
     public int getY(){
         return this.y;
     }
+
+
 }
