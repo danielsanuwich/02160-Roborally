@@ -222,14 +222,8 @@ public class GameLogic {
 }
 
 	
-	// Main turn function: Select robot based on the cards played and pass the relevant information to updateFromCard
-	// This method will be used in the controller to handle the game state updates
-	// TODO: Implement the main turn function and integrate it with the controller
 
 
 
-    //TODO main turn function - select robot based on cards player and pass relevant into updateFromCard
-    //Method above will be used in controller -> Make controller
-    
-    
+
     
