@@ -75,6 +75,7 @@ public class GameBoard {
             respawnPosition = new Position(xDim - 2, 1);
         } else {
             // Bottom right quadrant
+        	// Bottom right quadrant
             respawnPosition = new Position(xDim - 2, yDim - 2);
         }
 
