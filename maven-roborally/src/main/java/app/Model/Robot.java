@@ -54,4 +54,5 @@ public class Robot {
 	public Direction getDirection(){
 		return this.direction;
 	}
+
 }
