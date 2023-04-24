@@ -1,0 +1,7 @@
+public class ConveyorTile extends Tile{
+
+    // ConveyerTile constructor
+    public ConveyorTile(){
+        super("Conveyor");
+    }
+}

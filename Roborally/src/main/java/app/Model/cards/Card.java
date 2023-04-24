@@ -1,12 +1,23 @@
 package cards;
 
 public class Card {
-	private String attribute;
-	public Card(String attribute) {
-		this.attribute = attribute;
+	// card attributes 
+	private String type;
+
+	// card constructor
+	public Card(String type) {
+		this.type = type;
 	}
 	
-	public void executeCard() {
-		
+	// card setType 
+	public void setType(String newType){
+		this.type = newType;
 	}
+
+
+	// card getters
+	public String getType(){
+		return this.type;
+	}
+	
 }
