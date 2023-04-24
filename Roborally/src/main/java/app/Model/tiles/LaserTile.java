@@ -1,7 +1,15 @@
 public class LaserTile extends Tile{
+    // LaserTile attributes 
+    int laserDamage;
 
-    // ConveyerTile constructor
-    public LaserTile(){
-        super("Laser");
+    // LaserTile constructor
+    public LaserTile(Position inputPosition,Direction inputDirection, int laserDamage){
+        this.laserDamage = Math.abs(laserDamage); 
+        super(inputPosition, inputDirection, "Laser");
+    }
+
+    // LaserTile getters 
+    public int getDamage(){
+        return this.laserDamage;
     }
 }

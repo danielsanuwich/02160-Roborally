@@ -4,13 +4,13 @@ import app.Model.board.Position;
 
 
 public class Tile { 
-    private String tileType; // stores the type of tile 
+    private String tileType = "Base"; // stores the type of tile 
     private Position position; // stores the position of the tile 
     private Direction direction; // stores direction of tile 
     private TileType tileType; // stores the type of the tile
 
     // tile class constructor 
-    public Tile(Position inputPosition, String type, Direction inputDirection = null){
+    public Tile(String type, Position inputPosition, Direction inputDirection = null){
         this.position.setPosition(inputPosition.getX(), inputPosition.getY());
         this.tileType = type; 
         this.direction = inputDirection;

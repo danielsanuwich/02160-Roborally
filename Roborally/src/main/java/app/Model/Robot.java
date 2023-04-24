@@ -49,4 +49,10 @@ public class Robot {
 	public Direction getDirection(){
 		return this.direction;
 	}
+
+	// modifiers
+	public void changeHealth(int diffHealth){
+		this.health += diffHealth;
+	}
+
 }

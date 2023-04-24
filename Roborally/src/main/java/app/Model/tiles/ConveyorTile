@@ -1,7 +1,7 @@
 public class ConveyorTile extends Tile{
 
-    // ConveyerTile constructor
-    public ConveyorTile(){
-        super("Conveyor");
+    // ConveyorTile constructor
+    public ConveyorTile(Position inputPosition,Direction inputDirection){
+        super(inputPosition, inputDirection, "Conveyor");
     }
 }

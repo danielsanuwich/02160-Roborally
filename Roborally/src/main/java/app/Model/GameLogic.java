@@ -162,73 +162,30 @@ public class GameLogic{
         
     }
 
-public class Player{
 
-    // player attributes 
-    private int playerNumber;
-    private String playerName;
 
-    // player constrcutor 
-    public class Player(int num, String name){
-        this.playerNumber = num;
-        this.playerName = name;
+
+
+
+    // update robots based on the tile type
+private void updateFromTile(Robot robot, GameBoard gb){
+    Tile currentTile = gb.getTile(robot.getPosition);
+    if(currentTile instanceof ConveyerTile){
+        // move accordingly
+        moveRobots(robot,currentTile.getDirection);
+
+    }else if(currentTile instanceof TurnTile){
+        // turn accordingly
+        robot.setDirection = robot.getDirection.getDirection + currentTile.getTurnAmount
+
+    }else if(currentTile instanceof HoleTile){
+        // return to a start position
+        robot.setPosition(gb.nearestStartTile(robot.getPosition));
+
+    }else if(currentTile instanceof LaserTile){
+        // take damage
+        robot.changeHealth(-1 * currentTile.getDamage())
     }
-
-    // player setters 
-    public void setPlayerNumber(int num){
-        this.playerNumber = num;
-    }
-    public void setPlayerName(String name){
-        this.playerName = name;
-    }
-
-    // player getters
-    public int getPlayerNumber(){
-        return this.playerNumber;
-    }
-    public String getPlayerName(){
-        return this.playerName;
-    }
-}
-
-public class Card{
-    // card attribute 
-    private Player cardPlayer;
-
-    // card constructor
-    public Card(Player inputPlayer){
-        this.cardPlayer = inputPlayer;
-    }
-
-    // card setter
-    public void setCardPlayer(Player inputPlayer){
-        this.cardPlayer = inputPlayer;
-    }
-
-    // card getter
-    public Player getCardPlayer(){
-        return this.cardPlayer;
-    }
-
-}
-
-
-public class ProgramCard extends Card{
-
-// programCard attributes
-private int turnAmount;
-private int moveSteps;
-
-// programCard constructor
-public ProgramCard(int turnAmount, int moveAmount){
-
-    // card can only move or turn; not both
-    if(turnAmount == 0){
-        this.moveSteps = moveAmount;
-    }else{
-        this.turnAmount = turnAmount;
-    }
-
 }
 
 // programCard getters
@@ -242,35 +199,36 @@ public int getMoveAmount(){
 }
 
 
-public class UpgradeCard extends Card{
-    
-// upgradeCard attributes
-
-
-// upgradeCard constructor
-
-
-// upgradeCard setters
-
-
-// upgradeCard getters
-
-
-
-}
 
 
 
 
     // specify what happens each turn
-public void ExcecuteTurn(Card card){
-    // check which type of card it is 
+public void ExcecuteTurn(Card card,Robot robot, GameBoard gb){
+    // check which type of card it is:
+
+    // card is a program card
+    if(card instanceof ProgramCard){
+        // turn robot 
+        robot.setDirection(robot.getDirection.getDirection + card.turnAmount);
+
+        // move robot (careful!)
+        for(int i = 0; i < card.moveAmount; i++){
+            moveRobots(robot, robot.getDirection);
+            updateFromTile(robot, gb);
+        }
+
+    // card is a health card
+    }else if(card instanceof HealthCard){
+        robot.changeHealth(card.getDiffHealth());
+    }
+
     
-    // move card:
+    
     
 
 
-    // update card:
+  
 
 
 }

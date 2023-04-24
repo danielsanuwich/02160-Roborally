@@ -1,7 +1,22 @@
 public class TurnTile extends Tile{
 
-    // ConveyerTile constructor
-    public TurnTile(){
-        super("Turn");
+    // Turntile attributes
+    private int turnAmount;
+
+
+    // TurnTile constructor
+    public TurnTile(Position inputPosition,Direction inputDirection,int turnAmount){
+        super(inputPosition, inputDirection, "Turn");
+        if((turnAmount % 6) != 0){
+            this.turnAmount = turnAmount;
+        }
+        
     }
+
+    // Turntile getter
+    public getTurnAmount(){
+        return turnAmount;
+    }
+
+
 }

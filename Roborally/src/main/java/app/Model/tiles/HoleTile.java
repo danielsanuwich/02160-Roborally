@@ -1,7 +1,7 @@
 public class HoleTile extends Tile{
 
     // HoleTile constructor
-    public HoleTile(){
-        super("Hole");
+    public HoleTile(Position inputPosition,Direction inputDirection){
+        super(inputPosition, inputDirection, "Hole");
     }
 }
