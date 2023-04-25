@@ -1,3 +1,5 @@
+package app.Model;
+import app.Model.board.*;
 public class Robot {
 
 	// robot attributes 
@@ -27,7 +29,7 @@ public class Robot {
 		this.name = initName;
 	} 
     public void setPosition (Position initPosition){
-		this.postion = initPosition;
+		this.position = initPosition;
 	}
 	public void setDirection (Direction initDirection){
 		this.direction = initDirection;
@@ -44,7 +46,7 @@ public class Robot {
 		return this.name;
 	} 
     public Position getPosition(){
-		 return this.postion;
+		 return this.position;
 	}
 	public Direction getDirection(){
 		return this.direction;

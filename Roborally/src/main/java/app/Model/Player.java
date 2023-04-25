@@ -1,7 +1,7 @@
-package src.main.java.app.Model;
+package app.Model;
 
 
-import src.main.java.app.Model.cards.*;
+import app.Model.cards.*;
 
 
 import java.util.ArrayList;

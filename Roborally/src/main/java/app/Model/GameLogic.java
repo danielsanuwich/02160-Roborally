@@ -1,3 +1,10 @@
+package app.Model;
+import app.Model.board.Position;
+import app.Model.board.GameBoard;
+import app.Model.cards.HealthCard;
+import app.Model.cards.ProgramCard;
+
+
 public class GameLogic{
 
     // is even helper method for the move method 
@@ -78,8 +85,8 @@ public class GameLogic{
 
 
         // specify stating attributes for the robots
-        Position initialPos1 = new Postion(5,5);
-        Position initialPos2 = new Postion(5,4);
+        Position initialPos1 = new Position(5,5);
+        Position initialPos2 = new Position(5,4);
         Direction initialDirection1 = new Direction(0);
         Direction initialDirection2 = new Direction(0);
         int initialHealth = 10;
@@ -195,14 +202,6 @@ public int getTurnAmount(){
 public int getMoveAmount(){
     return this.moveAmount;
 }
-
-}
-
-
-
-
-
-
     // specify what happens each turn
 public void ExcecuteTurn(Card card,Robot robot, GameBoard gb){
     // check which type of card it is:
@@ -222,14 +221,6 @@ public void ExcecuteTurn(Card card,Robot robot, GameBoard gb){
     }else if(card instanceof HealthCard){
         robot.changeHealth(card.getDiffHealth());
     }
-
-    
-    
-    
-
-
-  
-
 
 }
 
