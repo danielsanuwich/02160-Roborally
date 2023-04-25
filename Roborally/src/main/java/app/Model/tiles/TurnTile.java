@@ -1,3 +1,6 @@
+package app.Model.tiles;
+import app.Model.board.*;
+
 public class TurnTile extends Tile{
 
     // Turntile attributes

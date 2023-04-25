@@ -1,4 +1,6 @@
-import app.Model.board.Position;
+package app.Model.tiles;
+
+import app.Model.board.*;
 //import position
 //import direction
 

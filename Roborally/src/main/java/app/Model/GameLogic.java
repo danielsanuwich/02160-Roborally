@@ -1,3 +1,9 @@
+package app.Model;
+
+import app.Model.board.*;
+import app.Model.tiles.*;
+import app.Model.cards.*;
+
 public class GameLogic{
 
     // is even helper method for the move method 
@@ -196,12 +202,6 @@ public int getMoveAmount(){
     return this.moveAmount;
 }
 
-}
-
-
-
-
-
 
     // specify what happens each turn
 public void ExcecuteTurn(Card card,Robot robot, GameBoard gb){
@@ -222,11 +222,6 @@ public void ExcecuteTurn(Card card,Robot robot, GameBoard gb){
     }else if(card instanceof HealthCard){
         robot.changeHealth(card.getDiffHealth());
     }
-
-    
-    
-    
-
 
   
 

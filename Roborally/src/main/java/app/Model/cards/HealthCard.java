@@ -1,3 +1,5 @@
+package app.Model.cards;
+
 /*
  * Cards which modify the robots health
  */

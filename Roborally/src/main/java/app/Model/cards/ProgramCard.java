@@ -1,3 +1,5 @@
+package app.Model.cards;
+
 /*
  * Program card 
  */
