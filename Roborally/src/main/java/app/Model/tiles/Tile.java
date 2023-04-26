@@ -1,42 +1,46 @@
 package app.Model.tiles;
 
-import app.Model.board.*;
-//import position
-//import direction
+import app.Model.board.Position;
+import app.Model.board.Direction;
 
+public class Tile {
+    private String type; // stores the type of tile
+    private Position position; // stores the position of the tile
+    private Direction direction; // stores direction of tile
 
-public class Tile { 
-    private String tileType = "Base"; // stores the type of tile 
-    private Position position; // stores the position of the tile 
-    private Direction direction; // stores direction of tile 
-    private TileType tileType; // stores the type of the tile
-
-    // tile class constructor 
-    public Tile(String type, Position inputPosition, Direction inputDirection = null){
-        this.position.setPosition(inputPosition.getX(), inputPosition.getY());
-        this.tileType = type; 
-        this.direction = inputDirection;
+    // tile class constructor
+    public Tile(String type, Position position, Direction direction) {
+        this.position = position;
+        this.type = type;
+        this.direction = direction;
     }
 
-    // Tile setters 
-    public void setPosition(Position initPosition){
-        this.position = initPosition;
-    }    
-    public void setType(String initType){
-        this.tileType = initType;
-    }    
-    public void setDirection(Direction initDirection){
-        this.direction = initDirection;
+    public Tile(Position inputPosition, Direction inputDirection, String string) {
     }
 
-    // Tile getters 
-    public Position getPosition(){
+    // Tile setters
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    // Tile getters
+    public Position getPosition() {
         return this.position;
     }
-    public String getType(){
-        return this.tileType;
+
+    public String getType() {
+        return this.type;
     }
-    public Direction getDirection(){
+
+    public Direction getDirection() {
         return this.direction;
-    }    
+    }
 }

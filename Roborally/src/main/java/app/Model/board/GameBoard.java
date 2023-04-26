@@ -28,11 +28,9 @@ public class GameBoard {
             }
         }
 
-
-        
         // Specify other special tiles
         // ...
-        
+
     }
 
     // gets the tile at a certain position
@@ -41,11 +39,9 @@ public class GameBoard {
     }
 
     // computes the distance between any two positions
-    private float distance(Position pos1, Position pos2){
-        return Math.sqrt( Math.pow((pos1.getX()-pos2.getX()),2) + Math.pow((pos1.getY()-pos2.getY()),2) );
+    private float distance(Position pos1, Position pos2) {
+        return Math.sqrt(Math.pow((pos1.getX() - pos2.getX()), 2) + Math.pow((pos1.getY() - pos2.getY()), 2));
     }
-
-
 
     // returns the nearest start tile to any given position
     private Position nearestStartTile(Position initial){

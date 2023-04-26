@@ -4,15 +4,15 @@ import app.Model.board.*;
 
 public class Robot {
 
-	// robot attributes 
+	// robot attributes
 	private int player;
 	private int health;
-	private String name; 
-    private Position position;
+	private String name;
+	private Position position;
 	private Direction direction;
 
-	// robot constructor 
-	public void Robot(Position initPosition, Direction initDirection, int initHealth, int initPlayer, String initName){
+	// robot constructor
+	public void Robot(Position initPosition, Direction initDirection, int initHealth, int initPlayer, String initName) {
 		this.player = initPlayer;
 		this.health = initHealth;
 		this.name = initName;
@@ -21,41 +21,49 @@ public class Robot {
 	}
 
 	// robot setters
-	public void setPlayer (int initPlayer){
+	public void setPlayer(int initPlayer) {
 		this.player = initPlayer;
 	}
-	public void setHealth (int initHealth){
+
+	public void setHealth(int initHealth) {
 		this.health = initHealth;
 	}
-	public void setName (String initName){
+
+	public void setName(String initName) {
 		this.name = initName;
-	} 
-    public void setPosition (Position initPosition){
+	}
+
+	public void setPosition(Position initPosition) {
 		this.position = initPosition;
 	}
-	public void setDirection (Direction initDirection){
+
+	public void setDirection(Direction initDirection) {
 		this.direction = initDirection;
 	}
 
 	// robot getters
-	public int getPlayer(){
+	public int getPlayer() {
 		return this.player;
 	}
-	public int getHealth(){
+
+	public int getHealth() {
 		return this.health;
 	}
-	public String getName(){
+
+	public String getName() {
 		return this.name;
-	} 
-    public Position getPosition(){
-		 return this.position;
 	}
-	public Direction getDirection(){
+
+	public Position getPosition() {
+		return this.position;
+	}
+
+	public Direction getDirection() {
 		return this.direction;
 	}
 
 	// modifiers
-	public void changeHealth(int diffHealth){
+	public void changeHealth(int diffHealth) {
 		this.health += diffHealth;
 	}
 

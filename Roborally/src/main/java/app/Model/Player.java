@@ -1,6 +1,5 @@
 package app.Model;
 
-
 import app.Model.cards.*;
 import cards.Card;
 
@@ -12,13 +11,13 @@ import java.util.List;
 public class Player {
 
     // An array to hold the cards in the player's hand
-    private final Card[] cardHand = new Card[9]; 
+    private final Card[] cardHand = new Card[9];
     // An array to hold the cards in the player's programming slots
-    private final Card[] programmingSlots = new Card[5]; 
+    private final Card[] programmingSlots = new Card[5];
     // An array to keep track of which programming slots are locked
-    private final boolean[] programmingSlotsLocked = new boolean[5]; 
+    private final boolean[] programmingSlotsLocked = new boolean[5];
     // The player's robot
-    private final Robot robot; 
+    private final Robot robot;
     // A boolean flag to indicate whether the player has won or lost
     public boolean wonOrLost = false;
     // A list to hold the deck of cards
@@ -75,7 +74,8 @@ public class Player {
     }
 
     public void clearProgrammingSlots() {
-        // Clear all programming slots and lock the necessary slots based on the robot's HP
+        // Clear all programming slots and lock the necessary slots based on the robot's
+        // HP
         Arrays.fill(programmingSlotsLocked, false);
 
         int hp = robot.getState().getHp();
@@ -90,7 +90,7 @@ public class Player {
     }
 
     public void setCardinProgrammingSlot(int programmingSlot, Card programCard) {
-        // Set a card in a specific programming slot 
+        // Set a card in a specific programming slot
         programmingSlots[programmingSlot] = programCard;
     }
 

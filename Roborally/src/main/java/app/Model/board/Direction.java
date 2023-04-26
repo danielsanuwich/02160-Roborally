@@ -1,10 +1,10 @@
 package app.Model.board;
 
-public class Direction{
+public class Direction {
     private int direction;
 
     // direction constructor
-    public Direction(int initDirection){
+    public Direction(int initDirection) {
         if (initDirection < 0) {
             direction = 6 + (initDirection % 6);
         } else {
@@ -13,7 +13,7 @@ public class Direction{
     }
 
     // direction setter
-    public void setDirection(int initDirection){
+    public void setDirection(int initDirection) {
         if (initDirection < 0) {
             direction = 6 + (initDirection % 6);
         } else {
@@ -22,7 +22,7 @@ public class Direction{
     }
 
     // direction getter
-    public int getDirection(){
+    public int getDirection() {
         return this.direction;
     }
 }
