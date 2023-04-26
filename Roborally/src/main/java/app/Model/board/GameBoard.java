@@ -20,11 +20,10 @@ public class GameBoard {
             for (int j = 0; j < yDim; j++) {
                 this.gameBoard[i][j] = new Tile();
                 this.gameBoard[i][j].setPosition(new Position(i, j));
+                this.gameBoard[i][j].setType("Base");
+                this.gameBoard[i][j].setDirection(0);
             }
         }
-
-        // Specify other special tiles
-        // ...
 
     }
 
@@ -33,12 +32,13 @@ public class GameBoard {
         return gameBoard[pos.getX()][pos.getY()];
     }
 
+    // computes the distance between any two positions
     private float distance(Position pos1, Position pos2) {
         return (float) Math.hypot(pos1.getX() - pos2.getX(), pos1.getY() - pos2.getY());
     }
 
     // returns the nearest start tile to any given position
-    public Position nearestStartTile(Position initial) {
+    private Position nearestStartTile(Position initial) {
         float smallestDistance = Float.MAX_VALUE;
         Position closest = new Position(0, 0); // nearest start tile's position
 
