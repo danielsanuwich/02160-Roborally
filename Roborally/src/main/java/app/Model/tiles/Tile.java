@@ -9,10 +9,10 @@ public class Tile {
     private final Direction direction; // stores direction of tile
 
     // tile class constructor
-    public Tile(Position position2, Direction direction2, String string) {
-        this.type = position2;
-        this.position = direction2;
-        this.direction = string;
+    public Tile(Position position, Direction direction, String type) {
+        this.type = type;
+        this.position = position;
+        this.direction = direction;
     }
 
     // Tile getters

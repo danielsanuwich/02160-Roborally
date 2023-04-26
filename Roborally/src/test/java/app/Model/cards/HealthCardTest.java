@@ -1,27 +1,25 @@
 package app.Model.cards;
 
-/*
- * Cards which modify the robots health
- */
-public class HealthCard extends Card {
+import org.junit.Test;
 
-    // HealthCard attributes
-    private int diffHealth;
+import static org.junit.Assert.assertEquals;
 
-    // HealthCard constructor
-    public HealthCard(int diffHealth) {
-        this.diffHealth = diffHealth;
-        if (this.diffHealh >= 0) {
-            super("Add" + toString(diffHealth) + "HP");
-        } else {
-            super("Deduct" + toString(diffHealth) + "HP");
-        }
-        // setting the card type based on the input
+public class HealthCardTest {
+
+    @Test
+    public void testConstructorPositive() {
+        int diffHealth = 2;
+        HealthCard card = new HealthCard(diffHealth);
+        assertEquals("Add 2 HP", card.getType());
+        assertEquals(diffHealth, card.getDiffHealth());
     }
 
-    // HealthCard getters
-    public int getDiffHealth() {
-        return this.diffHealth;
+    @Test
+    public void testConstructorNegative() {
+        int diffHealth = -3;
+        HealthCard card = new HealthCard(diffHealth);
+        assertEquals("Deduct 3 HP", card.getType());
+        assertEquals(diffHealth, card.getDiffHealth());
     }
 
 }

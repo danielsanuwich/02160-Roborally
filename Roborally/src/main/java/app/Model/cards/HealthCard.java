@@ -6,17 +6,12 @@ package app.Model.cards;
 public class HealthCard extends Card {
 
     // HealthCard attributes
-    private int diffHealth;
+    private final int diffHealth;
 
     // HealthCard constructor
     public HealthCard(int diffHealth) {
+        super(diffHealth >= 0 ? "Add " + diffHealth + " HP" : "Deduct " + Math.abs(diffHealth) + " HP");
         this.diffHealth = diffHealth;
-        if (this.diffHealh >= 0) {
-            super("Add" + toString(diffHealth) + "HP");
-        } else {
-            super("Deduct" + toString(diffHealth) + "HP");
-        }
-        // setting the card type based on the input
     }
 
     // HealthCard getters

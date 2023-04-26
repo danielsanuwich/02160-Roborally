@@ -1,22 +1,14 @@
 package app.Model.cards;
 
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+
 public class CardTest {
-	// card attributes
-	private String type;
 
-	// card constructor
-	public CardTest(String type) {
-		this.type = type;
+	@Test
+	public void testGetType() {
+		String type = "Action";
+		Card card = new Card(type);
+		assertEquals(type, card.getType());
 	}
-
-	// card setType
-	public void setType(String newType) {
-		this.type = newType;
-	}
-
-	// card getters
-	public String getType() {
-		return this.type;
-	}
-
 }

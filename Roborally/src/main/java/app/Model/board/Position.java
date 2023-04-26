@@ -1,19 +1,15 @@
 package app.Model.board;
 
-public class Position {
-    private int x;
-    private int y;
+import java.util.Objects;
+
+public final class Position {
+    private final int x;
+    private final int y;
 
     // position constructor
-    public Position(int xi, int yi) {
-        x = xi;
-        y = yi;
-    }
-
-    // position setter
-    public void setPosition(int xi, int yi) {
-        this.x = xi;
-        this.y = yi;
+    public Position(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     // position getters
@@ -23,5 +19,29 @@ public class Position {
 
     public int getY() {
         return this.y;
+    }
+
+    // overridden equals method
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof Position)) {
+            return false;
+        }
+        Position other = (Position) obj;
+        return this.x == other.x && this.y == other.y;
+    }
+
+    // overridden toString method
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
+
+    // private setPosition method
+    private void setPosition(int x, int y) {
+        // position should only be set through constructor
     }
 }

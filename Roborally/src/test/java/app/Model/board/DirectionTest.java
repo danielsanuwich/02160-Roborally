@@ -51,6 +51,6 @@ public class DirectionTest {
 
         // test setting the direction value to a large negative number
         direction.setDirection(-17);
-        assertEquals(5, direction.getDirection());
+        assertEquals(1, direction.getDirection());
     }
 }

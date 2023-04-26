@@ -1,23 +1,21 @@
 package app.Model.cards;
 
 public class Card {
-	// card attributes 
+	// card attribute
 	private String type;
 
 	// card constructor
 	public Card(String type) {
 		this.type = type;
 	}
-	
-	// card setType 
-	public void setType(String newType){
-		this.type = newType;
+
+	// card getter
+	public void setType(String type) {
+		this.type = type;
 	}
 
-
-	// card getters
-	public String getType(){
+	// card getter
+	public String getType() {
 		return this.type;
 	}
-	
 }

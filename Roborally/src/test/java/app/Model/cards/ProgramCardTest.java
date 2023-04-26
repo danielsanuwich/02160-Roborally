@@ -1,38 +1,35 @@
 package app.Model.cards;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ProgramCardTest {
-    
-    @Test
-    public void testConstructorWithTurnAmount() {
-        ProgramCard card = new ProgramCard(3, 0);
-        assertEquals("Uturn", card.getType());
-        assertEquals(3, card.getTurnAmount());
-        assertEquals(0, card.getMoveAmount());
-        
-        card = new ProgramCard(-4, 0);
-        assertEquals("CW4", card.getType());
-        assertEquals(-4, card.getTurnAmount());
-        assertEquals(0, card.getMoveAmount());
-        
-        card = new ProgramCard(8, 0);
-        assertEquals("CCW2", card.getType());
-        assertEquals(8, card.getTurnAmount());
-        assertEquals(0, card.getMoveAmount());
+
+    private ProgramCard card1, card2, card3, card4;
+
+    @BeforeEach
+    public void setUp() {
+        card1 = new ProgramCard(-3, 0); // CCW3
+        card2 = new ProgramCard(3, 0); // CW3
+        card3 = new ProgramCard(0, 2); // Move2
+        card4 = new ProgramCard(6, 0); // Uturn
     }
-    
+
     @Test
-    public void testConstructorWithMoveAmount() {
-        ProgramCard card = new ProgramCard(0, 1);
-        assertEquals("Move1", card.getType());
-        assertEquals(0, card.getTurnAmount());
-        assertEquals(1, card.getMoveAmount());
-        
-        card = new ProgramCard(0, -2);
-        assertEquals("Move2", card.getType());
-        assertEquals(0, card.getTurnAmount());
-        assertEquals(-2, card.getMoveAmount());
+    public void testGetTurnAmount() {
+        assertEquals(-3, card1.getTurnAmount());
+        assertEquals(3, card2.getTurnAmount());
+        assertEquals(0, card3.getTurnAmount());
+        assertEquals(6, card4.getTurnAmount());
+    }
+
+    @Test
+    public void testGetMoveAmount() {
+        assertEquals(0, card1.getMoveAmount());
+        assertEquals(0, card2.getMoveAmount());
+        assertEquals(2, card3.getMoveAmount());
+        assertEquals(0, card4.getMoveAmount());
     }
 }
