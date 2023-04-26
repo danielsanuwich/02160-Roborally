@@ -116,17 +116,18 @@ public class GameLogic {
     }
 
     // robot movement function to allow for bumping and pushing
-    private void moveRobots(Robot robot, Direction directionToMove){
-        Position nextPosition = move(robot.getPosition, directionToMove, 1)  // find next position given current position and a direction
+    private void moveRobots(Robot robot, Direction directionToMove) {
+        Position nextPosition = move(robot.getPosition, directionToMove, 1); // find next position given current
+                                                                             // position and a direction
 
-        if(robotsAtThisPosition(nextPosition) == 1){ // if robot 1 in the way, move it out of the way
+        if (robotsAtThisPosition(nextPosition) == 1) { // if robot 1 in the way, move it out of the way
             moveRobots(robot1, directionToMove);
         }
 
-        if(robotsAtThisPosition(nextPosition) == 2){ // if robot 2 in the way, move it out of the way
+        if (robotsAtThisPosition(nextPosition) == 2) { // if robot 2 in the way, move it out of the way
             moveRobots(robot2, directionToMove);
         }
-        
+
         robot.setPosition = nextPostition; // move desired robot
 
     }
@@ -175,25 +176,25 @@ public class GameLogic {
     }
 
     // update robots based on the tile type
-private void updateFromTile(Robot robot, GameBoard gb){
-    Tile currentTile = gb.getTile(robot.getPosition);
-    if(currentTile instanceof ConveyerTile){
-        // move accordingly
-        moveRobots(robot,currentTile.getDirection);
+    private void updateFromTile(Robot robot, GameBoard gb) {
+        Tile currentTile = gb.getTile(robot.getPosition);
+        if (currentTile instanceof ConveyerTile) {
+            // move accordingly
+            moveRobots(robot, currentTile.getDirection);
 
-    }else if(currentTile instanceof TurnTile){
-        // turn accordingly
-        robot.setDirection = robot.getDirection.getDirection + currentTile.getTurnAmount
+        } else if (currentTile instanceof TurnTile) {
+            // turn accordingly
+            robot.setDirection = robot.getDirection.getDirection + currentTile.getTurnAmount;
 
-    }else if(currentTile instanceof HoleTile){
-        // return to a start position
-        robot.setPosition(gb.nearestStartTile(robot.getPosition));
+        } else if (currentTile instanceof HoleTile) {
+            // return to a start position
+            robot.setPosition(gb.nearestStartTile(robot.getPosition));
 
-    }else if(currentTile instanceof LaserTile){
-        // take damage
-        robot.changeHealth(-1 * currentTile.getDamage())
+        } else if (currentTile instanceof LaserTile) {
+            // take damage
+            robot.changeHealth(-1 * currentTile.getDamage());
+        }
     }
-}
 
     // programCard getters
     public int getTurnAmount() {

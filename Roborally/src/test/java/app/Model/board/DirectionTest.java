@@ -1,4 +1,4 @@
-package appTest.ModelTest.boardTest;
+package app.Model.board;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;

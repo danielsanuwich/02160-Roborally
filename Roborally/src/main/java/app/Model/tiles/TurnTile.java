@@ -17,7 +17,7 @@ public class TurnTile extends Tile {
     }
 
     // Turntile getter
-    public getTurnAmount() {
+    public int getTurnAmount() {
         return turnAmount;
     }
 }
