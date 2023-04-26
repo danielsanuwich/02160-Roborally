@@ -3,10 +3,11 @@ package app.Model.tiles;
 import app.Model.board.Direction;
 import app.Model.board.Position;
 
-public class StartTile extends Tile{
+public class StartTile extends Tile {
+    // No additional attributes or methods are necessary
 
     // StartTile constructor
-    public StartTile(Position inputPosition,Direction inputDirection){
-        super(inputPosition, inputDirection, "Start");
+    public StartTile(Position position, Direction direction) {
+        super(position, direction, "Start");
     }
 }

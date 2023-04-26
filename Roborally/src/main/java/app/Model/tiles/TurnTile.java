@@ -1,22 +1,20 @@
 package app.Model.tiles;
 
-import app.Model.board.*;
+import app.Model.board.Direction;
+import app.Model.board.Position;
 
 public class TurnTile extends Tile {
+    private final int turnAmount;
 
-    // Turntile attributes
-    private int turnAmount;
-
-    // TurnTile constructor
-    public TurnTile(Position inputPosition, Direction inputDirection, int turnAmount) {
-        super(inputPosition, inputDirection, "Turn");
-        if ((turnAmount % 6) != 0) {
+    public TurnTile(Position position, Direction direction, int turnAmount) {
+        super(position, direction, "Turn");
+        if ((turnAmount % 6) == 0) {
             this.turnAmount = turnAmount;
+        } else {
+            throw new IllegalArgumentException("Turn amount must be a multiple of 6.");
         }
-
     }
 
-    // Turntile getter
     public int getTurnAmount() {
         return turnAmount;
     }

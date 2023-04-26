@@ -5,7 +5,7 @@ import app.Model.board.Position;
 
 public class LaserTile extends Tile {
     // LaserTile attributes
-    int laserDamage;
+    private final int laserDamage;
 
     // LaserTile constructor
     public LaserTile(Position inputPosition, Direction inputDirection, int laserDamage) {
