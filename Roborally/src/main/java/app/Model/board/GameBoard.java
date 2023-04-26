@@ -1,5 +1,7 @@
-//Import position
-//import tile
+package app.Model.board;
+
+import app.Model.tiles.StartTile;
+import app.Model.tiles.*;
 
 public class GameBoard {
 
@@ -23,11 +25,9 @@ public class GameBoard {
             }
         }
 
-
-        
         // Specify other special tiles
         // ...
-        
+
     }
 
     // gets the tile at a certain position
@@ -36,27 +36,29 @@ public class GameBoard {
     }
 
     // computes the distance between any two positions
-    private float distance(Position pos1, Position pos2){
-        return Math.sqrt( Math.pow((pos1.getX()-pos2.getX()),2) + Math.pow((pos1.getY()-pos2.getY()),2) );
+    private float distance(Position pos1, Position pos2) {
+        return (float) Math.sqrt(Math.pow((pos1.getX() - pos2.getX()), 2) + Math.pow((pos1.getY() - pos2.getY()), 2));
     }
 
-
-
     // returns the nearest start tile to any given position
-    private Position nearestStartTile(Position initial){
+    private Position nearestStartTile(Position initial) {
         float smallestDistance = Math.abs(xDim + yDim);
-        Position closest; // nearest start tile's position 
+        Position closest = null; // nearest start tile's position
 
         // loop to iterate through all positions on the board
-        for(int i = 0; i < gb.xDim){
-            for(int j = 0; j < gb.yDim){
-                if(this.gameBoard[i][j] instanceof StartTile){// if tiletype is startTile 
-                    if(distance(initial, this.gameBoard[i][j].getPosition)<smallestDistance){// if this distance smaller than previous 
-                    // update new smallest distance
-                    }// update new closest start position 
+        for (int i = 0; i < xDim; i++) {
+            for (int j = 0; j < yDim; j++) {
+                if (distance(initial, gameBoard[i][j].getPosition()) < smallestDistance) {
+                    // if this distance smaller than previous update new smallest distance
+                    if (gameBoard[i][j] instanceof StartTile) {// if tiletype is startTile
+                        smallestDistance = distance(initial, gameBoard[i][j].getPosition());
+                        // update new closest start position
+                        closest = gameBoard[i][j].getPosition();
+                    }
                 }
             }
         }
+        return closest;
     }
 
 }

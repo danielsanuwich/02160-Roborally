@@ -1,40 +1,30 @@
+package app.Model.tiles;
+
+import app.Model.board.Direction;
 import app.Model.board.Position;
-//import position
-//import direction
 
+public class Tile {
+    private final String type; // stores the type of tile
+    private final Position position; // stores the position of the tile
+    private final Direction direction; // stores direction of tile
 
-public class Tile { 
-    private String tileType = "Base"; // stores the type of tile 
-    private Position position; // stores the position of the tile 
-    private Direction direction; // stores direction of tile 
-    private TileType tileType; // stores the type of the tile
-
-    // tile class constructor 
-    public Tile(String type, Position inputPosition, Direction inputDirection = null){
-        this.position.setPosition(inputPosition.getX(), inputPosition.getY());
-        this.tileType = type; 
-        this.direction = inputDirection;
+    // tile class constructor
+    public Tile(Position position2, Direction direction2, String string) {
+        this.type = position2;
+        this.position = direction2;
+        this.direction = string;
     }
 
-    // Tile setters 
-    public void setPosition(Position initPosition){
-        this.position = initPosition;
-    }    
-    public void setType(String initType){
-        this.tileType = initType;
-    }    
-    public void setDirection(Direction initDirection){
-        this.direction = initDirection;
-    }
-
-    // Tile getters 
-    public Position getPosition(){
+    // Tile getters
+    public Position getPosition() {
         return this.position;
     }
-    public String getType(){
-        return this.tileType;
+
+    public String getType() {
+        return this.type;
     }
-    public Direction getDirection(){
+
+    public Direction getDirection() {
         return this.direction;
-    }    
+    }
 }
