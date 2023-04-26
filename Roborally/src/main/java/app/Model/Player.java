@@ -2,6 +2,7 @@ package app.Model;
 
 
 import app.Model.cards.*;
+import cards.Card;
 
 import java.util.ArrayList;
 import java.util.Arrays;

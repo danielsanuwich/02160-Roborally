@@ -1,4 +1,4 @@
-package controllers;
+package app.controllers;
 
 import app.Game;
 import javafx.event.ActionEvent;

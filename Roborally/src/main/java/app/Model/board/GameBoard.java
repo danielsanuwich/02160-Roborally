@@ -1,3 +1,8 @@
+package app.Model.board;
+
+import app.Model.tiles.StartTile;
+import app.Model.tiles.Tile;
+
 //Import position
 //import tile
 
