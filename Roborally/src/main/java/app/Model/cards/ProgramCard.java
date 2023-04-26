@@ -11,22 +11,21 @@ public class ProgramCard extends Card {
 
     // programCard constructor
     public ProgramCard(int turnAmount, int moveAmount) {
-        super(determineCardType(turnAmount, moveAmount)); // Call to superclass constructor
-        this.turnAmount = turnAmount;
-        this.moveAmount = moveAmount;
-    }
-
-    private static String determineCardType(int turnAmount, int moveAmount) {
-        if ((turnAmount % 6) != 0) { // setting the card type of a program card dependent on the inputs
-            if ((turnAmount % 6) == 3) {
-                return "Uturn";
-            } else if (turnAmount < 0) {
-                return "CCW" + Integer.toString(turnAmount);
-            } else if (turnAmount > 0) {
-                return "CW" + Integer.toString(Math.abs(turnAmount));
+        super();
+    	if ((turnAmount % 6) != 0) { // setting the card type of a program card dependent on the inputs
+            this.turnAmount = turnAmount;
+            if ((this.turnAmount % 6) == 3) {
+                super.setName("Uturn");
+            } else if (this.turnAmount > 0) {
+                super.setName("CW" + Integer.toString(turnAmount));
+            } else if (this.turnAmount < 0) {
+                super.setName("CCW" + Integer.toString(Math.abs(turnAmount)));
             }
+        } else {
+            this.moveAmount = moveAmount;
+            super.setName("Move" + Integer.toString(moveAmount));
         }
-        return "Move" + Integer.toString(moveAmount);
+
     }
 
     // programCard getters
@@ -37,5 +36,6 @@ public class ProgramCard extends Card {
     public int getMoveAmount() {
         return this.moveAmount;
     }
+
 
 }
