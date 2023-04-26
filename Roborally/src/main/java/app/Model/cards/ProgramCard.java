@@ -12,20 +12,22 @@ public class ProgramCard extends Card {
     // programCard constructor
     public ProgramCard(int turnAmount, int moveAmount) {
         super();
-    	if ((turnAmount % 6) != 0) { // setting the card type of a program card dependent on the inputs
+        if ((turnAmount % 6) != 0) {
+            if (turnAmount == 6) {
+                throw new IllegalArgumentException("Invalid turnAmount value: 6");
+            }
             this.turnAmount = turnAmount;
-            if ((this.turnAmount % 6) == 3) {
+            if (Math.abs(this.turnAmount % 6) == 3) {
                 super.setName("Uturn");
             } else if (this.turnAmount > 0) {
-                super.setName("CW" + Integer.toString(turnAmount));
+                super.setName("CW");
             } else if (this.turnAmount < 0) {
-                super.setName("CCW" + Integer.toString(Math.abs(turnAmount)));
+                super.setName("CCW");
             }
         } else {
             this.moveAmount = moveAmount;
             super.setName("Move" + Integer.toString(moveAmount));
         }
-
     }
 
     // programCard getters
@@ -36,6 +38,4 @@ public class ProgramCard extends Card {
     public int getMoveAmount() {
         return this.moveAmount;
     }
-
-
 }

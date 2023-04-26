@@ -1,7 +1,5 @@
 package app.Model.board;
 
-import java.util.Objects;
-
 public final class Position {
     private int x;
     private int y;
@@ -46,5 +44,4 @@ public final class Position {
         return "(" + x + ", " + y + ")";
     }
 
-    
 }
