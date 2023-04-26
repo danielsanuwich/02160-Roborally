@@ -15,9 +15,15 @@ public class Position {
         this.x = xi;
         this.y = yi;
     }
-
+    public void setX(int xi){
+        this.x = xi;
+    }
+    public void setY(int yi){
+        this.y = yi;
+    }
+    
     // position getters
-    public int getX() {
+    public int getX(){
         return this.x;
     }
 
