@@ -4,20 +4,20 @@ public class Direction {
     private int direction;
 
     // direction constructor
-    public Direction(int initDirection) {
-        if (initDirection < 0) {
-            this.direction = 6 + (initDirection % 6);
+    public Direction(int direction) {
+        if (direction < 0) {
+            this.direction = 6 + (direction % 6);
         } else {
-            this.direction = initDirection % 6;
+            this.direction = direction % 6;
         }
     }
 
     // direction setter
-    public void setDirection(int initDirection) {
-        if (initDirection < 0) {
-            this.direction = 6 + (initDirection % 6);
+    public void setDirection(int direction) {
+        if (direction < 0) {
+            this.direction = 6 + (direction % 6);
         } else {
-            this.direction = initDirection % 6;
+            this.direction = direction % 6;
         }
     }
 
