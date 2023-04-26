@@ -17,7 +17,7 @@ public class Direction {
         if (direction < 0) {
             this.direction = 6 + (direction % 6);
         } else {
-            this.direction = direction % 6;
+            this.direction = (direction % 6);
         }
     }
 
