@@ -1,4 +1,6 @@
-package app.Model.board;
+package app;
+
+import app.Model.board.Direction;
 
 public class Main {
 
