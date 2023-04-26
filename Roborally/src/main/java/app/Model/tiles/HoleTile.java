@@ -11,8 +11,8 @@ public class HoleTile extends Tile {
 
 
     // HoleTile constructor
-    public HoleTile(Position position, int holeDamage) {
-        super(position, "Hole");
+    public HoleTile(Position position, Direction direction, int holeDamage) {
+        super(position, direction, "Hole");
         this.holeDamage = holeDamage;
     }
 
