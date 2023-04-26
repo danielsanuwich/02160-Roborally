@@ -6,18 +6,18 @@ public class Direction {
     // direction constructor
     public Direction(int initDirection) {
         if (initDirection < 0) {
-            direction = 6 + (initDirection % 6);
+            this.direction = 6 + (initDirection % 6);
         } else {
-            direction = initDirection % 6;
+            this.direction = initDirection % 6;
         }
     }
 
     // direction setter
     public void setDirection(int initDirection) {
         if (initDirection < 0) {
-            direction = 6 + (initDirection % 6);
+            this.direction = 6 + (initDirection % 6);
         } else {
-            direction = initDirection % 6;
+            this.direction = initDirection % 6;
         }
     }
 
