@@ -1,4 +1,4 @@
-package controllers;
+package app.controllers;
 
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
