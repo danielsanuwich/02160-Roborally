@@ -1,5 +1,7 @@
 package app.Model.cards;
 
+import cards.Card;
+
 /*
  * Program card 
  */

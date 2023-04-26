@@ -1,4 +1,5 @@
 package app.Model.cards;
+import cards.Card;
 
 /*
  * Cards which modify the robots health
