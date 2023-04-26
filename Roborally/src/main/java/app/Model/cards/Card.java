@@ -1,4 +1,4 @@
-package cards;
+package app.Model.cards;
 
 public class Card {
 	// card attributes 

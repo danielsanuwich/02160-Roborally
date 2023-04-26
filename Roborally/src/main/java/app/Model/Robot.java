@@ -12,7 +12,7 @@ public class Robot {
 	private Direction direction;
 
 	// robot constructor
-	public void Robot(Position initPosition, Direction initDirection, int initHealth, int initPlayer, String initName) {
+	public Robot(Position initPosition, Direction initDirection, int initHealth, int initPlayer, String initName) {
 		this.player = initPlayer;
 		this.health = initHealth;
 		this.name = initName;

@@ -1,7 +1,5 @@
 package app.Model.cards;
 
-import cards.Card;
-
 /*
  * Cards which modify the robots health
  */
@@ -13,12 +11,12 @@ public class HealthCard extends Card {
     // HealthCard constructor
     public HealthCard(int diffHealth) {
         this.diffHealth = diffHealth;
-        // setting the card type based on the input
         if (this.diffHealh >= 0) {
             super("Add" + toString(diffHealth) + "HP");
         } else {
             super("Deduct" + toString(diffHealth) + "HP");
         }
+        // setting the card type based on the input
     }
 
     // HealthCard getters

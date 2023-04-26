@@ -1,7 +1,6 @@
 package app.Model;
 
 import app.Model.cards.*;
-import cards.Card;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,12 +52,12 @@ public class Player {
         placeCardInFirstOpenSlot(handSlot, cardHand, programmingSlots);
     }
 
-    public void undoProgrammingSlotPlacement(int programmingSlot) {
-        // Move a card from a locked programming slot back to the player's hand
-        if (!programmingSlotsLocked[programmingSlot]) {
-            placeCardInFirstOpenSlot(programmingSlot, programmingSlots, cardHand);
-        }
-    }
+    // public void undoProgrammingSlotPlacement(int programmingSlot) {
+    //     // Move a card from a locked programming slot back to the player's hand
+    //     if (!programmingSlotsLocked[programmingSlot]) {
+    //         placeCardInFirstOpenSlot(programmingSlot, programmingSlots, cardHand);
+    //     }
+    // }
 
     private void placeCardInFirstOpenSlot(int cardSlotInOriginArray, Card[] originArray, Card[] destinationArray) {
         // Helper method to move a card from one array to another

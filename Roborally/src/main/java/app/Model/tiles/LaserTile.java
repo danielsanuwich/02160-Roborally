@@ -9,8 +9,8 @@ public class LaserTile extends Tile {
 
     // LaserTile constructor
     public LaserTile(Position inputPosition, Direction inputDirection, int laserDamage) {
-        this.laserDamage = Math.abs(laserDamage);
         super(inputPosition, inputDirection, "Laser");
+        this.laserDamage = Math.abs(laserDamage);
     }
 
     // LaserTile getters

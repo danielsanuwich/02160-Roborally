@@ -139,6 +139,7 @@ public class GameLogic {
                 // do nothing
                 break;
             case (HOLE):
+                // TODO
                 // return robot to closest start position
                 break;
             case (CONVEYOR_NORMAL):
