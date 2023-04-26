@@ -132,77 +132,26 @@ public class GameLogic {
 
     }
 
-    // update robot attributes based on tile position
-    private void updateRobot(Robot robot, GameBoard gb) {
-        Tile currentTile = gb.getTile(robot.getPosition);
-        switch (currentTile.getType) { // check the tile type which the robot is on
-            case (BASE_TILE):
-                // do nothing
-                break;
-            case (HOLE):
-                // TODO
-                // return robot to closest start position
-                break;
-            case (CONVEYOR_NORMAL):
-                // move robot by one in direction of the conveyer
-                moveRobots(robot, currentTile.getDirection);
-                break;
-            case (CONVEYOR_EXPRESS):
-                // move robot by one twice in direction of the conveyer
-                moveRobots(robot.currentTile.getDirection);
-                moveRobots(robot.currentTile.getDirection);
-                break;
-            case (GEAR_CLOCKWISE):
-                // rotate robot clockwise (right)
-                robot.setDirection(robot.getDirection + 1);
-                break;
-            case (GEAR_COUNTERCLOCKWISE):
-                // rotate robot counterclockwise (left)
-                robot.setDirection(robot.getDirection - 1);
-                break;
-            case (REPAIR_ONE):
-                // increase health by 1
-                robot.setHealth(robot.getHealth + 1);
-                break;
-            case (REPAIR_TWO):
-                // increase health by 2
-                robot.setHealth(robot.getHealth + 2);
-                break;
-            case (START):
-                // do nothing
-                break;
-        }
 
-    }
-
-    // update robots based on the tile type
-    private void updateFromTile(Robot robot, GameBoard gb) {
+        // update robots based on the tile type
+    private void updateFromTile(Robot robot, GameBoard gb){
         Tile currentTile = gb.getTile(robot.getPosition);
-        if (currentTile instanceof ConveyerTile) {
+        if(currentTile instanceof ConveyerTile){
             // move accordingly
-            moveRobots(robot, currentTile.getDirection);
+            moveRobots(robot,currentTile.getDirection);
 
-        } else if (currentTile instanceof TurnTile) {
+        }else if(currentTile instanceof TurnTile){
             // turn accordingly
-            robot.setDirection = robot.getDirection.getDirection + currentTile.getTurnAmount;
+            robot.setDirection = robot.getDirection.getDirection + currentTile.getTurnAmount
 
-        } else if (currentTile instanceof HoleTile) {
+        }else if(currentTile instanceof HoleTile){
             // return to a start position
             robot.setPosition(gb.nearestStartTile(robot.getPosition));
 
-        } else if (currentTile instanceof LaserTile) {
+        }else if(currentTile instanceof LaserTile){
             // take damage
-            robot.changeHealth(-1 * currentTile.getDamage());
+            robot.changeHealth(-1 * currentTile.getDamage())
         }
-    }
-
-    // programCard getters
-    public int getTurnAmount() {
-        return this.turnAmount;
-    }
-
-    public int getMoveAmount() {
-        return this.moveAmount;
     }
 
     // specify what happens each turn
@@ -223,8 +172,12 @@ public class GameLogic {
             // card is a health card
         } else if (card instanceof HealthCard) {
             robot.changeHealth(card.getDiffHealth());
-        }
+        } else { System.java.printl("Problem with Executing card types");}
 
     }
 
 }
+
+
+
+
