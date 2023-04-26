@@ -3,13 +3,19 @@ package app.Model.board;
 import java.util.Objects;
 
 public final class Position {
-    private final int x;
-    private final int y;
+    private int x;
+    private int y;
 
     // position constructor
-    public Position(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Position(int xi, int yi) {
+        x = xi;
+        y = yi;
+    }
+
+    // position setter
+    public void setPosition(int xi, int yi) {
+        this.x = xi;
+        this.y = yi;
     }
 
     // position getters
@@ -40,8 +46,5 @@ public final class Position {
         return "(" + x + ", " + y + ")";
     }
 
-    // private setPosition method
-    private void setPosition(int x, int y) {
-        // position should only be set through constructor
-    }
+    
 }

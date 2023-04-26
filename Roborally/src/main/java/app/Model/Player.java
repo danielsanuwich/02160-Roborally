@@ -31,17 +31,20 @@ public class Player {
         // Create and shuffle a new deck of cards
         List<Card> cards = new ArrayList<>();
         for (int i = 0; i < 18; i++) {
-            if (i < 6) {
-                cards.add(Card.BACK_UP);
-                cards.add(Card.MOVE_THREE);
-                cards.add(Card.U_TURN);
+            if (i < 3) {
+            	cards.add(new HealthCard(1));
+            	cards.add(new HealthCard(-1));
+            }
+        	if (i < 6) {
+                cards.add(new ProgramCard(0,3));
+                cards.add(new ProgramCard(3,0));
             }
             if (i < 12) {
-                cards.add(Card.MOVE_TWO);
+            	cards.add(new ProgramCard(0,2));
             }
-            cards.add(Card.MOVE_ONE);
-            cards.add(Card.ROTATE_LEFT);
-            cards.add(Card.ROTATE_RIGHT);
+            cards.add(new ProgramCard(0,1));
+            cards.add(new ProgramCard(-1,0));
+            cards.add(new ProgramCard(1,0));
         }
         Collections.shuffle(cards);
         return cards;
@@ -52,12 +55,6 @@ public class Player {
         placeCardInFirstOpenSlot(handSlot, cardHand, programmingSlots);
     }
 
-    // public void undoProgrammingSlotPlacement(int programmingSlot) {
-    //     // Move a card from a locked programming slot back to the player's hand
-    //     if (!programmingSlotsLocked[programmingSlot]) {
-    //         placeCardInFirstOpenSlot(programmingSlot, programmingSlots, cardHand);
-    //     }
-    // }
 
     private void placeCardInFirstOpenSlot(int cardSlotInOriginArray, Card[] originArray, Card[] destinationArray) {
         // Helper method to move a card from one array to another
@@ -77,7 +74,7 @@ public class Player {
         // HP
         Arrays.fill(programmingSlotsLocked, false);
 
-        int hp = robot.getState().getHp();
+        int hp = robot.getHealth();
         for (int i = 5; i >= hp && i >= 1; i--) {
             programmingSlotsLocked[i - 1] = true;
         }
@@ -112,7 +109,7 @@ public class Player {
     public void dealCards() {
         Arrays.fill(cardHand, null);
         Collections.shuffle(deck);
-        for (int i = 0; i < robot.getState().getHp() - 1; i++) {
+        for (int i = 0; i < robot.getHealth() - 1; i++) {
             cardHand[i] = deck.get(i);
         }
     }

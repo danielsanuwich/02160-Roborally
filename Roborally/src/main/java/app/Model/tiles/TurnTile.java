@@ -8,14 +8,14 @@ import app.Model.board.Position;
  * amount.
  */
 public class TurnTile extends Tile {
-    private final int turnAmount;
+    private int turnAmount;
 
     public TurnTile(Position position, Direction direction, int turnAmount) {
         super(position, direction, "Turn");
-        if (turnAmount % 6 == 0) {
+        if ((turnAmount % 6) != 0) {
             this.turnAmount = turnAmount;
         } else {
-            throw new IllegalArgumentException("Turn amount must be a multiple of 6.");
+            throw new IllegalArgumentException("Turn amount must NOT be a multiple of 6.");
         }
     }
 
