@@ -122,8 +122,6 @@ public class GameLogic {
 
     // function to specify if a robot is at a certain position
     private int robotsAtThisPosition(Position pos) {
-        // '==' compares object references (memory locations), while '.equals()'
-        // compares actual content of objects.
         // Use '.equals()' for accurate content comparison, as '==' checks if references
         // point to the same object.
         if (robot1.getPosition().equals(pos))
@@ -137,8 +135,7 @@ public class GameLogic {
 
     // robot movement function to allow for bumping and pushing
     void moveRobots(Robot robot, Direction directionToMove) {
-        Position nextPosition = move(robot.getPosition(), directionToMove, 1); // find next position given current
-                                                                               // position and a direction
+        Position nextPosition = move(robot.getPosition(), directionToMove, 1); // find next position given current position and a direction
         if (robotsAtThisPosition(nextPosition) == 1) { // if robot 1 in the way, move it out of the way
             moveRobots(robot1, directionToMove);
         }

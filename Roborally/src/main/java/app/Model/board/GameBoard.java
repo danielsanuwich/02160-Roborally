@@ -16,20 +16,25 @@ public class GameBoard {
         this.gameBoard = new Tile[xDim][yDim];
 
         // Initialize the game board
+        Direction defaultDirection = new Direction(0);
         for (int i = 0; i < xDim; i++) {
             for (int j = 0; j < yDim; j++) {
                 this.gameBoard[i][j] = new Tile();
                 this.gameBoard[i][j].setPosition(new Position(i, j));
                 this.gameBoard[i][j].setType("Base");
-                this.gameBoard[i][j].setDirection(0);
+                this.gameBoard[i][j].setDirection(defaultDirection);
             }
         }
-
     }
 
     // gets the tile at a certain position
     public Tile getTile(Position pos) {
         return gameBoard[pos.getX()][pos.getY()];
+    }
+
+    // sets the tile at a certain position
+    public void setTile(Position pos, Tile tile) {
+        gameBoard[pos.getX()][pos.getY()] = tile;
     }
 
     // computes the distance between any two positions

@@ -1,70 +1,70 @@
 package app.Model;
 
 import app.Model.board.*;
+import app.Model.tiles.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class Robot {
+import static org.junit.jupiter.api.Assertions.*;
 
-    // robot attributes
-    private int player;
-    private int health;
-    private String name;
-    private Position position;
-    private Direction direction;
+class RobotTest {
+    private Robot robot;
+    private Position initPosition;
+    private Direction initDirection;
+    private int initHealth;
+    private int initPlayer;
+    private String initName;
 
-    // robot constructor
-    public Robot(Position initPosition, Direction initDirection, int initHealth, int initPlayer, String initName) {
-        this.player = initPlayer;
-        this.health = initHealth;
-        this.name = initName;
-        this.position = initPosition;
-        this.direction = initDirection;
+    @BeforeEach
+    void setUp() {
+        initPosition = new Position(0, 0);
+        initDirection = new Direction(0);
+        initHealth = 10;
+        initPlayer = 1;
+        initName = "TestBot";
+
+        robot = new Robot(initPosition, initDirection, initHealth, initPlayer, initName);
     }
 
-    // robot setters
-    public void setPlayer(int initPlayer) {
-        this.player = initPlayer;
+    // Test setters and getters.
+    @Test
+    void testSettersAndGetters() {
+        Position newPosition = new Position(1, 1);
+        Direction newDirection = new Direction(3);
+        int newHealth = 8;
+        int newPlayer = 2;
+        String newName = "NewTestBot";
+
+        robot.setPlayer(newPlayer);
+        robot.setHealth(newHealth);
+        robot.setName(newName);
+        robot.setPosition(newPosition);
+        robot.setDirection(newDirection);
+
+        assertEquals(newPlayer, robot.getPlayer());
+        assertEquals(newHealth, robot.getHealth());
+        assertEquals(newName, robot.getName());
+        assertEquals(newPosition, robot.getPosition());
+        assertEquals(newDirection, robot.getDirection());
     }
 
-    public void setHealth(int initHealth) {
-        this.health = initHealth;
+    // Test changeHealth method.
+    @Test
+    void testChangeHealth() {
+        int diffHealth = -2;
+        int expectedHealth = initHealth + diffHealth;
+
+        robot.changeHealth(diffHealth);
+        assertEquals(expectedHealth, robot.getHealth());
     }
 
-    public void setName(String initName) {
-        this.name = initName;
-    }
+    // Test respawn method.
+    @Test
+    void testRespawn() {
+        StartTile startTile = new StartTile(new Position(2, 2), new Direction(0));
+        Position expectedPosition = startTile.getPosition();
 
-    public void setPosition(Position initPosition) {
-        this.position = initPosition;
+        robot.respawn(startTile);
+        assertEquals(expectedPosition, robot.getPosition());
     }
-
-    public void setDirection(Direction initDirection) {
-        this.direction = initDirection;
-    }
-
-    // robot getters
-    public int getPlayer() {
-        return this.player;
-    }
-
-    public int getHealth() {
-        return this.health;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public Position getPosition() {
-        return this.position;
-    }
-
-    public Direction getDirection() {
-        return this.direction;
-    }
-
-    // modifiers
-    public void changeHealth(int diffHealth) {
-        this.health += diffHealth;
-    }
-
 }
