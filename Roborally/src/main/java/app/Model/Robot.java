@@ -1,6 +1,7 @@
 package app.Model;
 
 import app.Model.board.*;
+import app.Model.tiles.*;
 
 public class Robot {
 
@@ -65,6 +66,15 @@ public class Robot {
 	// modifiers
 	public void changeHealth(int diffHealth) {
 		this.health += diffHealth;
+	}
+
+	/**
+	 * Respawn the robot at the given StartTile's position.
+	 * 
+	 * @param startTile The StartTile where the robot will respawn.
+	 */
+	public void respawn(StartTile startTile) {
+		this.setPosition(startTile.getPosition());
 	}
 
 }

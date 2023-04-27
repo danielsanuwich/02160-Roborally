@@ -8,6 +8,6 @@ public class StartTile extends Tile {
 
     // StartTile constructor
     public StartTile(Position position, Direction direction) {
-        super(position, direction, "Start");
+        super("Start", position, direction);
     }
 }

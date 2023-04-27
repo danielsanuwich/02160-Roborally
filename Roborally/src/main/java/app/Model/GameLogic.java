@@ -5,7 +5,7 @@ import app.Model.tiles.*;
 import app.Model.cards.*;
 
 public class GameLogic {
-	Position initialPos1;
+    Position initialPos1;
     Position initialPos2;
     Direction initialDirection1;
     Direction initialDirection2;
@@ -15,8 +15,8 @@ public class GameLogic {
     Robot robot2;
 
     GameBoard board;
-	
-	// gamelogic constructor
+
+    // gamelogic constructor
     public GameLogic() {
 
         // specify stating attributes for the robots
@@ -37,8 +37,9 @@ public class GameLogic {
 
     }
 
-    public GameLogic(Position initialPos1,Position initialPos2,Direction initialDirection1,Direction initialDirection2,
-    		int initialHealth,Robot robot1,Robot robot2,GameBoard board) {
+    public GameLogic(Position initialPos1, Position initialPos2, Direction initialDirection1,
+            Direction initialDirection2,
+            int initialHealth, Robot robot1, Robot robot2, GameBoard board) {
 
         // specify stating attributes for the robots
         this.initialPos1 = initialPos1;
@@ -57,7 +58,7 @@ public class GameLogic {
         this.board = board;
 
     }
-    
+
     // is even helper method for the move method
     private boolean isEven(Position pos) {
         if (pos.getX() % 2 == 0)
@@ -75,43 +76,43 @@ public class GameLogic {
             if (isEven(pos1)) { // position is even
                 switch (initDirection.getDirection() % 6) {
                     case 0:
-                        pos1.setPosition(pos1.getX() + 0,pos1.getY() - 1);
+                        pos1.setPosition(pos1.getX() + 0, pos1.getY() - 1);
                         break;
                     case 1:
-                    	pos1.setPosition(pos1.getX() + 1,pos1.getY() - 0);
+                        pos1.setPosition(pos1.getX() + 1, pos1.getY() - 0);
                         break;
                     case 2:
-                    	pos1.setPosition(pos1.getX() + 1,pos1.getY() + 1);
+                        pos1.setPosition(pos1.getX() + 1, pos1.getY() + 1);
                         break;
                     case 3:
-                    	pos1.setPosition(pos1.getX() + 0,pos1.getY() + 1);
+                        pos1.setPosition(pos1.getX() + 0, pos1.getY() + 1);
                         break;
                     case 4:
-                    	pos1.setPosition(pos1.getX() - 1,pos1.getY() + 1);
+                        pos1.setPosition(pos1.getX() - 1, pos1.getY() + 1);
                         break;
                     case 5:
-                    	pos1.setPosition(pos1.getX() - 1,pos1.getY() + 0);
+                        pos1.setPosition(pos1.getX() - 1, pos1.getY() + 0);
                         break;
                 }
             } else { // position is odd
                 switch (initDirection.getDirection() % 6) {
                     case 0:
-                    	pos1.setPosition(pos1.getX() + 0,pos1.getY() - 1);
+                        pos1.setPosition(pos1.getX() + 0, pos1.getY() - 1);
                         break;
                     case 1:
-                    	pos1.setPosition(pos1.getX() + 1,pos1.getY() - 1);
+                        pos1.setPosition(pos1.getX() + 1, pos1.getY() - 1);
                         break;
                     case 2:
-                    	pos1.setPosition(pos1.getX() + 1,pos1.getY() - 0);
+                        pos1.setPosition(pos1.getX() + 1, pos1.getY() - 0);
                         break;
                     case 3:
-                    	pos1.setPosition(pos1.getX() + 0,pos1.getY() + 1);
+                        pos1.setPosition(pos1.getX() + 0, pos1.getY() + 1);
                         break;
                     case 4:
-                    	pos1.setPosition(pos1.getX() - 1,pos1.getY() + 0);
+                        pos1.setPosition(pos1.getX() - 1, pos1.getY() + 0);
                         break;
                     case 5:
-                    	pos1.setPosition(pos1.getX() - 1,pos1.getY() - 1);
+                        pos1.setPosition(pos1.getX() - 1, pos1.getY() - 1);
                         break;
                 }
             }
@@ -119,7 +120,6 @@ public class GameLogic {
         }
     }
 
-    
     // function to specify if a robot is at a certain position
     private int robotsAtThisPosition(Position pos) {
         // '==' compares object references (memory locations), while '.equals()'
@@ -136,10 +136,9 @@ public class GameLogic {
     }
 
     // robot movement function to allow for bumping and pushing
-    private void moveRobots(Robot robot, Direction directionToMove) {
+    void moveRobots(Robot robot, Direction directionToMove) {
         Position nextPosition = move(robot.getPosition(), directionToMove, 1); // find next position given current
-                                                                             // position and a direction
-
+                                                                               // position and a direction
         if (robotsAtThisPosition(nextPosition) == 1) { // if robot 1 in the way, move it out of the way
             moveRobots(robot1, directionToMove);
         }
@@ -152,26 +151,26 @@ public class GameLogic {
 
     }
 
-
-        // update robots based on the tile type
-    private void updateFromTile(Robot robot, GameBoard gb){
+    // update robots based on the tile type
+    private void updateFromTile(Robot robot, GameBoard gb) {
         Tile currentTile = gb.getTile(robot.getPosition());
-        if(currentTile instanceof ConveyorTile){
+        if (currentTile instanceof ConveyorTile) {
             // move accordingly
-            moveRobots(robot,currentTile.getDirection());
+            moveRobots(robot, currentTile.getDirection());
 
-        }else if(currentTile instanceof TurnTile){
+        } else if (currentTile instanceof TurnTile) {
             // turn accordingly
-        	TurnTile cTile = (TurnTile)currentTile;
+            TurnTile cTile = (TurnTile) currentTile;
             robot.setDirection(new Direction(robot.getDirection().getDirection() + cTile.getTurnAmount()));
 
-        }else if(currentTile instanceof HoleTile){
-            // return to a start position
+        } else if (currentTile instanceof HoleTile) {
+            // return to a start position and take damage
+            robot.changeHealth(-((HoleTile) currentTile).getDamage());
             robot.setPosition(gb.nearestStartTile(robot.getPosition()));
 
-        }else if(currentTile instanceof LaserTile){
+        } else if (currentTile instanceof LaserTile) {
             // take damage
-        	LaserTile cTile = (LaserTile)currentTile;
+            LaserTile cTile = (LaserTile) currentTile;
             robot.changeHealth(-1 * cTile.getDamage());
         }
     }
@@ -183,8 +182,8 @@ public class GameLogic {
         // card is a program card
         if (card instanceof ProgramCard) {
             // turn robot
-            ProgramCard currentCard = (ProgramCard)card;
-        	robot.setDirection(new Direction(robot.getDirection().getDirection() + currentCard.getTurnAmount()));
+            ProgramCard currentCard = (ProgramCard) card;
+            robot.setDirection(new Direction(robot.getDirection().getDirection() + currentCard.getTurnAmount()));
 
             // move robot (careful!)
             for (int i = 0; i < currentCard.getMoveAmount(); i++) {
@@ -194,10 +193,11 @@ public class GameLogic {
 
             // card is a health card
         } else if (card instanceof HealthCard) {
-            HealthCard currentCard = (HealthCard)card;
-        	robot.changeHealth(currentCard.getDiffHealth());
-        } else { System.out.println("Problem with Executing card types");}
-
+            HealthCard currentCard = (HealthCard) card;
+            robot.changeHealth(currentCard.getDiffHealth());
+        } else {
+            System.out.println("Problem with Executing card types");
+        }
     }
 
 }

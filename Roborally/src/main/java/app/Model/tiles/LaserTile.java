@@ -5,11 +5,11 @@ import app.Model.board.Position;
 
 public class LaserTile extends Tile {
     // LaserTile attributes
-    private final int laserDamage;
+    private int laserDamage;
 
     // LaserTile constructor
     public LaserTile(Position inputPosition, Direction inputDirection, int laserDamage) {
-        super(inputPosition, inputDirection, "Laser");
+        super("Laser", inputPosition, inputDirection);
         this.laserDamage = Math.abs(laserDamage);
     }
 

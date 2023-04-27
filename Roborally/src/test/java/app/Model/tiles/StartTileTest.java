@@ -1,3 +1,4 @@
+package app.Model.tiles;
 
 // Import necessary classes and methods
 import app.Model.board.Direction;

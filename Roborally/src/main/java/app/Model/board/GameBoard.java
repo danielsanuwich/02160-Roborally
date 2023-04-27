@@ -38,7 +38,7 @@ public class GameBoard {
     }
 
     // returns the nearest start tile to any given position
-    private Position nearestStartTile(Position initial) {
+    public Position nearestStartTile(Position initial) {
         float smallestDistance = Float.MAX_VALUE;
         Position closest = new Position(0, 0); // nearest start tile's position
 

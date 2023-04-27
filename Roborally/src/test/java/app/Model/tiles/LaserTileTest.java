@@ -7,8 +7,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class LaserTileTest {
-
-    // This unit test tests the constructor of LaserTile
     @Test
     public void testConstructor() {
         // create a new position and direction
@@ -35,7 +33,6 @@ public class LaserTileTest {
         Position position = new Position(0, 0);
         Direction direction = new Direction(0);
 
-        // set the laser damage
         int laserDamage = 3;
 
         // create a new LaserTile object

@@ -4,19 +4,18 @@ import app.Model.board.Direction;
 import app.Model.board.Position;
 
 public class Tile {
-    private String type; // stores the type of tile
-    private Position position; // stores the position of the tile
-    private Direction direction; // stores direction of tile
+    private String type; 
+    private Position position; 
+    private Direction direction; 
 
-    // tile class constructor
     public Tile() {
-    	this.type = "Base";
-    	this.direction = new Direction(0);
+        this.type = "Base";
+        this.direction = new Direction(0);
     }
-    
+
     public Tile(String type, Position position, Direction direction) {
-        this.position = position;
         this.type = type;
+        this.position = position;
         this.direction = direction;
     }
 

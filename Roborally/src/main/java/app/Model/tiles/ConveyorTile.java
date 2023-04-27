@@ -5,11 +5,7 @@ import app.Model.board.Position;
 
 public class ConveyorTile extends Tile {
 
-    // The direction of the conveyor belt
-
-    // ConveyorTile constructor
     public ConveyorTile(Position position, Direction conveyorDirection) {
-        super(position, conveyorDirection, "Conveyor");
+        super("Conveyor", position, conveyorDirection);
     }
-
 }

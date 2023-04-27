@@ -16,7 +16,7 @@ public class TurnTileTest {
     @BeforeEach
     public void setUp() {
         eastDirection = new Direction(2); // 2 represents EAST
-        turnTile = new TurnTile(new Position(1, 1), eastDirection, 12);
+        turnTile = new TurnTile(new Position(1, 1), eastDirection, 7);
     }
 
     // Test that the TurnTile properties (type, position, direction, and turnAmount)
@@ -26,13 +26,14 @@ public class TurnTileTest {
         assertEquals("Turn", turnTile.getType());
         assertEquals(new Position(1, 1), turnTile.getPosition());
         assertEquals(eastDirection.getDirection(), turnTile.getDirection().getDirection());
-        assertEquals(12, turnTile.getTurnAmount());
+        assertEquals(7, turnTile.getTurnAmount());
     }
 
-    // Test that an IllegalArgumentException is thrown when the turnAmount is not a
+    // tests that an IllegalArgumentException is thrown when the turn amount is a
     // multiple of 6
     @Test
     public void testInvalidTurnAmount() {
-        assertThrows(IllegalArgumentException.class, () -> new TurnTile(new Position(1, 1), eastDirection, 7));
+        assertThrows(IllegalArgumentException.class, () -> new TurnTile(new Position(1, 1), eastDirection, 6));
     }
+
 }

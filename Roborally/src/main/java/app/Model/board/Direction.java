@@ -25,4 +25,17 @@ public class Direction {
     public int getDirection() {
         return this.direction;
     }
+
+    // Override the equals method to compare the contents of the objects rather than address in memory (.equals())
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Direction direction1 = (Direction) o;
+        return direction == direction1.direction;
+    }
 }

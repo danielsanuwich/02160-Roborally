@@ -11,7 +11,7 @@ public class TurnTile extends Tile {
     private int turnAmount;
 
     public TurnTile(Position position, Direction direction, int turnAmount) {
-        super(position, direction, "Turn");
+        super("Turn", position, direction);
         if ((turnAmount % 6) != 0) {
             this.turnAmount = turnAmount;
         } else {

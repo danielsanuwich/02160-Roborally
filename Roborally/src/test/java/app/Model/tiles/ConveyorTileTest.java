@@ -17,8 +17,6 @@ public class ConveyorTileTest {
         northDirection = new Direction(0); // 0 represents NORTH
         conveyorTile = new ConveyorTile(new Position(1, 1), northDirection);
     }
-    // Test that the ConveyorTile properties (type, position, and direction) are
-    // initialized correctly
 
     @Test
     public void testConveyorTileProperties() {
