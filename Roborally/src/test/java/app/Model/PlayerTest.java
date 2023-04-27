@@ -1,138 +1,104 @@
 package app.Model;
 
 import app.Model.cards.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import app.Model.board.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
-public class Player {
+import static org.junit.jupiter.api.Assertions.*;
 
-    // An array to hold the cards in the player's hand
-    private final Card[] cardHand = new Card[9];
-    // An array to hold the cards in the player's programming slots
-    private final Card[] programmingSlots = new Card[5];
-    // An array to keep track of which programming slots are locked
-    private final boolean[] programmingSlotsLocked = new boolean[5];
-    // The player's robot
-    private final Robot robot;
-    // A boolean flag to indicate whether the player has won or lost
-    public boolean wonOrLost = false;
-    // A list to hold the deck of cards
-    private final List<Card> deck;
+public class PlayerTest {
 
-    public Player(Robot robot) {
-        this.robot = robot;
-        deck = deckOfCards();
+    private Player player;
+    private Robot robot;
+
+    @BeforeEach
+    public void setUp() {
+        Position initPosition = new Position(0, 0);
+        Direction initDirection = new Direction(0);
+        int initHealth = 3;
+        int initPlayer = 1;
+        String initName = "TestRobot";
+        robot = new Robot(initPosition, initDirection, initHealth, initPlayer, initName);
+        player = new Player(robot);
     }
 
-    public List<Card> deckOfCards() {
-        // Create and shuffle a new deck of cards
-        List<Card> cards = new ArrayList<>();
-        for (int i = 0; i < 18; i++) {
-            if (i < 6) {
-                cards.add(Card.BACK_UP);
-                cards.add(Card.MOVE_THREE);
-                cards.add(Card.U_TURN);
+    @Test
+    public void testPlaceCardFromHandToSlot() {
+        // Test if a card from the hand is placed correctly into the first open
+        // programming slot
+        Card card = new ProgramCard(0, 1);
+        player.setCardinHand(0, card);
+        player.placeCardFromHandToSlot(0);
+        assertEquals(card, player.getCardInProgrammingSlot(0));
+    }
+
+    @Test
+    public void testClearProgrammingSlots() {
+        // Test if programming slots are cleared and locked based on the robot's health
+        Card card = new ProgramCard(0, 1);
+        player.setCardinProgrammingSlot(0, card);
+        player.getRobot().changeHealth(-1); // Updated this line to use changeHealth()
+        player.clearProgrammingSlots();
+        assertTrue(player.getProgrammingSlots()[0] == null
+                || player.getProgrammingSlots()[0].getClass() == HealthCard.class);
+    }
+
+    @Test
+    public void testSetCardInProgrammingSlot() {
+        // Test if a card is correctly set in a specific programming slot
+        Card card = new ProgramCard(0, 1);
+        player.setCardinProgrammingSlot(0, card);
+        assertEquals(card, player.getCardInProgrammingSlot(0));
+    }
+
+    @Test
+    public void testGetCardInProgrammingSlot() {
+        // Test if the correct card is retrieved from a specific programming slot
+        Card card = new ProgramCard(0, 1);
+        player.setCardinProgrammingSlot(0, card);
+        assertEquals(card, player.getCardInProgrammingSlot(0));
+    }
+
+    @Test
+    public void testSetCardInHand() {
+        // Test if a card is correctly set in a specific hand slot
+        Card card = new ProgramCard(0, 1);
+        player.setCardinHand(0, card);
+        assertEquals(card, player.getCardinHand(0));
+    }
+
+    @Test
+    public void testGetCardInHand() {
+        // Test if the correct card is retrieved from a specific hand slot
+        Card card = new ProgramCard(0, 1);
+        player.setCardinHand(0, card);
+        assertEquals(card, player.getCardinHand(0));
+    }
+
+    @Test
+    public void testDealCards() {
+        // Test if the correct number of cards are dealt based on the robot's health
+        player.dealCards();
+        int nonNullCards = 0;
+        for (int i = 0; i < 9; i++) {
+            if (player.getCardinHand(i) != null) {
+                nonNullCards++;
             }
-            if (i < 12) {
-                cards.add(Card.MOVE_TWO);
-            }
-            cards.add(Card.MOVE_ONE);
-            cards.add(Card.ROTATE_LEFT);
-            cards.add(Card.ROTATE_RIGHT);
         }
-        Collections.shuffle(cards);
-        return cards;
+        assertEquals(robot.getHealth() - 1, nonNullCards);
     }
 
-    public void placeCardFromHandToSlot(int handSlot) {
-        // Move a card from the player's hand to an open programming slot
-        placeCardInFirstOpenSlot(handSlot, cardHand, programmingSlots);
-    }
-
-    // public void undoProgrammingSlotPlacement(int programmingSlot) {
-    //     // Move a card from a locked programming slot back to the player's hand
-    //     if (!programmingSlotsLocked[programmingSlot]) {
-    //         placeCardInFirstOpenSlot(programmingSlot, programmingSlots, cardHand);
-    //     }
-    // }
-
-    private void placeCardInFirstOpenSlot(int cardSlotInOriginArray, Card[] originArray, Card[] destinationArray) {
-        // Helper method to move a card from one array to another
-        if (originArray[cardSlotInOriginArray] != null) {
-            for (int i = 0; i < destinationArray.length; i++) {
-                if (destinationArray[i] == null) {
-                    destinationArray[i] = originArray[cardSlotInOriginArray];
-                    originArray[cardSlotInOriginArray] = null;
-                    return;
-                }
-            }
-        }
-    }
-
-    public void clearProgrammingSlots() {
-        // Clear all programming slots and lock the necessary slots based on the robot's
-        // HP
-        Arrays.fill(programmingSlotsLocked, false);
-
-        int hp = robot.getState().getHp();
-        for (int i = 5; i >= hp && i >= 1; i--) {
-            programmingSlotsLocked[i - 1] = true;
-        }
-        for (int i = 0; i < programmingSlots.length; i++) {
-            if (!programmingSlotsLocked[i]) {
-                programmingSlots[i] = null;
-            }
-        }
-    }
-
-    public void setCardinProgrammingSlot(int programmingSlot, Card programCard) {
-        // Set a card in a specific programming slot
-        programmingSlots[programmingSlot] = programCard;
-    }
-
-    public Card getCardInProgrammingSlot(int slot) {
-        return programmingSlots[slot];
-    }
-
-    public void setCardinHand(int handSlot, Card programCard) {
-        cardHand[handSlot] = programCard;
-    }
-
-    public Card getCardinHand(int handSlot) {
-        return cardHand[handSlot];
-    }
-
-    public Card[] getProgrammingSlots() {
-        return programmingSlots;
-    }
-
-    public void dealCards() {
-        Arrays.fill(cardHand, null);
-        Collections.shuffle(deck);
-        for (int i = 0; i < robot.getState().getHp() - 1; i++) {
-            cardHand[i] = deck.get(i);
-        }
-    }
-
-    public Robot getRobot() {
-        return robot;
-    }
-
-    public void fillEmptySlots() {
-        for (Card card : programmingSlots) {
-            if (card == null) {
-                int randomPick = (int) (Math.random() * 9);
-                while (true) {
-                    if (getCardinHand(randomPick) != null) {
-                        placeCardFromHandToSlot(randomPick);
-                        break;
-                    }
-                    randomPick = (randomPick + 1) % 9;
-                }
-            }
+    @Test
+    public void testFillEmptySlots() {
+        // Test if empty programming slots are filled with cards from the player's hand
+        player.clearProgrammingSlots();
+        player.dealCards();
+        player.fillEmptySlots();
+        for (int i = 0; i < 5; i++) {
+            assertNotNull(player.getCardInProgrammingSlot(i));
         }
     }
 }

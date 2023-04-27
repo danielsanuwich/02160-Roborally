@@ -32,19 +32,19 @@ public class Player {
         List<Card> cards = new ArrayList<>();
         for (int i = 0; i < 18; i++) {
             if (i < 3) {
-            	cards.add(new HealthCard(1));
-            	cards.add(new HealthCard(-1));
+                cards.add(new HealthCard(1));
+                cards.add(new HealthCard(-1));
             }
-        	if (i < 6) {
-                cards.add(new ProgramCard(0,3));
-                cards.add(new ProgramCard(3,0));
+            if (i < 6) {
+                cards.add(new ProgramCard(0, 3));
+                cards.add(new ProgramCard(3, 0));
             }
             if (i < 12) {
-            	cards.add(new ProgramCard(0,2));
+                cards.add(new ProgramCard(0, 2));
             }
-            cards.add(new ProgramCard(0,1));
-            cards.add(new ProgramCard(-1,0));
-            cards.add(new ProgramCard(1,0));
+            cards.add(new ProgramCard(0, 1));
+            cards.add(new ProgramCard(-1, 0));
+            cards.add(new ProgramCard(1, 0));
         }
         Collections.shuffle(cards);
         return cards;
@@ -54,7 +54,6 @@ public class Player {
         // Move a card from the player's hand to an open programming slot
         placeCardInFirstOpenSlot(handSlot, cardHand, programmingSlots);
     }
-
 
     private void placeCardInFirstOpenSlot(int cardSlotInOriginArray, Card[] originArray, Card[] destinationArray) {
         // Helper method to move a card from one array to another
