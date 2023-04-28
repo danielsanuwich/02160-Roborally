@@ -36,6 +36,7 @@ class GameLogicTest {
                 robot2, board);
     }
 
+    
     // Test moveRobots method.
     @Test
     public void testMoveRobots() {
@@ -68,11 +69,7 @@ class GameLogicTest {
         assertEquals(expectedPosition, robot1.getPosition());
     }
 
-    /**
-     * Test ExcecuteTurn method with a ProgramCard.
-     * This test checks if the ExcecuteTurn method correctly updates the Robot's
-     * attributes based on the ProgramCard.
-     */
+    // Test ExcecuteTurn method with a ProgramCard.
     @Test
     void testExcecuteTurnProgramCard() {
         ProgramCard card = new ProgramCard(2, 1);
@@ -85,11 +82,7 @@ class GameLogicTest {
         assertEquals(expectedPosition, robot1.getPosition());
     }
 
-    /**
-     * Test ExcecuteTurn method with a HealthCard.
-     * This test checks if the ExcecuteTurn method correctly updates the Robot's
-     * health based on the HealthCard.
-     */
+    // Test ExcecuteTurn method with a HealthCard.
     @Test
     void testExcecuteTurnHealthCard() {
         HealthCard card = new HealthCard(2);

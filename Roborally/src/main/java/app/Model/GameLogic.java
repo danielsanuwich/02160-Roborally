@@ -4,6 +4,9 @@ import app.Model.board.*;
 import app.Model.tiles.*;
 import app.Model.cards.*;
 
+import java.util.LinkedList;
+import java.util.HashSet;
+
 public class GameLogic {
     Position initialPos1;
     Position initialPos2;
@@ -68,7 +71,7 @@ public class GameLogic {
     }
 
     // move method
-    private Position move(Position pos1, Direction initDirection, int stepsToMove) {
+    Position move(Position pos1, Direction initDirection, int stepsToMove) {
         // base case
         if (stepsToMove == 0) {
             return pos1;
@@ -133,19 +136,39 @@ public class GameLogic {
             return 0;
     }
 
-    // robot movement function to allow for bumping and pushing
-    void moveRobots(Robot robot, Direction directionToMove) {
-        Position nextPosition = move(robot.getPosition(), directionToMove, 1); // find next position given current position and a direction
-        if (robotsAtThisPosition(nextPosition) == 1) { // if robot 1 in the way, move it out of the way
-            moveRobots(robot1, directionToMove);
+    // Moves the given robot in the specified direction. If the robot encounters
+    // another robot in its path, it will push that robot along in the same
+    // direction.
+    public void moveRobots(Robot robot, Direction directionToMove) {
+        // Use a HashSet to store the robots that have been processed.
+        HashSet<Robot> processedRobots = new HashSet<>();
+
+        // Use a LinkedList to maintain the order of robots being processed.
+        LinkedList<Robot> robotsToProcess = new LinkedList<>();
+        robotsToProcess.add(robot);
+
+        while (!robotsToProcess.isEmpty()) {
+            Robot currentRobot = robotsToProcess.poll();
+            processedRobots.add(currentRobot);
+
+            Position newPos = move(currentRobot.getPosition(), directionToMove, 1);
+            int robotIdAtNewPos = robotsAtThisPosition(newPos);
+            Robot robotAtNewPos = null;
+
+            if (robotIdAtNewPos == 1) {
+                robotAtNewPos = robot1;
+            } else if (robotIdAtNewPos == 2) {
+                robotAtNewPos = robot2;
+            }
+
+            // If there's a robot blocking the way and it hasn't been processed,
+            // add it to the robotsToProcess list.
+            if (robotAtNewPos != null && !processedRobots.contains(robotAtNewPos)) {
+                robotsToProcess.add(robotAtNewPos);
+            }
+
+            currentRobot.setPosition(newPos);
         }
-
-        if (robotsAtThisPosition(nextPosition) == 2) { // if robot 2 in the way, move it out of the way
-            moveRobots(robot2, directionToMove);
-        }
-
-        robot.setPosition(nextPosition); // move desired robot
-
     }
 
     // update robots based on the tile type

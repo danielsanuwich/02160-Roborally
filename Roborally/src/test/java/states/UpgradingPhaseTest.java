@@ -2,12 +2,12 @@ package states;
 
 import app.Game;
 
-public class UpgradingPhase implements GamePhase{
+public class UpgradingPhase implements GamePhase {
 
 	public UpgradingPhase() {
-		//testMethod();
+		// testMethod();
 	}
-	
+
 	public void next(Game game) {
 		game.setPhase(new ProgrammingPhase());
 	}
