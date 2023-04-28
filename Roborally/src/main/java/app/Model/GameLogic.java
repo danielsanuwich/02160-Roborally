@@ -70,60 +70,60 @@ public class GameLogic {
             return false;
     }
 
-    //TODO Is this needed?
+    // TODO Is this needed?
 
-    // // move method
-    // Position move(Position pos1, Direction initDirection, int stepsToMove) {
-    //     // base case
-    //     if (stepsToMove == 0) {
-    //         return pos1;
-    //     } else { // recursive case
-    //         if (isEven(pos1)) { // position is even
-    //             switch (initDirection.getDirection() % 6) {
-    //                 case 0:
-    //                     pos1.setPosition(pos1.getX() + 0, pos1.getY() - 1);
-    //                     break;
-    //                 case 1:
-    //                     pos1.setPosition(pos1.getX() + 1, pos1.getY() - 0);
-    //                     break;
-    //                 case 2:
-    //                     pos1.setPosition(pos1.getX() + 1, pos1.getY() + 1);
-    //                     break;
-    //                 case 3:
-    //                     pos1.setPosition(pos1.getX() + 0, pos1.getY() + 1);
-    //                     break;
-    //                 case 4:
-    //                     pos1.setPosition(pos1.getX() - 1, pos1.getY() + 1);
-    //                     break;
-    //                 case 5:
-    //                     pos1.setPosition(pos1.getX() - 1, pos1.getY() + 0);
-    //                     break;
-    //             }
-    //         } else { // position is odd
-    //             switch (initDirection.getDirection() % 6) {
-    //                 case 0:
-    //                     pos1.setPosition(pos1.getX() + 0, pos1.getY() - 1);
-    //                     break;
-    //                 case 1:
-    //                     pos1.setPosition(pos1.getX() + 1, pos1.getY() - 1);
-    //                     break;
-    //                 case 2:
-    //                     pos1.setPosition(pos1.getX() + 1, pos1.getY() - 0);
-    //                     break;
-    //                 case 3:
-    //                     pos1.setPosition(pos1.getX() + 0, pos1.getY() + 1);
-    //                     break;
-    //                 case 4:
-    //                     pos1.setPosition(pos1.getX() - 1, pos1.getY() + 0);
-    //                     break;
-    //                 case 5:
-    //                     pos1.setPosition(pos1.getX() - 1, pos1.getY() - 1);
-    //                     break;
-    //             }
-    //         }
-    //         return move(pos1, initDirection, stepsToMove - 1); // make recursive call
-    //     }
-    // }
+    // move method
+    Position move(Position pos1, Direction initDirection, int stepsToMove) {
+        // base case
+        if (stepsToMove == 0) {
+            return pos1;
+        } else { // recursive case
+            if (isEven(pos1)) { // position is even
+                switch (initDirection.getDirection() % 6) {
+                    case 0:
+                        pos1.setPosition(pos1.getX() + 0, pos1.getY() - 1);
+                        break;
+                    case 1:
+                        pos1.setPosition(pos1.getX() + 1, pos1.getY() - 0);
+                        break;
+                    case 2:
+                        pos1.setPosition(pos1.getX() + 1, pos1.getY() + 1);
+                        break;
+                    case 3:
+                        pos1.setPosition(pos1.getX() + 0, pos1.getY() + 1);
+                        break;
+                    case 4:
+                        pos1.setPosition(pos1.getX() - 1, pos1.getY() + 1);
+                        break;
+                    case 5:
+                        pos1.setPosition(pos1.getX() - 1, pos1.getY() + 0);
+                        break;
+                }
+            } else { // position is odd
+                switch (initDirection.getDirection() % 6) {
+                    case 0:
+                        pos1.setPosition(pos1.getX() + 0, pos1.getY() - 1);
+                        break;
+                    case 1:
+                        pos1.setPosition(pos1.getX() + 1, pos1.getY() - 1);
+                        break;
+                    case 2:
+                        pos1.setPosition(pos1.getX() + 1, pos1.getY() - 0);
+                        break;
+                    case 3:
+                        pos1.setPosition(pos1.getX() + 0, pos1.getY() + 1);
+                        break;
+                    case 4:
+                        pos1.setPosition(pos1.getX() - 1, pos1.getY() + 0);
+                        break;
+                    case 5:
+                        pos1.setPosition(pos1.getX() - 1, pos1.getY() - 1);
+                        break;
+                }
+            }
+            return move(pos1, initDirection, stepsToMove - 1); // make recursive call
+        }
+    }
 
     // function to specify if a robot is at a certain position
     private int robotsAtThisPosition(Position pos) {
