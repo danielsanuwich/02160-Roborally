@@ -70,58 +70,60 @@ public class GameLogic {
             return false;
     }
 
-    // move method
-    Position move(Position pos1, Direction initDirection, int stepsToMove) {
-        // base case
-        if (stepsToMove == 0) {
-            return pos1;
-        } else { // recursive case
-            if (isEven(pos1)) { // position is even
-                switch (initDirection.getDirection() % 6) {
-                    case 0:
-                        pos1.setPosition(pos1.getX() + 0, pos1.getY() - 1);
-                        break;
-                    case 1:
-                        pos1.setPosition(pos1.getX() + 1, pos1.getY() - 0);
-                        break;
-                    case 2:
-                        pos1.setPosition(pos1.getX() + 1, pos1.getY() + 1);
-                        break;
-                    case 3:
-                        pos1.setPosition(pos1.getX() + 0, pos1.getY() + 1);
-                        break;
-                    case 4:
-                        pos1.setPosition(pos1.getX() - 1, pos1.getY() + 1);
-                        break;
-                    case 5:
-                        pos1.setPosition(pos1.getX() - 1, pos1.getY() + 0);
-                        break;
-                }
-            } else { // position is odd
-                switch (initDirection.getDirection() % 6) {
-                    case 0:
-                        pos1.setPosition(pos1.getX() + 0, pos1.getY() - 1);
-                        break;
-                    case 1:
-                        pos1.setPosition(pos1.getX() + 1, pos1.getY() - 1);
-                        break;
-                    case 2:
-                        pos1.setPosition(pos1.getX() + 1, pos1.getY() - 0);
-                        break;
-                    case 3:
-                        pos1.setPosition(pos1.getX() + 0, pos1.getY() + 1);
-                        break;
-                    case 4:
-                        pos1.setPosition(pos1.getX() - 1, pos1.getY() + 0);
-                        break;
-                    case 5:
-                        pos1.setPosition(pos1.getX() - 1, pos1.getY() - 1);
-                        break;
-                }
-            }
-            return move(pos1, initDirection, stepsToMove - 1); // make recursive call
-        }
-    }
+    //TODO Is this needed?
+
+    // // move method
+    // Position move(Position pos1, Direction initDirection, int stepsToMove) {
+    //     // base case
+    //     if (stepsToMove == 0) {
+    //         return pos1;
+    //     } else { // recursive case
+    //         if (isEven(pos1)) { // position is even
+    //             switch (initDirection.getDirection() % 6) {
+    //                 case 0:
+    //                     pos1.setPosition(pos1.getX() + 0, pos1.getY() - 1);
+    //                     break;
+    //                 case 1:
+    //                     pos1.setPosition(pos1.getX() + 1, pos1.getY() - 0);
+    //                     break;
+    //                 case 2:
+    //                     pos1.setPosition(pos1.getX() + 1, pos1.getY() + 1);
+    //                     break;
+    //                 case 3:
+    //                     pos1.setPosition(pos1.getX() + 0, pos1.getY() + 1);
+    //                     break;
+    //                 case 4:
+    //                     pos1.setPosition(pos1.getX() - 1, pos1.getY() + 1);
+    //                     break;
+    //                 case 5:
+    //                     pos1.setPosition(pos1.getX() - 1, pos1.getY() + 0);
+    //                     break;
+    //             }
+    //         } else { // position is odd
+    //             switch (initDirection.getDirection() % 6) {
+    //                 case 0:
+    //                     pos1.setPosition(pos1.getX() + 0, pos1.getY() - 1);
+    //                     break;
+    //                 case 1:
+    //                     pos1.setPosition(pos1.getX() + 1, pos1.getY() - 1);
+    //                     break;
+    //                 case 2:
+    //                     pos1.setPosition(pos1.getX() + 1, pos1.getY() - 0);
+    //                     break;
+    //                 case 3:
+    //                     pos1.setPosition(pos1.getX() + 0, pos1.getY() + 1);
+    //                     break;
+    //                 case 4:
+    //                     pos1.setPosition(pos1.getX() - 1, pos1.getY() + 0);
+    //                     break;
+    //                 case 5:
+    //                     pos1.setPosition(pos1.getX() - 1, pos1.getY() - 1);
+    //                     break;
+    //             }
+    //         }
+    //         return move(pos1, initDirection, stepsToMove - 1); // make recursive call
+    //     }
+    // }
 
     // function to specify if a robot is at a certain position
     private int robotsAtThisPosition(Position pos) {
@@ -139,11 +141,8 @@ public class GameLogic {
     // Moves the given robot in the specified direction. If the robot encounters
     // another robot in its path, it will push that robot along in the same
     // direction.
-    public void moveRobots(Robot robot, Direction directionToMove) {
-        // Use a HashSet to store the robots that have been processed.
+    public void moveRobots(Robot robot, Direction directionToMove, int stepsToMove) {
         HashSet<Robot> processedRobots = new HashSet<>();
-
-        // Use a LinkedList to maintain the order of robots being processed.
         LinkedList<Robot> robotsToProcess = new LinkedList<>();
         robotsToProcess.add(robot);
 
@@ -151,7 +150,7 @@ public class GameLogic {
             Robot currentRobot = robotsToProcess.poll();
             processedRobots.add(currentRobot);
 
-            Position newPos = move(currentRobot.getPosition(), directionToMove, 1);
+            Position newPos = move(currentRobot.getPosition(), directionToMove, stepsToMove);
             int robotIdAtNewPos = robotsAtThisPosition(newPos);
             Robot robotAtNewPos = null;
 
@@ -161,8 +160,6 @@ public class GameLogic {
                 robotAtNewPos = robot2;
             }
 
-            // If there's a robot blocking the way and it hasn't been processed,
-            // add it to the robotsToProcess list.
             if (robotAtNewPos != null && !processedRobots.contains(robotAtNewPos)) {
                 robotsToProcess.add(robotAtNewPos);
             }
