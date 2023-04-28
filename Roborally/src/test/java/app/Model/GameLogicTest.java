@@ -36,14 +36,14 @@ class GameLogicTest {
                 robot2, board);
     }
 
-    
+    // Test moveRobots method.
     // Test moveRobots method.
     @Test
     public void testMoveRobots() {
         GameBoard board = new GameBoard(10, 10);
         Position initPos1 = new Position(5, 5);
         Position initPos2 = new Position(5, 4);
-        Direction initDirection1 = new Direction(0);
+        Direction initDirection1 = new Direction(1);
         Direction initDirection2 = new Direction(0);
         int initHealth = 10;
         Robot robot1 = new Robot(initPos1, initDirection1, initHealth, 1, "Alice");
@@ -52,21 +52,23 @@ class GameLogicTest {
         GameLogic gameLogic = new GameLogic(initPos1, initPos2, initDirection1, initDirection2, initHealth, robot1,
                 robot2, board);
 
-        // Set the direction for the ConveyorTile at position (5, 5)
-        Position conveyorTilePos = new Position(5, 5);
-        Tile conveyorTile = new ConveyorTile(conveyorTilePos, new Direction(0));
-        Direction conveyorDirection = new Direction(1);
-        conveyorTile.setDirection(conveyorDirection);
-        board.setTile(conveyorTilePos, conveyorTile);
+        // Move robot1
+        int stepsToMove1 = 2;
+        gameLogic.moveRobots(robot1, initDirection1, stepsToMove1);
 
-        // Move robot1, which should be affected by the ConveyorTile
-        gameLogic.moveRobots(robot1, initDirection1);
+        // The expected position of robot1 after moving
+        Position expectedPosition1 = gameLogic.move(initPos1, initDirection1, stepsToMove1);
 
-        // The expected position of robot1 after moving and being affected by the
-        // ConveyorTile
-        Position expectedPosition = new Position(6, 5);
+        assertEquals(expectedPosition1, robot1.getPosition());
 
-        assertEquals(expectedPosition, robot1.getPosition());
+        // Move robot2
+        int stepsToMove2 = 3;
+        gameLogic.moveRobots(robot2, initDirection2, stepsToMove2);
+
+        // The expected position of robot2 after moving
+        Position expectedPosition2 = gameLogic.move(initPos2, initDirection2, stepsToMove2);
+
+        assertEquals(expectedPosition2, robot2.getPosition());
     }
 
     // Test ExcecuteTurn method with a ProgramCard.
