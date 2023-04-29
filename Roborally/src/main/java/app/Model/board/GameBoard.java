@@ -29,12 +29,20 @@ public class GameBoard {
 
     // gets the tile at a certain position
     public Tile getTile(Position pos) {
-        return gameBoard[pos.getX()][pos.getY()];
+        return this.gameBoard[pos.getX()][pos.getY()];
     }
 
     // sets the tile at a certain position
     public void setTile(Position pos, Tile tile) {
-        gameBoard[pos.getX()][pos.getY()] = tile;
+        this.gameBoard[pos.getX()][pos.getY()] = tile;
+    }
+
+    public void setBoard(Tile[][] inputTileBoard){
+        for (int i = 0; i < this.xDim; i++) {
+            for (int j = 0; j < this.yDim; j++) {
+                this.gameBoard[i][j] = inputTileBoard[i][j];
+            }
+        }
     }
 
     // computes the distance between any two positions
