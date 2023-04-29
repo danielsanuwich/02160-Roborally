@@ -4,8 +4,8 @@ public class MakeGameBoardLayout1{
 
     public GameBoard makeBoard(){
         GameBoard gb = new GameBoard(11,8); // x and y correct order?
-        gb.setBoard( // makes the game board
-            {{ new HoleTile(new Position(0, 0), new Direction(0), 1),
+
+           Tile[][] tileArray = {{ new HoleTile(new Position(0, 0), new Direction(0), 1),
                         new HoleTile(new Position(1, 0), new Direction(0), 0),
                         new HoleTile(new Position(2, 0), new Direction(0), 0),
                         new HoleTile(new Position(3, 0), new Direction(0), 0),
@@ -93,8 +93,9 @@ public class MakeGameBoardLayout1{
                         new HoleTile(new Position(8, 7), new Direction(0), 0),
                         new HoleTile(new Position(9, 7), new Direction(0), 1),
                         new HoleTile(new Position(10, 7), new Direction(0), 1) },
-        });
-
+        };
+        
+        gb.setBoard(tileArray);
 
         return gb;
     }
