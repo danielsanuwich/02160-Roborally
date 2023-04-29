@@ -53,7 +53,10 @@ class GameLogicTest {
 
         // Move robot1
         int stepsToMove1 = 2;
-        gameLogic.moveRobots(robot1, initDirection1, stepsToMove1);
+        for(int i = 0;i<stepsToMove1;i++){
+            gameLogic.moveRobots(robot1, initDirection1);
+        }
+        
 
         // The expected position of robot1 after moving
         Position expectedPosition1 = gameLogic.move(initPos1, initDirection1, stepsToMove1);
@@ -62,7 +65,10 @@ class GameLogicTest {
 
         // Move robot2
         int stepsToMove2 = 3;
-        gameLogic.moveRobots(robot2, initDirection2, stepsToMove2);
+        for(int i = 0;i<stepsToMove2;i++){
+            gameLogic.moveRobots(robot2, initDirection2);
+        }
+        
 
         // The expected position of robot2 after moving
         Position expectedPosition2 = gameLogic.move(initPos2, initDirection2, stepsToMove2);
@@ -77,7 +83,7 @@ class GameLogicTest {
         Direction expectedDirection = new Direction(robot1.getDirection().getDirection() + card.getTurnAmount());
         Position expectedPosition = gameLogic.move(robot1.getPosition(), expectedDirection, 1);
 
-        gameLogic.ExcecuteTurn(card, robot1, board);
+        gameLogic.ExecuteTurn(card, robot1, board);
 
         assertEquals(expectedDirection, robot1.getDirection());
         assertEquals(expectedPosition, robot1.getPosition());
@@ -89,7 +95,7 @@ class GameLogicTest {
         HealthCard card = new HealthCard(2);
         int expectedHealth = robot1.getHealth() + card.getDiffHealth();
 
-        gameLogic.ExcecuteTurn(card, robot1, board);
+        gameLogic.ExecuteTurn(card, robot1, board);
 
         assertEquals(expectedHealth, robot1.getHealth());
     }
