@@ -4,7 +4,7 @@ import app.Model.tiles.*;
 public class MakeGameBoardLayout1{
 
     public GameBoard makeBoard(){
-        GameBoard gb = new GameBoard(11,8); // x and y correct order?
+        GameBoard gb = new GameBoard(8,11); // x and y correct order?
 
            Tile[][] tileArray = {{ new HoleTile(new Position(0, 0), new Direction(0), 1),
                         new HoleTile(new Position(1, 0), new Direction(0), 0),
