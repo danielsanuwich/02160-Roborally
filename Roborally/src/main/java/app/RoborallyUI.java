@@ -4,6 +4,7 @@ import app.Model.board.Direction;
 import app.Model.board.Position;
 import app.Model.tiles.*;
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -98,13 +99,18 @@ public class RoborallyUI extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        // ...
+            GridPane hexagonalMap = createHexagonalMap(BOARD);
 
-        // Create the hexagonal map and the card layout
-        GridPane hexagonalMap = createHexagonalMap(BOARD);
-
-        // ...
+            primaryStage.setTitle("RoboRally");
+            primaryStage.setScene(new Scene(hexagonalMap));
+            primaryStage.show();
     }
 
-    // ...
+    private GridPane createHexagonalMap(Tile[][] board) {
+            // ...
+    }
+
+    public static void main(String[] args) {
+            launch(args);
+    }
 }
