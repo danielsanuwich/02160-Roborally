@@ -29,15 +29,12 @@ public class GameLogic {
         this.initialDirection2 = new Direction(0);
         this.initialHealth = 10;
 
-        //
-
         // make robots
         this.robot1 = new Robot(initialPos1, initialDirection1, initialHealth, 1, "Alice");
         this.robot2 = new Robot(initialPos2, initialDirection2, initialHealth, 2, "Bob");
 
         // make gameboard
         this.board = new GameBoard(10, 10);
-
     }
 
     public GameLogic(Position initialPos1, Position initialPos2, Direction initialDirection1,
@@ -51,15 +48,12 @@ public class GameLogic {
         this.initialDirection2 = initialDirection2;
         this.initialHealth = initialHealth;
 
-        //
-
         // make robots
         this.robot1 = robot1;
         this.robot2 = robot2;
 
         // make gameboard
         this.board = board;
-
     }
 
     // is even helper method for the move method
@@ -69,8 +63,6 @@ public class GameLogic {
         else
             return false;
     }
-
-    // TODO Is this needed?
 
     // move method
     Position move(Position pos1, Direction initDirection, int stepsToMove) {
@@ -141,7 +133,7 @@ public class GameLogic {
     // Moves the given robot in the specified direction. If the robot encounters
     // another robot in its path, it will push that robot along in the same
     // direction.
-    public void moveRobots(Robot robot, Direction directionToMove, int stepsToMove) {
+    public void moveRobots(Robot robot, Direction directionToMove) {
         HashSet<Robot> processedRobots = new HashSet<>();
         LinkedList<Robot> robotsToProcess = new LinkedList<>();
         robotsToProcess.add(robot);
@@ -150,7 +142,7 @@ public class GameLogic {
             Robot currentRobot = robotsToProcess.poll();
             processedRobots.add(currentRobot);
 
-            Position newPos = move(currentRobot.getPosition(), directionToMove, stepsToMove);
+            Position newPos = move(currentRobot.getPosition(), directionToMove, 1);
             int robotIdAtNewPos = robotsAtThisPosition(newPos);
             Robot robotAtNewPos = null;
 
@@ -193,7 +185,7 @@ public class GameLogic {
     }
 
     // specify what happens each turn
-    public void ExcecuteTurn(Card card, Robot robot, GameBoard gb) {
+    public void ExecuteTurn(Card card, Robot robot, GameBoard gb) {
         // check which type of card it is:
 
         // card is a program card

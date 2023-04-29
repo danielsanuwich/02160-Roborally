@@ -13,7 +13,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <javafx.version>20</javafx.version>
-        <mainClass>app.App</mainClass>
+        <mainClass>app.Main</mainClass>
     </properties>
     
     <dependencies>
@@ -121,16 +121,23 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.8</version>
                 <configuration>
-                    <mainClass>app.App</mainClass>
-                    <launcher>launcher</launcher>
-                    <options>
-                        <option>--module-path</option>
-                        <option>${javafx.platform.path}</option>
-                        <option>--add-modules</option>
-                        <option>javafx.base,javafx.controls,javafx.fxml,javafx.graphics,javafx.media</option>
-                    </options>
+                    <mainClass>${mainClass}</mainClass>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>default-cli</id>
+                        <configuration>
+                            <options>
+                                <option>--module-path</option>
+                                <option>/Users/danielhoang/documents/javafx-sdk-20.0.1/lib</option>
+                                <option>--add-modules</option>
+                                <option>javafx.controls,javafx.fxml</option>
+                            </options>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
+
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -1,7 +1,6 @@
 package app.Model;
 
 import app.Model.board.*;
-import app.Model.tiles.*;
 import app.Model.cards.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
