@@ -37,6 +37,7 @@ public class GameBoard {
         this.gameBoard[pos.getX()][pos.getY()] = tile;
     }
 
+    // sets the entire board
     public void setBoard(Tile[][] inputTileBoard){
         for (int i = 0; i < this.xDim; i++) {
             for (int j = 0; j < this.yDim; j++) {
