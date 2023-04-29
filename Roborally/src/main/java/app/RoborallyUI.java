@@ -113,6 +113,8 @@ public class RoborallyUI extends Application {
         private GridPane createHexagonalMap(Tile[][] board) {
                 GridPane gridPane = new GridPane();
 
+
+                //TODO DUMMY HEXAGONALMAP
                 for (int row = 0; row < board.length; row++) {
                         for (int col = 0; col < board[row].length; col++) {
                                 Tile tile = board[row][col];
