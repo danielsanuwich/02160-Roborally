@@ -4,6 +4,8 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
+import javafx.scene.text.Font;
+
 import java.util.Arrays;
 
 import javax.sound.sampled.AudioFileFormat.Type;
@@ -23,7 +25,7 @@ public class HexagonalCell extends Pane {
         hexagon.getPoints().addAll(Arrays.asList(points));
         //hexagon.setFill(Color.TRANSPARENT);
         hexagon.setStroke(Paint.valueOf("#000000"));
-        hexagon.setStrokeWidth(3);
+        hexagon.setStrokeWidth(5);
         this.getChildren().add(hexagon);
 
         ImageView imageView = new ImageView();
@@ -45,6 +47,8 @@ public class HexagonalCell extends Pane {
         Label positionLabel = new Label(tile.getPosition().toString());
         positionLabel.setAlignment(Pos.CENTER);
         positionLabel.setPrefSize(width, height);
+        positionLabel.setTextFill(Paint.valueOf("FFFFFF"));
+        positionLabel.setFont(new Font(16));
         this.getChildren().add(positionLabel);
     }
 

@@ -90,9 +90,9 @@ public class RoborallyUI extends Application {
                                                 hexagonalCell.setTranslateX(-28.867513459481298 * i);
                                         }
 
-                                        // Add a label to display the tile type
-                                        Label label = new Label(tile.getType());
-                                        gridPane.add(label, i, j);
+                                        // // Add a label to display the tile type
+                                        // Label label = new Label(tile.getType());
+                                        // gridPane.add(label, i, j);
                                 }
                         }
                 }
