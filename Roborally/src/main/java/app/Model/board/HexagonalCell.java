@@ -25,7 +25,7 @@ public class HexagonalCell extends Pane {
         imageView.setPreserveRatio(true);
         imageView.setSmooth(true);
         imageView.setCache(true);
-        
+
         Image image = getTileImage(tile);
         imageView.setImage(image);
 
@@ -34,9 +34,10 @@ public class HexagonalCell extends Pane {
 
     private Image getTileImage(Tile tile) {
         String imageName = tile.getType();
-        String imagePath = "images/" + imageName + ".png";
+        String imagePath = "images/" + imageName + ".jpg"; // FYI jpg or png
         return new Image(imagePath);
     }
+
     private Double[] calculateHexagonPoints(double width, double height) {
         double centerX = width / 2;
         double centerY = height / 2;
@@ -54,11 +55,3 @@ public class HexagonalCell extends Pane {
         return points;
     }
 }
-
-
-
-
-
-
-
-

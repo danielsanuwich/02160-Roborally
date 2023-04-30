@@ -4,12 +4,13 @@ import app.Model.board.Direction;
 import app.Model.board.Position;
 
 public class Tile {
-    private String type; 
-    private Position position; 
-    private Direction direction; 
+    private String type;
+    private Position position;
+    private Direction direction;
 
+    // Hexagoncell IMG
     public Tile() {
-        this.type = "Base";
+        this.type = "sample";
         this.direction = new Direction(0);
     }
 

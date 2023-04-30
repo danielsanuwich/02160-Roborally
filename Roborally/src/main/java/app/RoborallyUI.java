@@ -1,6 +1,7 @@
 package app;
 
 import app.Model.board.Direction;
+import app.Model.board.HexagonalCell;
 import app.Model.board.Position;
 import app.Model.tiles.*;
 import javafx.application.Application;
@@ -113,20 +114,28 @@ public class RoborallyUI extends Application {
         private GridPane createHexagonalMap(Tile[][] board) {
                 GridPane gridPane = new GridPane();
 
+                double cellWidth = 60; // Adjust the size of the hexagonal cell's width
+                double cellHeight = 60; // Adjust the size of the hexagonal cell's height
 
-                //TODO DUMMY HEXAGONALMAP
                 for (int row = 0; row < board.length; row++) {
                         for (int col = 0; col < board[row].length; col++) {
                                 Tile tile = board[row][col];
 
-                                // Create a simple representation of the tile using a Label
-                                Label label = new Label(tile.getType());
-                                label.setStyle("-fx-border-color: black; -fx-padding: 10px;");
+                                // Create a hexagonal cell for the tile
+                                HexagonalCell hexagonalCell = new HexagonalCell(cellWidth, cellHeight, tile);
 
-                                // Add the label to the grid pane
-                                gridPane.add(label, col, row);
+                                // Calculate the offset for the hexagonal layout
+                                double offsetX = (row % 2 == 0) ? 0 : cellWidth / 2;
+
+                                // Set the cell's position in the grid
+                                hexagonalCell.setLayoutX(col * cellWidth + offsetX);
+                                hexagonalCell.setLayoutY(row * cellHeight * 0.75);
+
+                                // Add the hexagonal cell to the grid pane
+                                gridPane.getChildren().add(hexagonalCell);
                         }
                 }
+
                 return gridPane;
         }
 
