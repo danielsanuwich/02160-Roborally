@@ -6,15 +6,15 @@ public class MakeGameBoardLayout1{
     public GameBoard makeBoard(){
         GameBoard gb = new GameBoard(11,8); // x and y correct order?
             gb.setTile(new Position(0, 0),new HoleTile(new Position(0, 0), new Direction(0), 1));
-            gb.setTile(new Position(1,0),new HoleTile(new Position(1, 0), new Direction(0), 0));
-            gb.setTile(new Position(2,0),new HoleTile(new Position(2, 0), new Direction(0), 0));
-            gb.setTile(new Position(3,0),new HoleTile(new Position(3, 0), new Direction(0), 0));
-            gb.setTile(new Position(4,0),new HoleTile(new Position(4, 0), new Direction(0), 0));
-            gb.setTile(new Position(5,0),new HoleTile(new Position(5, 0), new Direction(0), 0));
-            gb.setTile(new Position(6,0),new HoleTile(new Position(6, 0), new Direction(0), 0));
-            gb.setTile(new Position(7,0),new HoleTile(new Position(7, 0), new Direction(0), 0));
-            gb.setTile(new Position(8,0),new HoleTile(new Position(8, 0), new Direction(0), 0));
-            gb.setTile(new Position(9,0),new HoleTile(new Position(9, 0), new Direction(0), 0));
+            gb.setTile(new Position(1,0),new HoleTile(new Position(1, 0), new Direction(0), 1));
+            gb.setTile(new Position(2,0),new HoleTile(new Position(2, 0), new Direction(0), 1));
+            gb.setTile(new Position(3,0),new HoleTile(new Position(3, 0), new Direction(0), 1));
+            gb.setTile(new Position(4,0),new HoleTile(new Position(4, 0), new Direction(0), 1));
+            gb.setTile(new Position(5,0),new HoleTile(new Position(5, 0), new Direction(0), 1));
+            gb.setTile(new Position(6,0),new HoleTile(new Position(6, 0), new Direction(0), 1));
+            gb.setTile(new Position(7,0),new HoleTile(new Position(7, 0), new Direction(0), 1));
+            gb.setTile(new Position(8,0),new HoleTile(new Position(8, 0), new Direction(0), 1));
+            gb.setTile(new Position(9,0),new HoleTile(new Position(9, 0), new Direction(0), 1));
             gb.setTile(new Position(10,0),new HoleTile(new Position(10, 0), new Direction(0), 1));
             gb.setTile(new Position(0,1),new HoleTile(new Position(0, 1), new Direction(0), 1));
             gb.setTile(new Position(1,1),new Tile("F", new Position(1, 1), new Direction(0)));
@@ -83,14 +83,14 @@ public class MakeGameBoardLayout1{
             gb.setTile(new Position(9,6),new Tile("Base", new Position(9, 6), new Direction(0)));
             gb.setTile(new Position(10,6),new HoleTile(new Position(10, 6), new Direction(0), 1));
             gb.setTile(new Position(0,7),new HoleTile(new Position(0, 7), new Direction(0), 1));
-            gb.setTile(new Position(1,7),new HoleTile(new Position(1, 7), new Direction(0), 0));
-            gb.setTile(new Position(2,7),new HoleTile(new Position(2, 7), new Direction(0), 0));
-            gb.setTile(new Position(3,7),new HoleTile(new Position(3, 7), new Direction(0), 0));
-            gb.setTile(new Position(4,7),new HoleTile(new Position(4, 7), new Direction(0), 0));
-            gb.setTile(new Position(5,7),new HoleTile(new Position(5, 7), new Direction(0), 0));
-            gb.setTile(new Position(6,7),new HoleTile(new Position(6, 7), new Direction(0), 0));
-            gb.setTile(new Position(7,7),new HoleTile(new Position(7, 7), new Direction(0), 0));
-            gb.setTile(new Position(8,7),new HoleTile(new Position(8, 7), new Direction(0), 0));
+            gb.setTile(new Position(1,7),new HoleTile(new Position(1, 7), new Direction(0), 1));
+            gb.setTile(new Position(2,7),new HoleTile(new Position(2, 7), new Direction(0), 1));
+            gb.setTile(new Position(3,7),new HoleTile(new Position(3, 7), new Direction(0), 1));
+            gb.setTile(new Position(4,7),new HoleTile(new Position(4, 7), new Direction(0), 1));
+            gb.setTile(new Position(5,7),new HoleTile(new Position(5, 7), new Direction(0), 1));
+            gb.setTile(new Position(6,7),new HoleTile(new Position(6, 7), new Direction(0), 1));
+            gb.setTile(new Position(7,7),new HoleTile(new Position(7, 7), new Direction(0), 1));
+            gb.setTile(new Position(8,7),new HoleTile(new Position(8, 7), new Direction(0), 1));
             gb.setTile(new Position(9,7),new HoleTile(new Position(9, 7), new Direction(0), 1));
             gb.setTile(new Position(10,7),new HoleTile(new Position(10, 7), new Direction(0), 1));
 
