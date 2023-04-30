@@ -22,7 +22,7 @@ public class HexagonalCell extends Pane {
         hexagon.getPoints().addAll(Arrays.asList(points));
         hexagon.setFill(Color.TRANSPARENT);
         hexagon.setStroke(Color.BLACK);
-        hexagon.setStrokeWidth(1);
+        hexagon.setStrokeWidth(0);
         this.getChildren().add(hexagon);
 
         ImageView imageView = new ImageView();

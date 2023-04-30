@@ -32,6 +32,15 @@ public class GameBoard {
         return this.gameBoard[pos.getX()][pos.getY()];
     }
 
+    public int getXDim() {
+        return xDim;
+    }
+
+    public int getYDim() {
+        return yDim;
+    }
+
+
     // sets the tile at a certain position
     public void setTile(Position pos, Tile tile) {
         this.gameBoard[pos.getX()][pos.getY()] = tile;

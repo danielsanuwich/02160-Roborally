@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 
 public class RoborallyUI extends Application {
@@ -33,9 +34,9 @@ public class RoborallyUI extends Application {
 
                 Pane topPane = (Pane) loader.getNamespace().get("topPane");
                 Pane hexagonBoardPane = (Pane) loader.getNamespace().get("hexagonalGridPlaceholder");
+
                 GridPane gridPane = createHexagonalMap(gameBoard);
                 hexagonBoardPane.getChildren().add(gridPane);
-
                 gridPane.prefWidthProperty().bind(hexagonBoardPane.widthProperty());
                 gridPane.prefHeightProperty().bind(hexagonBoardPane.heightProperty());
                 gridPane.maxWidthProperty().bind(hexagonBoardPane.widthProperty());
@@ -50,9 +51,12 @@ public class RoborallyUI extends Application {
                 GridPane gridPane = new GridPane();
 
                 Tile[][] board = gameBoard.getTiles();
+                int xDim = gameBoard.getXDim();
+                int yDim = gameBoard.getYDim();
 
-                double cellWidth = 60; // Adjust the size of the hexagonal cell's width
-                double cellHeight = 60; // Adjust the size of the hexagonal cell's height
+
+                double cellWidth = 100; // Adjust the size of the hexagonal cell's width
+                double cellHeight = 100; // Adjust the size of the hexagonal cell's height
 
                 // Debugger to see if it is being called correctly.
                 System.out.println("Creating hexagonal map for board:");
@@ -63,34 +67,33 @@ public class RoborallyUI extends Application {
                         System.out.println();
                 }
 
-                for (int row = 0; row < board.length; row++) {
-                        for (int col = 0; col < board[row].length; col++) {
-                                Tile tile = board[row][col];
+                for (int i = 0; i < xDim; i++) {
+                        for (int j = 0; j < yDim; j++) {
+                                Tile tile = board[i][j];
 
                                 if (tile != null) { // Only create cells for tiles
                                         // Create a hexagonal cell for the tile
                                         HexagonalCell hexagonalCell = new HexagonalCell(cellWidth, cellHeight, tile);
 
                                         // Add the hexagonal cell to the grid pane
-                                        gridPane.add(hexagonalCell, col, row);
+                                        gridPane.add(hexagonalCell, i, j);
 
                                         // Calculate the offset for the hexagonal layout
-                                        double offsetY = (col % 2 == 0) ? 0 : cellHeight / 2;
+                                        double offsetY = (i % 2 == 0) ? (cellHeight / 2) : 0 ;
 
                                         // Set the cell's position in the grid
                                         hexagonalCell.setTranslateY(offsetY);
-                                        
+
                                         // scale the hexagonal images to all be the same size
 
                                         // rotate the cell corresponding to its direction value
-                                        hexagonalCell.setRotate(60*tile.getDirection().getDirection()); 
+                                        hexagonalCell.setRotate(60 * tile.getDirection().getDirection());
                                         // rotates tile based on direction of tile
                                         // ENSURE THIS WORKS FROM THE CENTRE NOT THE CORNER
-                                        
 
                                         // Add a label to display the tile type
                                         Label label = new Label(tile.getType());
-                                        gridPane.add(label, col, row);
+                                        gridPane.add(label, i, j);
                                 }
                         }
                 }
