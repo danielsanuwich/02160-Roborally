@@ -75,10 +75,10 @@ public class RoborallyUI extends Application {
                                         gridPane.add(hexagonalCell, col, row);
 
                                         // Calculate the offset for the hexagonal layout
-                                        double offsetX = (row % 2 == 0) ? 0 : cellWidth / 2;
+                                        double offsetY = (col % 2 == 0) ? 0 : cellHeight / 2;
 
                                         // Set the cell's position in the grid
-                                        hexagonalCell.setTranslateX(offsetX);
+                                        hexagonalCell.setTranslateY(offsetY);
 
                                         // Add a label to display the tile type
                                         Label label = new Label(tile.getType());
