@@ -1,5 +1,7 @@
 package app;
 
+import app.Model.Player;
+import app.Model.Robot;
 import app.Model.board.Direction;
 import app.Model.board.GameBoard;
 import app.Model.board.HexagonalCell;
@@ -20,8 +22,14 @@ import javafx.stage.Stage;
 
 public class RoborallyUI extends Application {
 
+        // Add a never player instance
+        private Player player;
+
         @Override
         public void start(Stage primaryStage) throws Exception {
+                Robot r1;
+                player = new Player(r1);
+
                 // Create a MakeGameBoardLayout1 object and generate the board
                 MakeGameBoardLayout1 boardMaker = new MakeGameBoardLayout1();
                 GameBoard gameBoard = boardMaker.gb();
@@ -54,9 +62,9 @@ public class RoborallyUI extends Application {
                 int xDim = gameBoard.getXDim();
                 int yDim = gameBoard.getYDim();
 
-
-                double cellWidth = 100; // Adjust the size of the hexagonal cell's width
-                double cellHeight = 100; // Adjust the size of the hexagonal cell's height
+                double cellWidth = 80; // Adjust the size of the hexagonal cell's width
+                double cellHeight = 80; // Adjust the size of the hexagonal cell's height
+                double ySpacing = cellHeight / 6; // Adjust the spacing between cells in the y direction
 
                 // Debugger to see if it is being called correctly.
                 System.out.println("Creating hexagonal map for board:");
@@ -66,6 +74,7 @@ public class RoborallyUI extends Application {
                         }
                         System.out.println();
                 }
+
 
                 for (int i = 0; i < xDim; i++) {
                         for (int j = 0; j < yDim; j++) {
@@ -79,7 +88,7 @@ public class RoborallyUI extends Application {
                                         gridPane.add(hexagonalCell, i, j);
 
                                         // Calculate the offset for the hexagonal layout
-                                        double offsetY = (i % 2 == 0) ? (cellHeight / 2) : 0 ;
+                                        double offsetY = (i % 2 == 0) ? (cellHeight / 2 + ySpacing) : ySpacing;
 
                                         // Set the cell's position in the grid
                                         hexagonalCell.setTranslateY(offsetY);
