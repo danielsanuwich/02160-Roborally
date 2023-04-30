@@ -5,9 +5,14 @@ import app.Model.board.HexagonalCell;
 import app.Model.board.Position;
 import app.Model.tiles.*;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class RoborallyUI extends Application {
@@ -103,11 +108,16 @@ public class RoborallyUI extends Application {
         };
 
         @Override
-        public void start(Stage primaryStage) {
-                GridPane hexagonalMap = createHexagonalMap(BOARD);
+        public void start(Stage primaryStage) throws Exception {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/view/MainFrameViewer.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
 
-                primaryStage.setTitle("RoboRally");
-                primaryStage.setScene(new Scene(hexagonalMap));
+                // Cast root to Pane before getting children
+                Pane pane = (Pane) root;
+                ObservableList<Node> children = pane.getChildren();
+
+                primaryStage.setScene(scene);
                 primaryStage.show();
         }
 
