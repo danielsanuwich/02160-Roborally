@@ -21,7 +21,7 @@ class GameLogicTestAdv {
     @BeforeEach
     void setUp() {
         initialPos1 = new Position(5, 2);
-        initialPos2 = new Position(5, 4);
+        initialPos2 = new Position(2, 1);
         initialDirection1 = new Direction(0);
         initialDirection2 = new Direction(0);
         initialHealth = 10;
@@ -42,28 +42,50 @@ class GameLogicTestAdv {
 
     @Test
     void testConveyor() {
-        Position Position1 = new Position(7,3);
+        Position Position1 = new Position(5,2);
         robot1.setPosition(Position1);
+        Direction direction1 = new Direction(3);
+        robot1.setDirection(direction1);
         ProgramCard card = new ProgramCard(0, 1);
         Direction expectedDirection = robot1.getDirection();
-        Position expectedPosition = new Position(6, 2);
+        Position expectedPosition = new Position(4, 2);
+        int expectedHealth = 10;
 
         gameLogic.ExecuteTurn(card, robot1, board);
 
         assertEquals(expectedDirection, robot1.getDirection());
         assertEquals(expectedPosition, robot1.getPosition());
+        assertEquals(expectedHealth, robot1.getHealth());
     }
 
     @Test
     void testHole() {
         Position Position1 = new Position(1,5);
         robot1.setPosition(Position1);
-        Direction direction1 = new Direction(5);
+        Direction direction1 = new Direction(4);
         robot1.setDirection(direction1);
         ProgramCard card = new ProgramCard(0, 1);
         Direction expectedDirection = robot1.getDirection();
         Position expectedPosition = new Position(3, 4);
         int expectedHealth = 9;
+        gameLogic.ExecuteTurn(card, robot1, board);
+
+        assertEquals(expectedDirection, robot1.getDirection());
+        assertEquals(expectedPosition, robot1.getPosition());
+        assertEquals(expectedHealth, robot1.getHealth());
+    }
+
+    @Test
+    void testLaser() {
+        Position Position1 = new Position(6,4);
+        robot1.setPosition(Position1);
+        Direction direction1 = new Direction(4);
+        robot1.setDirection(direction1);
+        ProgramCard card = new ProgramCard(0, 1);
+        Direction expectedDirection = robot1.getDirection();
+        Position expectedPosition = new Position(5, 5);
+        int expectedHealth = 9;
+
         gameLogic.ExecuteTurn(card, robot1, board);
 
         assertEquals(expectedDirection, robot1.getDirection());
