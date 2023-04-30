@@ -159,6 +159,14 @@ public class RoborallyUI extends Application {
 
                                         // Set the cell's position in the grid
                                         hexagonalCell.setTranslateY(offsetY);
+                                        
+                                        // scale the hexagonal images to all be the same size
+
+                                        // rotate the cell corresponding to its direction value
+                                        hexagonalCell.setRotate(60*tile.getDirection().getDirection()); 
+                                        // rotates tile based on direction of tile
+                                        // ENSURE THIS WORKS FROM THE CENTRE NOT THE CORNER
+                                        
 
                                         // Add a label to display the tile type
                                         Label label = new Label(tile.getType());
