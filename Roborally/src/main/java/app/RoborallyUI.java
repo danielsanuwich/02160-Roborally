@@ -24,6 +24,7 @@ public class RoborallyUI extends Application {
                 // Create a MakeGameBoardLayout1 object and generate the board
                 MakeGameBoardLayout1 boardMaker = new MakeGameBoardLayout1();
                 GameBoard gameBoard = boardMaker.gb();
+
                 Tile[][] board = gameBoard.getTiles(); // Assuming you have a getTiles() method in GameBoard class
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/app/view/MainFrameViewer.fxml"));
@@ -32,7 +33,7 @@ public class RoborallyUI extends Application {
 
                 Pane topPane = (Pane) loader.getNamespace().get("topPane");
                 Pane hexagonBoardPane = (Pane) loader.getNamespace().get("hexagonalGridPlaceholder");
-                GridPane gridPane = createHexagonalMap(board);
+                GridPane gridPane = createHexagonalMap(gameBoard);
                 hexagonBoardPane.getChildren().add(gridPane);
 
                 gridPane.prefWidthProperty().bind(hexagonBoardPane.widthProperty());
@@ -48,8 +49,7 @@ public class RoborallyUI extends Application {
         private GridPane createHexagonalMap(GameBoard gameBoard) {
                 GridPane gridPane = new GridPane();
 
-                MakeGameBoardLayout1 layout = new MakeGameBoardLayout1();
-                GameBoard gameBoard = layout.gb();
+                Tile[][] board = gameBoard.getTiles();
 
                 double cellWidth = 60; // Adjust the size of the hexagonal cell's width
                 double cellHeight = 60; // Adjust the size of the hexagonal cell's height

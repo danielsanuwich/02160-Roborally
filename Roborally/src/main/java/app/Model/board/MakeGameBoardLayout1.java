@@ -5,8 +5,8 @@ import app.Model.tiles.*;
 public class MakeGameBoardLayout1 {
 
     public GameBoard gb() {
-        int xDim = 8;
-        int yDim = 11;
+        int xDim = 11;
+        int yDim = 8;
         GameBoard gb = new GameBoard(xDim, yDim); // x and y correct order?
 
         gb.setTile(new Position(0, 0), new HoleTile(new Position(0, 0)));
