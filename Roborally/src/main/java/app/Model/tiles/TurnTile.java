@@ -10,8 +10,18 @@ import app.Model.board.Position;
 public class TurnTile extends Tile {
     private int turnAmount;
 
+    // TurnTile Constructors
     public TurnTile(Position position, int turnAmount) {
         super("Turn", position);
+        if ((turnAmount % 6) != 0) {
+            this.turnAmount = turnAmount;
+        } else {
+            throw new IllegalArgumentException("Turn amount must NOT be a multiple of 6.");
+        }
+    }
+    
+    public TurnTile(Position position, Direction direction, int turnAmount) {
+        super("Turn", position, direction);
         if ((turnAmount % 6) != 0) {
             this.turnAmount = turnAmount;
         } else {

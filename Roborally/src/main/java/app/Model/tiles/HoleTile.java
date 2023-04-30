@@ -18,6 +18,10 @@ public class HoleTile extends Tile {
         this.holeDamage = holeDamage;
     }
 
+    public HoleTile(Position position, Direction direction, int holeDamage) {
+        super("Hole", position, direction);
+        this.holeDamage = holeDamage;
+    }
     // HoleTile getters
     public int getDamage() {
         return this.holeDamage;
