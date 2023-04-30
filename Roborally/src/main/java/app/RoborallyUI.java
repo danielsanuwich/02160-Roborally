@@ -6,9 +6,9 @@ import app.Model.board.Position;
 import app.Model.tiles.*;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
 
 public class RoborallyUI extends Application {
         private static final Tile[][] BOARD = {
@@ -117,22 +117,36 @@ public class RoborallyUI extends Application {
                 double cellWidth = 60; // Adjust the size of the hexagonal cell's width
                 double cellHeight = 60; // Adjust the size of the hexagonal cell's height
 
+                // Debugger to see if it is being called correctly.
+                System.out.println("Creating hexagonal map for board:");
+                for (Tile[] row : board) {
+                        for (Tile tile : row) {
+                                System.out.print(tile.getPosition() + " ");
+                        }
+                        System.out.println();
+                }
+
                 for (int row = 0; row < board.length; row++) {
                         for (int col = 0; col < board[row].length; col++) {
                                 Tile tile = board[row][col];
 
-                                // Create a hexagonal cell for the tile
-                                HexagonalCell hexagonalCell = new HexagonalCell(cellWidth, cellHeight, tile);
+                                if (tile != null) { // Only create cells for tiles
+                                        // Create a hexagonal cell for the tile
+                                        HexagonalCell hexagonalCell = new HexagonalCell(cellWidth, cellHeight, tile);
 
-                                // Calculate the offset for the hexagonal layout
-                                double offsetX = (row % 2 == 0) ? 0 : cellWidth / 2;
+                                        // Add the hexagonal cell to the grid pane
+                                        gridPane.add(hexagonalCell, col, row);
 
-                                // Set the cell's position in the grid
-                                hexagonalCell.setLayoutX(col * cellWidth + offsetX);
-                                hexagonalCell.setLayoutY(row * cellHeight * 0.75);
+                                        // Calculate the offset for the hexagonal layout
+                                        double offsetX = (row % 2 == 0) ? 0 : cellWidth / 2;
 
-                                // Add the hexagonal cell to the grid pane
-                                gridPane.getChildren().add(hexagonalCell);
+                                        // Set the cell's position in the grid
+                                        hexagonalCell.setTranslateX(offsetX);
+
+                                        // Add a label to display the tile type
+                                        Label label = new Label(tile.getType());
+                                        gridPane.add(label, col, row);
+                                }
                         }
                 }
 
