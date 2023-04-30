@@ -1,7 +1,5 @@
 package app;
 
-import app.Model.Player;
-import app.Model.Robot;
 import app.Model.board.Direction;
 import app.Model.board.GameBoard;
 import app.Model.board.HexagonalCell;
@@ -15,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.transform.Rotate;
@@ -22,12 +21,8 @@ import javafx.stage.Stage;
 
 public class RoborallyUI extends Application {
 
-        // Add a never player instance
-        private Player player;
-
         @Override
         public void start(Stage primaryStage) throws Exception {
-
                 // Create a MakeGameBoardLayout1 object and generate the board
                 MakeGameBoardLayout1 boardMaker = new MakeGameBoardLayout1();
                 GameBoard gameBoard = boardMaker.gb();
@@ -48,6 +43,8 @@ public class RoborallyUI extends Application {
                 gridPane.maxWidthProperty().bind(hexagonBoardPane.widthProperty());
                 gridPane.maxHeightProperty().bind(hexagonBoardPane.heightProperty());
 
+                SplitPane playerCardsPane = (SplitPane) loader.getNamespace().get("playerCardPane");
+                
                 primaryStage.setScene(scene);
                 primaryStage.show();
 
@@ -60,9 +57,9 @@ public class RoborallyUI extends Application {
                 int xDim = gameBoard.getXDim();
                 int yDim = gameBoard.getYDim();
 
-                double cellWidth = 80; // Adjust the size of the hexagonal cell's width
-                double cellHeight = 80; // Adjust the size of the hexagonal cell's height
-                double ySpacing = cellHeight / 6; // Adjust the spacing between cells in the y direction
+
+                double cellWidth = 100; // Adjust the size of the hexagonal cell's width
+                double cellHeight = 86.6; // Adjust the size of the hexagonal cell's height
 
                 // Debugger to see if it is being called correctly.
                 System.out.println("Creating hexagonal map for board:");
@@ -72,7 +69,6 @@ public class RoborallyUI extends Application {
                         }
                         System.out.println();
                 }
-
 
                 for (int i = 0; i < xDim; i++) {
                         for (int j = 0; j < yDim; j++) {
@@ -86,17 +82,13 @@ public class RoborallyUI extends Application {
                                         gridPane.add(hexagonalCell, i, j);
 
                                         // Calculate the offset for the hexagonal layout
-                                        double offsetY = (i % 2 == 0) ? (cellHeight / 2 + ySpacing) : ySpacing;
-
+                                        double offsetY = (i % 2 == 0) ? (cellHeight / 2) : 0 ;
+                                        
                                         // Set the cell's position in the grid
                                         hexagonalCell.setTranslateY(offsetY);
-
-                                        // scale the hexagonal images to all be the same size
-
-                                        // rotate the cell corresponding to its direction value
-                                        hexagonalCell.setRotate(60 * tile.getDirection().getDirection());
-                                        // rotates tile based on direction of tile
-                                        // ENSURE THIS WORKS FROM THE CENTRE NOT THE CORNER
+                                        if (i != 0){
+                                                hexagonalCell.setTranslateX(-28.867513459481298 * i);
+                                        }
 
                                         // Add a label to display the tile type
                                         Label label = new Label(tile.getType());
