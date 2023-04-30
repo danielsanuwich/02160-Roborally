@@ -11,6 +11,10 @@ public class Tile {
     private Direction direction = new Direction(0); // default direction
 
     // Tile Constructors
+    public Tile(){
+        
+    }
+    
     public Tile(Position position) {
         this.position = position;
     }
@@ -24,6 +28,10 @@ public class Tile {
         this.type = type;
         this.position = position;
         this.direction = direction;
+    }
+
+    public Tile(Position inputPosition,Direction inputDirection,String string){
+
     }
 
     // Tile Setters

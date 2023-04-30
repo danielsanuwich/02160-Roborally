@@ -42,13 +42,13 @@ class GameLogicTestAdv {
 
     @Test
     void testConveyor() {
-        Position Position1 = new Position(8,2);
+        Position Position1 = new Position(1,5);
         robot1.setPosition(Position1);
-        Direction direction1 = new Direction(3);
+        Direction direction1 = new Direction(2);
         robot1.setDirection(direction1);
         ProgramCard card = new ProgramCard(0, 1);
         Direction expectedDirection = robot1.getDirection();
-        Position expectedPosition = new Position(4, 2);
+        Position expectedPosition = new Position(3, 6);
         int expectedHealth = 10;
 
         gameLogic.ExecuteTurn(card, robot1, board);
@@ -91,5 +91,39 @@ class GameLogicTestAdv {
         assertEquals(expectedDirection, robot1.getDirection());
         assertEquals(expectedPosition, robot1.getPosition());
         assertEquals(expectedHealth, robot1.getHealth());
+    }
+
+    @Test
+    void testTurn() {
+        Position Position1 = new Position(1,5);
+        robot1.setPosition(Position1);
+        Direction direction1 = new Direction(0);
+        robot1.setDirection(direction1);
+        ProgramCard card = new ProgramCard(0, 1);
+        Direction expectedDirection = new Direction(1);
+        Position expectedPosition = new Position(1, 4);
+        int expectedHealth = 10;
+
+        gameLogic.ExecuteTurn(card, robot1, board);
+
+        assertEquals(1, robot1.getDirection().getDirection());
+        assertEquals(expectedPosition, robot1.getPosition());
+        assertEquals(expectedHealth, robot1.getHealth());
+
+        Position Position2 = new Position(3,4);
+        robot2.setPosition(Position2);
+        Direction direction2 = new Direction(0);
+        robot2.setDirection(direction2);
+        ProgramCard card2 = new ProgramCard(0, 1);
+        Direction expectedDirection2 = new Direction(5);
+        Position expectedPosition2 = new Position(3, 3);
+        int expectedHealth2 = 10;
+
+        gameLogic.ExecuteTurn(card2, robot2, board);
+
+        assertEquals(1, robot2.getDirection().getDirection());
+        assertEquals(expectedPosition2, robot2.getPosition());
+        assertEquals(expectedHealth2, robot2.getHealth());
+
     }
 }
