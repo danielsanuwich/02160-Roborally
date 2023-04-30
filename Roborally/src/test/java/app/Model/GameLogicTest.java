@@ -35,7 +35,42 @@ class GameLogicTest {
                 robot2, board);
     }
 
-    // Test moveRobots method.
+    // Test move method.
+
+    @Test
+    public void testMove() {
+
+        GameBoard board = new GameBoard(10, 10);
+        Position initPos1 = new Position(5, 5);
+        Position initPos2 = new Position(1, 2);
+        Direction initDirection1 = new Direction(5);
+        Direction initDirection2 = new Direction(3);
+        int initHealth = 10;
+        Robot robot1 = new Robot(initPos1, initDirection1, initHealth, 1, "Alice");
+        Robot robot2 = new Robot(initPos2, initDirection2, initHealth, 2, "Bob");
+
+        GameLogic gameLogic = new GameLogic(initPos1, initPos2, initDirection1, initDirection2, initHealth, robot1,
+                robot2, board);
+
+        int steps = 3; // number of steps to move
+
+        Position finalPosA = gameLogic.move(initPos1, initDirection1, steps); // call move method
+        
+        // check if the final position is correct
+        assertEquals(2, finalPosA.getX());
+        assertEquals(3, finalPosA.getY());
+
+
+        Position finalPosB = gameLogic.move(initPos2, initDirection2, steps); // call move method
+        
+        // check if the final position is correct
+        assertEquals(1, finalPosB.getX());
+        assertEquals(5, finalPosB.getY());
+    }
+
+
+
+
     // Test moveRobots method.
     @Test
     public void testMoveRobots() {
