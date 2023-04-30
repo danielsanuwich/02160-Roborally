@@ -41,13 +41,13 @@ public class GameLogicTestSimple {
 
     @Test
     void testConveyor() {
-        Position Position1 = new Position(8,2);
+        Position Position1 = new Position(5,4);
         robot1.setPosition(Position1);
-        Direction direction1 = new Direction(3);
-        robot1.setDirection(direction1);
+        //Direction direction1 = new Direction(1);
+        //robot1.setDirection(direction1);
         ProgramCard card = new ProgramCard(0, 1);
         Direction expectedDirection = robot1.getDirection();
-        Position expectedPosition = new Position(4, 2);
+        Position expectedPosition = new Position(5, 2);
         int expectedHealth = 10;
 
         gameLogic.ExecuteTurn(card, robot1, board);
