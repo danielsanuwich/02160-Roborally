@@ -1,4 +1,5 @@
 package app.Model.board;
+
 import app.Model.tiles.*;
 
 public class MakeGameBoardLayout2 {

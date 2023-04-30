@@ -42,7 +42,7 @@ class GameLogicTestAdv {
 
     @Test
     void testConveyor() {
-        Position Position1 = new Position(5,2);
+        Position Position1 = new Position(8,2);
         robot1.setPosition(Position1);
         Direction direction1 = new Direction(3);
         robot1.setDirection(direction1);
