@@ -42,7 +42,7 @@ public class MakeGameBoardLayout1{
             gb.setTile(new Position(1,3),new LaserTile(new Position(1, 3), new Direction(0), 1));
             gb.setTile(new Position(2,3),new Tile("Base", new Position(2, 3), new Direction(0)));
             gb.setTile(new Position(3,3),new TurnTile(new Position(3, 3), new Direction(0), 1));
-            gb.setTile(new Position(4,3),new HoleTile(new Position(4, 3), new Direction(0), 0));
+            gb.setTile(new Position(4,3),new HoleTile(new Position(4, 3), new Direction(0), 1));
             gb.setTile(new Position(5,3),new ConveyorTile(new Position(5, 3), new Direction(5)));
             gb.setTile(new Position(6,3),new ConveyorTile(new Position(6, 3), new Direction(5)));
             gb.setTile(new Position(7,3),new Tile("Base", new Position(7, 3), new Direction(0)));
