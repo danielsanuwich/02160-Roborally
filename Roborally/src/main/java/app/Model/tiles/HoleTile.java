@@ -8,9 +8,13 @@ public class HoleTile extends Tile {
     // HoleTile Attribute
     private int holeDamage = 1;
 
-    // HoleTile constructor
-    public HoleTile(Position position, Direction direction, int holeDamage) {
-        super("Hole", position, direction);
+    // HoleTile constructors
+    public HoleTile(Position position) {
+        super("Hole", position);
+    }
+
+    public HoleTile(Position position, int holeDamage) {
+        super("Hole", position);
         this.holeDamage = holeDamage;
     }
 

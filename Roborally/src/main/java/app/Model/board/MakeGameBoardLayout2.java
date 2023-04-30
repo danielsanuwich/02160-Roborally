@@ -34,7 +34,7 @@ public class MakeGameBoardLayout2 {
             
             gb.setTile(new Position(0,3),new HoleTile(new Position(0, 3)));
             gb.setTile(new Position(1,3),new Tile(new Position(1, 3)));
-            gb.setTile(new Position(2,3),new TurnTile(new Position(2, 3), new Direction(0), -1));
+            gb.setTile(new Position(2,3),new TurnTile(new Position(2, 3), -1));
             gb.setTile(new Position(3,3),new HoleTile(new Position(3, 3)));
             gb.setTile(new Position(4,3),new Tile(new Position(4, 3)));
             gb.setTile(new Position(5,3),new ConveyorTile(new Position(5, 3), new Direction(0)));
@@ -45,7 +45,7 @@ public class MakeGameBoardLayout2 {
             gb.setTile(new Position(1,4),new Tile(new Position(1, 4)));
             gb.setTile(new Position(2,4),new Tile(new Position(2, 4)));
             gb.setTile(new Position(3,4),new Tile(new Position(3, 4)));
-            gb.setTile(new Position(4,4),new TurnTile(new Position(4, 4), new Direction(0), 1));
+            gb.setTile(new Position(4,4),new TurnTile(new Position(4, 4), 1));
             gb.setTile(new Position(5,4),new Tile(new Position(5, 4)));
             gb.setTile(new Position(6,4),new LaserTile(new Position(6, 4), new Direction(4), 1));
             gb.setTile(new Position(7,4),new HoleTile(new Position(7, 4)));

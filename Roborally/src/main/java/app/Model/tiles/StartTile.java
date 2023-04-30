@@ -7,7 +7,7 @@ public class StartTile extends Tile {
     // No additional attributes or methods are necessary
 
     // StartTile constructor
-    public StartTile(Position position, Direction direction) {
-        super("Start", position, direction);
+    public StartTile(Position position) {
+        super("Start", position);
     }
 }
