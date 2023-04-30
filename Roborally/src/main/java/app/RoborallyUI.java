@@ -11,6 +11,8 @@ import app.Model.board.GameBoard;
 import app.Model.board.HexagonalCell;
 import app.Model.board.MakeGameBoardLayout1;
 import app.Model.board.Position;
+import app.Model.cards.Card;
+import app.Model.cards.CardCell;
 import app.Model.tiles.*;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -28,11 +30,21 @@ import javafx.scene.layout.Pane;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 
-public class RoborallyUI extends Application implements Initializable{
-        @FXML
-        private GridPane cardDeckGrid;
-        
+public class RoborallyUI extends Application{
+        List<Card> cards = new ArrayList<>();
+
+        // Add HealthCards to the list
+        cards.add(new HealthCard(1));
+        cards.add(new HealthCard(-1));
+
+        // Add ProgramCards to the list
+        cards.add(new ProgramCard(6, 0));
+        cards.add(new ProgramCard(1, 0));
+        cards.add(new ProgramCard(-1, 0));
+        cards.add(new ProgramCard(0, 1));
+        cards.add(new ProgramCard(0, -1));
         @Override
         public void start(Stage primaryStage) throws Exception {
                 // Create a MakeGameBoardLayout1 object and generate the board
@@ -55,6 +67,8 @@ public class RoborallyUI extends Application implements Initializable{
                 gridPane.maxWidthProperty().bind(hexagonBoardPane.widthProperty());
                 gridPane.maxHeightProperty().bind(hexagonBoardPane.heightProperty());
 
+                Pane cardPane = (Pane) loader.getNamespace().get("cardDeckGrid");
+                GridPane cardGridPane = createCardDeck(null)
                 SplitPane playerCardsPane = (SplitPane) loader.getNamespace().get("playerCardPane");
                 
                 primaryStage.setScene(scene);
@@ -62,26 +76,28 @@ public class RoborallyUI extends Application implements Initializable{
 
         }
 
-        private void addCardImagesToGrid() {
-                String[] cardImages = {
-                    "/images/HealthCard1.png",
-                    "/images/HealthCard2.png",
-                    "/images/ProgramCardCCW1.png",
-                    "/images/ProgramCardCW1.png",
-                    "/images/ProgramCardMove1.png",
-                    "/images/ProgramCardMove2.png",
-                    "/images/ProgramCardMove3.png",
-                };
+        private GridPane createCardDeck(List<Card> cards) {
+                GridPane gridPane = new GridPane();
+                gridPane.setPadding(new Insets(10));
+                gridPane.setHgap(10);
+                gridPane.setVgap(10);
             
-                for (int i = 0; i < cardImages.length; i++) {
-                    Image image = new Image(getClass().getResourceAsStream(cardImages[i]));
-                    ImageView imageView = new ImageView(image);
-                    imageView.setFitWidth(50); // Adjust the width of the card image
-                    imageView.setFitHeight(80); // Adjust the height of the card image
-            
-                    cardDeckGrid.add(imageView, i, 0); // Place the card image in the GridPane
+                // Create the card cells and add them to the grid pane
+                int row = 0;
+                int col = 0;
+                for (Card card : cards) {
+                    CardCell cardCell = new CardCell(100, 150, card);
+                    gridPane.add(cardCell, col, row);
+                    col++;
+                    if (col > 4) {
+                        col = 0;
+                        row++;
+                    }
                 }
+            
+                return gridPane;
             }
+
         private List<Robot> createRobotOnStartTile(GameBoard gameBoard) {
                 Tile[][] board = gameBoard.getTiles();
                 int xDim = gameBoard.getXDim();
@@ -105,6 +121,7 @@ public class RoborallyUI extends Application implements Initializable{
                 return robots;
             }
             
+        
         private GridPane createHexagonalMap(GameBoard gameBoard, List <Robot> robots) {
                 GridPane gridPane = new GridPane();
 
@@ -167,10 +184,5 @@ public class RoborallyUI extends Application implements Initializable{
 
         public static void main(String[] args) {
                 launch(args);
-        }
-
-        @Override
-        public void initialize(URL location, ResourceBundle resources) {
-                addCardImagesToGrid();
         }
 }
