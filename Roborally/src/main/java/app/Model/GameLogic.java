@@ -181,9 +181,6 @@ public class GameLogic {
             // take damage
             LaserTile cTile = (LaserTile) currentTile;
             robot.changeHealth(-1 * cTile.getDamage());
-        }else if (currentTile instanceof FlagTile) {
-            FlagTile fTile = (FlagTile) currentTile;
-            robot.changeHealth(fTile.getHPGain());
         }
     }
 
