@@ -14,7 +14,7 @@ public class MakeGameBoardLayout2 {
             gb.setTile(new Position(7,0),new HoleTile(new Position(7, 0), new Direction(0), 1));
             
             gb.setTile(new Position(0,1),new HoleTile(new Position(0, 1), new Direction(0), 1));
-            gb.setTile(new Position(1,1),new Tile("F", new Position(1, 1), new Direction(0)));
+            gb.setTile(new Position(1,1),new FlagTile(new Position(1, 1)));
             gb.setTile(new Position(2,1),new StartTile(new Position(2, 1), new Direction(0)));
             gb.setTile(new Position(3,1),new LaserTile(new Position(3, 1), new Direction(3), 1));
             gb.setTile(new Position(4,1),new Tile("Base", new Position(4, 1), new Direction(0)));

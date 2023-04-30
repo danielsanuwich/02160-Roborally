@@ -125,4 +125,22 @@ public class GameLogicTestSimple {
         assertEquals(expectedHealth2, robot2.getHealth());
 
     }
+
+    @Test
+    void testFlag() {
+        Position Position1 = new Position(1,2);
+        robot1.setPosition(Position1);
+        //Direction direction1 = new Direction(4);
+        //robot1.setDirection(direction1);
+        ProgramCard card = new ProgramCard(0, 1);
+        Direction expectedDirection = robot1.getDirection();
+        Position expectedPosition = new Position(1, 1);
+        int expectedHealth = 11;
+
+        gameLogic.ExecuteTurn(card, robot1, board);
+
+        assertEquals(expectedDirection, robot1.getDirection());
+        assertEquals(expectedPosition, robot1.getPosition());
+        assertEquals(expectedHealth, robot1.getHealth());
+    }
 }
