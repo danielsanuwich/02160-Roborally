@@ -47,15 +47,15 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.MainFrameController">
   <children>
-      <Pane fx:id="hexagonBoardPane" prefHeight="200.0" prefWidth="200.0" />
-      <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="406.0" prefWidth="640.0">
+      <Pane fx:id="hexagonBoardPane" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" />
+      <SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" orientation="VERTICAL" prefHeight="406.0" prefWidth="640.0">
         <items>
           <AnchorPane fx:id="hexagonalGridPlaceholder" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" />
-            <TabPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="320.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="320.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Player 1">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <GridPane gridLinesVisible="true" layoutX="14.0" layoutY="34.0" prefHeight="100.0" prefWidth="300.0">
                                  <columnConstraints>
@@ -98,7 +98,7 @@
                 </Tab>
                 <Tab text="Player 2">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <Button layoutX="400.0" layoutY="50.0" mnemonicParsing="false" text="Finish Programming" />
                               <Label layoutX="20.0" layoutY="15.0" text="Program " />

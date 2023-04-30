@@ -113,9 +113,15 @@ public class RoborallyUI extends Application {
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
 
-                Pane hexagonBoardPane = (Pane) loader.getNamespace().get("hexagonBoardPane");
-                GridPane gridPane = createHexagonalMap(BOARD);
+                Pane topPane = (Pane) loader.getNamespace().get("topPane");
+                Pane hexagonBoardPane = (Pane) loader.getNamespace().get("hexagonalGridPlaceholder");
+                GridPane gridPane = createHexagonalMap(BOARD);                
                 hexagonBoardPane.getChildren().add(gridPane);
+
+                gridPane.prefWidthProperty().bind(hexagonBoardPane.widthProperty());
+                gridPane.prefHeightProperty().bind(hexagonBoardPane.heightProperty());
+                gridPane.maxWidthProperty().bind(hexagonBoardPane.widthProperty());
+                gridPane.maxHeightProperty().bind(hexagonBoardPane.heightProperty());
 
                 primaryStage.setScene(scene);
                 primaryStage.show();
