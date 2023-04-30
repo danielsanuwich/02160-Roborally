@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import app.Model.tiles.Tile;
+import app.Model.tiles.TurnTile;
 
 public class HexagonalCell extends Pane {
     public HexagonalCell(double width, double height, Tile tile) {
@@ -48,7 +49,18 @@ public class HexagonalCell extends Pane {
 
     private Image getTileImage(Tile tile) {
         String imageName = tile.getType();
-        String imagePath = "/images/" + imageName + ".jpg"; // Changed from png to jpg
+        String imagePath;
+
+        if (tile instanceof TurnTile) {
+            TurnTile turntile = (TurnTile) tile;
+            if (turntile.getTurnAmount() > 0) {
+                imagePath = "/images/" + "TurnTile_CW" + ".png";
+            } else {
+                imagePath = "/images/" + "TurnTile_CCW" + ".png";
+            }
+        } else {
+            imagePath = "/images/" + imageName + "Tile" + ".png"; // Changed from jpg to png
+        }
         System.out.println("Image path: " + imagePath); // Add this line to print the imagePath
         return new Image(getClass().getResourceAsStream(imagePath));
     }

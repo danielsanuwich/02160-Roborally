@@ -38,7 +38,7 @@ public class GameBoard {
     }
 
     // sets the entire board (No longer in use after new Layout1 maker class)
-    public void setBoard(Tile[][] inputTileBoard){
+    public void setBoard(Tile[][] inputTileBoard) {
         for (int i = 0; i < this.xDim; i++) {
             for (int j = 0; j < this.yDim; j++) {
                 this.gameBoard[i][j] = inputTileBoard[i][j];
@@ -69,6 +69,10 @@ public class GameBoard {
             }
         }
         return closest;
+    }
+
+    public Tile[][] getTiles() {
+        return this.gameBoard;
     }
 
 }
