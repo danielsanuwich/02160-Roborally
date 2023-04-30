@@ -27,8 +27,6 @@ public class RoborallyUI extends Application {
 
         @Override
         public void start(Stage primaryStage) throws Exception {
-                Robot r1;
-                player = new Player(r1);
 
                 // Create a MakeGameBoardLayout1 object and generate the board
                 MakeGameBoardLayout1 boardMaker = new MakeGameBoardLayout1();
