@@ -1,4 +1,5 @@
-import app.main.java.Common;
+package app.controllers;
+
 
 
 public class Controller{
@@ -12,7 +13,7 @@ public class Controller{
     PlayerTurnState turn1a = new PlayerTurnState("turn1a","turn1b", 1);
     PlayerTurnState turn1b = new PlayerExecuteState("turn1b","turn2a","end",1);
     PlayerTurnState turn2a = new PlayerTurnState("turn2a","turn2b",2);
-    PlayerTurnState turn1b = new PlayerExecuteState("turn2b","turn1a","end",2);
+    PlayerTurnState turn2b = new PlayerExecuteState("turn2b","turn1a","end",2);
     EndState end = new EndState("end","menu");
 
 

@@ -1,4 +1,6 @@
+package app.controllers;
 
+@
 public class State(){
 
     // State Attributes

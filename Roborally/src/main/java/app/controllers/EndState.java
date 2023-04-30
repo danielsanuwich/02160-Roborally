@@ -1,3 +1,5 @@
+package app.controllers;
+
 // End -> Menu
 
 public class EndState extends State{
