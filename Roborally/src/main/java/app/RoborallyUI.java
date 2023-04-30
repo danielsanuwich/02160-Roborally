@@ -113,12 +113,13 @@ public class RoborallyUI extends Application {
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
 
-                // Cast root to Pane before getting children
-                Pane pane = (Pane) root;
-                ObservableList<Node> children = pane.getChildren();
+                Pane hexagonBoardPane = (Pane) loader.getNamespace().get("hexagonBoardPane");
+                GridPane gridPane = createHexagonalMap(BOARD);
+                hexagonBoardPane.getChildren().add(gridPane);
 
                 primaryStage.setScene(scene);
                 primaryStage.show();
+
         }
 
         private GridPane createHexagonalMap(Tile[][] board) {
