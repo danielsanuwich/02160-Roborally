@@ -2,6 +2,8 @@ package app;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -35,7 +37,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 
 public class RoborallyUI extends Application{
-        Card[] cards = {new HealthCard(1), new HealthCard(2), new ProgramCard(1,0), new ProgramCard(-1,0), new ProgramCard(0, 1), new ProgramCard(0, 2)};
+        Card[] cards = {new HealthCard(1), new HealthCard(2), new HealthCard(3), new ProgramCard(1,0), new ProgramCard(-1,0), new ProgramCard(0, 1), new ProgramCard(0, 2), new ProgramCard(0,3), new HealthCard(1)};
 
         @Override
         public void start(Stage primaryStage) throws Exception {
@@ -75,17 +77,41 @@ public class RoborallyUI extends Application{
                 gridPane.setHgap(10);
                 gridPane.setVgap(10);
             
-                // Create the card cells and add them to the grid pane
-                int row = 0;
-                int col = 0;
-                for (int i = 0; i < cards.length; i++) {
+                // Create 5 empty card slots in the first row
+                for (int i = 0; i < 5; i++) {
+                    Pane emptyCardSlot = new Pane();
+                    emptyCardSlot.setMinSize(20, 60);
+                    emptyCardSlot.setStyle("-fx-border-color: #000000; -fx-border-width: 2");
+                    gridPane.add(emptyCardSlot, i, 0);
+                }
+            
+                // Shuffle the cards array
+                Collections.shuffle(Arrays.asList(cards));
+            
+                // Create the card cells for the 9 randomly generated cards in the second row
+                for (int i = 0; i < 9; i++) {
                     CardCell cardCell = new CardCell(50, 75, cards[i]);
-                    gridPane.add(cardCell, col, row);
-                    col++;
-                    if (col > 5) {
-                        col = 0;
-                        row++;
-                    }
+                    gridPane.add(cardCell, i, 1);
+            
+                    // Add click event listener
+                    cardCell.setOnMouseClicked(e -> {
+                        ObservableList<Node> cardSlots = gridPane.getChildren();
+                        for (Node slot : cardSlots) {
+                            // Check if the slot is in the first row and is empty
+                            if (GridPane.getRowIndex(slot) == 0 && slot instanceof Pane && ((Pane) slot).getChildren().isEmpty()) {
+                                // Add the clicked card to the empty slot
+                                ImageView cardImage = new ImageView(((ImageView) cardCell.getChildren().get(1)).getImage());
+                                cardImage.setFitWidth(50);
+                                cardImage.setFitHeight(75);
+                                ((Pane) slot).getChildren().add(cardImage);
+            
+                                // Remove the card from the second row
+                                cardCell.getChildren().clear();
+                                cardCell.setStyle("-fx-background-color: transparent");
+                                break;
+                            }
+                        }
+                    });
                 }
             
                 return gridPane;

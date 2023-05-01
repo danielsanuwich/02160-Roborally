@@ -77,4 +77,26 @@ public class Robot {
 		this.setPosition(startTile.getPosition());
 	}
 
+	public void move(int moveAmount) {
+        switch (this.direction.getDirection()) {
+            case 0:
+                this.setPosition(new Position(this.position.getX(),this.position.getY() - moveAmount));
+                break;
+            case 1:
+				this.setPosition(new Position(this.position.getX() - moveAmount, this.position.getY()));
+                break;
+            case 2:
+				this.setPosition(new Position(this.position.getX() + moveAmount, this.position.getY() + moveAmount));
+                break;
+            case 3:
+				this.setPosition(new Position(this.position.getX() + moveAmount ,this.position.getY()));
+                break;
+			case 4:
+				this.setPosition(new Position(this.position.getX() - moveAmount,this.position.getY() + moveAmount));
+				break;
+			case 5:
+				this.setPosition(new Position(this.position.getX() - moveAmount,this.position.getY() - moveAmount));
+				break;
+        }
+    }
 }
