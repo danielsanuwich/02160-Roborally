@@ -10,7 +10,7 @@ public class HealthCard extends Card {
 
     // HealthCard constructor
     public HealthCard(int diffHealth) {
-        super();
+        super("HealthCard");
     	this.diffHealth = diffHealth;
         if (diffHealth >= 0) {
             super.setName("Add" + Integer.toString(diffHealth) + "HP");
@@ -25,4 +25,7 @@ public class HealthCard extends Card {
         return this.diffHealth;
     }
 
+    public String getImageName(){
+        return "HealthCard" + diffHealth;
+    }
 }

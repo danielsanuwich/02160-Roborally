@@ -33,6 +33,7 @@ public class CardCell extends Pane{
     private Image getTileImage(Card card) {
         String imageName = card.getImageName();
         String imagePath;
+        System.out.println(imageName);
         imagePath = "/images/" + imageName + ".png"; // Changed from jpg to png
         System.out.println("Image path: " + imagePath); // Add this line to print the imagePath
         return new Image(getClass().getResourceAsStream(imagePath));

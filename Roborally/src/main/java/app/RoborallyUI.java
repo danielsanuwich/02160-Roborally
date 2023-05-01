@@ -13,6 +13,8 @@ import app.Model.board.MakeGameBoardLayout1;
 import app.Model.board.Position;
 import app.Model.cards.Card;
 import app.Model.cards.CardCell;
+import app.Model.cards.HealthCard;
+import app.Model.cards.ProgramCard;
 import app.Model.tiles.*;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -33,18 +35,8 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 
 public class RoborallyUI extends Application{
-        List<Card> cards = new ArrayList<>();
+        Card[] cards = {new HealthCard(1), new HealthCard(2), new ProgramCard(1,0), new ProgramCard(-1,0), new ProgramCard(0, 1), new ProgramCard(0, 2)};
 
-        // Add HealthCards to the list
-        cards.add(new HealthCard(1));
-        cards.add(new HealthCard(-1));
-
-        // Add ProgramCards to the list
-        cards.add(new ProgramCard(6, 0));
-        cards.add(new ProgramCard(1, 0));
-        cards.add(new ProgramCard(-1, 0));
-        cards.add(new ProgramCard(0, 1));
-        cards.add(new ProgramCard(0, -1));
         @Override
         public void start(Stage primaryStage) throws Exception {
                 // Create a MakeGameBoardLayout1 object and generate the board
@@ -68,7 +60,8 @@ public class RoborallyUI extends Application{
                 gridPane.maxHeightProperty().bind(hexagonBoardPane.heightProperty());
 
                 Pane cardPane = (Pane) loader.getNamespace().get("cardDeckGrid");
-                GridPane cardGridPane = createCardDeck(null)
+                GridPane cardGridPane = createCardDeck(cards);
+                cardPane.getChildren().add(cardGridPane);
                 SplitPane playerCardsPane = (SplitPane) loader.getNamespace().get("playerCardPane");
                 
                 primaryStage.setScene(scene);
@@ -76,7 +69,7 @@ public class RoborallyUI extends Application{
 
         }
 
-        private GridPane createCardDeck(List<Card> cards) {
+        private GridPane createCardDeck(Card[] cards) {
                 GridPane gridPane = new GridPane();
                 gridPane.setPadding(new Insets(10));
                 gridPane.setHgap(10);
@@ -85,11 +78,11 @@ public class RoborallyUI extends Application{
                 // Create the card cells and add them to the grid pane
                 int row = 0;
                 int col = 0;
-                for (Card card : cards) {
-                    CardCell cardCell = new CardCell(100, 150, card);
+                for (int i = 0; i < cards.length; i++) {
+                    CardCell cardCell = new CardCell(50, 75, cards[i]);
                     gridPane.add(cardCell, col, row);
                     col++;
-                    if (col > 4) {
+                    if (col > 5) {
                         col = 0;
                         row++;
                     }
@@ -130,8 +123,8 @@ public class RoborallyUI extends Application{
                 int yDim = gameBoard.getYDim();
                 int player = 2;
 
-                double cellWidth = 100; // Adjust the size of the hexagonal cell's width
-                double cellHeight = 86.6; // Adjust the size of the hexagonal cell's height
+                double cellWidth = 50; // Adjust the size of the hexagonal cell's width
+                double cellHeight = 43.3; // Adjust the size of the hexagonal cell's height
 
                 // Debugger to see if it is being called correctly.
                 System.out.println("Creating hexagonal map for board:");
@@ -170,7 +163,7 @@ public class RoborallyUI extends Application{
                                         // Set the cell's position in the grid
                                         hexagonalCell.setTranslateY(offsetY);
                                         if (i != 0){
-                                                hexagonalCell.setTranslateX(-28.867513459481298 * i);
+                                                hexagonalCell.setTranslateX(-28.867513459481298 * i / 2);
                                         }
 
                                         // // Add a label to display the tile type
