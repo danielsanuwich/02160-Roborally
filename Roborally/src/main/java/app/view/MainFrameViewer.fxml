@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.MainFrameController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="600" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.MainFrameController">
   <children>
       <Pane fx:id="hexagonBoardPane" prefHeight="200.0" prefWidth="200.0" />
       <MenuBar>
@@ -42,48 +42,15 @@
       </MenuBar>
       <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="406.0" prefWidth="640.0">
         <items>
-          <AnchorPane fx:id="hexagonalGridPlaceholder" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400" prefWidth="1920.0" />
+          <AnchorPane fx:id="hexagonalGridPlaceholder" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="380" prefWidth="1920.0" />
             <TabPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="320.0" prefWidth="1920.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Player 1">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <AnchorPane fx:id="cardDeckGrid" prefHeight="100.0" prefWidth="300.0">
-                                 <!-- <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints> -->
-                              </AnchorPane>
-                              <GridPane gridLinesVisible="true" layoutX="12.0" layoutY="161.0" prefHeight="100.0" prefWidth="550.0">
-                                 <columnConstraints>
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                 </columnConstraints>
-                                 <rowConstraints>
-                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 </rowConstraints>
-                              </GridPane>
-                              <Button layoutX="400.0" layoutY="50.0" mnemonicParsing="false" text="Finish Programming" />
-                              <Label layoutX="20.0" layoutY="15.0" text="Program ">
-                                 <font>
-                                    <Font name="System Bold" size="13.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="20.0" layoutY="140.0" text="Deck" />
+                              <AnchorPane fx:id="cardDeckGrid" prefHeight="100.0" prefWidth="300.0"/>
+                              <Button fx:id="finishProgramming" layoutX="400.0" layoutY="50.0" mnemonicParsing="false" text="Finish Programming" />
                            </children>
                         </AnchorPane>
                   </content>
