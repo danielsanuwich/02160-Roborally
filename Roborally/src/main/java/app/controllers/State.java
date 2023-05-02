@@ -1,13 +1,13 @@
 package app.controllers;
 
-@
-public class State(){
+
+public class State{
 
     // State Attributes
     private String name;
 
     // State Controller
-    public State(name){
+    public State(String name){
         this.name = name;
     }
 

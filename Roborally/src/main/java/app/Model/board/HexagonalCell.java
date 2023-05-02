@@ -44,12 +44,12 @@ public class HexagonalCell extends Pane {
         System.out.println("Tile position: " + tile.getPosition());
 
         // Add a label to display the position of the tile
-        Label positionLabel = new Label(tile.getPosition().toString());
-        positionLabel.setAlignment(Pos.CENTER);
-        positionLabel.setPrefSize(width, height);
-        positionLabel.setTextFill(Paint.valueOf("FFFFFF"));
-        positionLabel.setFont(new Font(16));
-        this.getChildren().add(positionLabel);
+        // Label positionLabel = new Label(tile.getPosition().toString());
+        // positionLabel.setAlignment(Pos.CENTER);
+        // positionLabel.setPrefSize(width, height);
+        // positionLabel.setTextFill(Paint.valueOf("FFFFFF"));
+        // positionLabel.setFont(new Font(16));
+        // this.getChildren().add(positionLabel);
     }
 
     private Image getTileImage(Tile tile) {

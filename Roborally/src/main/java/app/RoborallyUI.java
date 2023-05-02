@@ -43,8 +43,8 @@ public class RoborallyUI extends Application{
 
         @Override
         public void start(Stage primaryStage) throws Exception {
-                // Create a MakeGameBoardLayout1 object and generate the board
-                MakeGameBoardLayout3 boardMaker = new MakeGameBoardLayout3();
+                // Create a MakeGameBoardLayout object and generate the board
+                MakeGameBoardLayout1 boardMaker = new MakeGameBoardLayout1();
                 GameBoard gameBoard = boardMaker.gb();
 
                 Tile[][] board = gameBoard.getTiles(); // Assuming you have a getTiles() method in GameBoard class
@@ -130,7 +130,9 @@ public class RoborallyUI extends Application{
                         Tile tile = board[i][j];
                         if (tile instanceof StartTile) {
                                 Robot robot = new Robot(tile.getPosition(), tile.getDirection(), 5, robots.size() + 1, "Robot" + (robots.size() + 1));
-                                robots.add(robot);
+                                if(robots.size() <= 1){ // only add 2 robots
+                                        robots.add(robot);
+                                } else break;
                         }
                         }
                 }
