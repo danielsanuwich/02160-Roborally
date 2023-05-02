@@ -3,7 +3,7 @@ package app.Model.board;
 import app.Model.tiles.*;
 
 public class MakeGameBoardLayout2 {
-    public GameBoard makeBoard(){
+    public GameBoard gb(){
         GameBoard gb = new GameBoard(8,8); // x and y correct order?
             gb.setTile(new Position(0, 0),new HoleTile(new Position(0, 0)));
             gb.setTile(new Position(1,0),new HoleTile(new Position(1, 0)));

@@ -12,6 +12,8 @@ import app.Model.board.Direction;
 import app.Model.board.GameBoard;
 import app.Model.board.HexagonalCell;
 import app.Model.board.MakeGameBoardLayout1;
+import app.Model.board.MakeGameBoardLayout2;
+import app.Model.board.MakeGameBoardLayout3;
 import app.Model.board.Position;
 import app.Model.cards.Card;
 import app.Model.cards.CardCell;
@@ -42,7 +44,7 @@ public class RoborallyUI extends Application{
         @Override
         public void start(Stage primaryStage) throws Exception {
                 // Create a MakeGameBoardLayout1 object and generate the board
-                MakeGameBoardLayout1 boardMaker = new MakeGameBoardLayout1();
+                MakeGameBoardLayout3 boardMaker = new MakeGameBoardLayout3();
                 GameBoard gameBoard = boardMaker.gb();
 
                 Tile[][] board = gameBoard.getTiles(); // Assuming you have a getTiles() method in GameBoard class
