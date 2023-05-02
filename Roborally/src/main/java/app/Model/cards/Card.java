@@ -22,4 +22,8 @@ public class Card {
 	public String getName(){
 		return this.name;
 	}
+
+	public String getImageName(){
+		return this.name;
+	}
 }

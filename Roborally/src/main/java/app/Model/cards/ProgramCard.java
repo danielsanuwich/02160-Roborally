@@ -36,4 +36,15 @@ public class ProgramCard extends Card {
     public int getMoveAmount() {
         return this.moveAmount;
     }
+
+    public String getImageName(){
+        if(this.turnAmount > 0){
+            return "ProgramCardCW1";
+        } else if(this.turnAmount < 0){
+            return "ProgramCardCCW1";
+        }
+        else{
+            return "ProgramCardMove" + moveAmount;
+        }
+    }
 }
