@@ -185,6 +185,7 @@ public class RoborallyUI extends Application {
                                                                         getClass().getResourceAsStream(imagePath)));
                                                         robotView.setFitWidth(cellWidth * 0.8);
                                                         robotView.setFitHeight(cellHeight * 0.8);
+                                                        robotView.setRotate(60*robot.getDirection().getDirection());
                                                         hexagonalCell.getChildren().add(robotView);
                                                         player += 1;
                                                         System.out.println("WHAT" + imagePath);
