@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="600" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.MainFrameController">
   <children>
@@ -25,6 +26,9 @@
             <items>
               <MenuItem mnemonicParsing="false" text="Save" />
                   <MenuItem mnemonicParsing="false" text="Load game" />
+                  <MenuItem mnemonicParsing="false" text="Board Easy" />
+                  <MenuItem mnemonicParsing="false" text="Board Medium" />
+                  <MenuItem mnemonicParsing="false" text="Board Hard" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Multiplayer">
@@ -49,8 +53,13 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <AnchorPane fx:id="cardDeckGrid" prefHeight="100.0" prefWidth="300.0"/>
+                              <AnchorPane fx:id="cardDeckGrid" prefHeight="100.0" prefWidth="300.0" />
                               <Button fx:id="finishProgramming" layoutX="400.0" layoutY="50.0" mnemonicParsing="false" text="Finish Programming" />
+                              <Text layoutX="400.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Robot Health status: 10">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </AnchorPane>
                   </content>
@@ -59,6 +68,7 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Robot Health status: 10" />
                               <Button layoutX="400.0" layoutY="50.0" mnemonicParsing="false" text="Finish Programming" />
                               <Label layoutX="20.0" layoutY="15.0" text="Program " />
                               <Label layoutX="20.0" layoutY="140.0" text="Deck" />

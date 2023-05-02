@@ -38,13 +38,15 @@ import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 
-public class RoborallyUI extends Application{
-        Card[] cards = {new HealthCard(1), new HealthCard(2), new HealthCard(3), new ProgramCard(1,0), new ProgramCard(-1,0), new ProgramCard(0, 1), new ProgramCard(0, 2), new ProgramCard(0,3), new HealthCard(1)};
+public class RoborallyUI extends Application {
+        Card[] cards = { new HealthCard(1), new HealthCard(2), new HealthCard(3), new ProgramCard(1, 0),
+                        new ProgramCard(-1, 0), new ProgramCard(0, 1), new ProgramCard(0, 2), new ProgramCard(0, 3),
+                        new HealthCard(1) };
 
         @Override
         public void start(Stage primaryStage) throws Exception {
                 // Create a MakeGameBoardLayout1 object and generate the board
-                MakeGameBoardLayout3 boardMaker = new MakeGameBoardLayout3();
+                MakeGameBoardLayout1 boardMaker = new MakeGameBoardLayout1();
                 GameBoard gameBoard = boardMaker.gb();
 
                 Tile[][] board = gameBoard.getTiles(); // Assuming you have a getTiles() method in GameBoard class
@@ -67,7 +69,7 @@ public class RoborallyUI extends Application{
                 GridPane cardGridPane = createCardDeck(cards);
                 cardPane.getChildren().add(cardGridPane);
                 SplitPane playerCardsPane = (SplitPane) loader.getNamespace().get("playerCardPane");
-                
+
                 primaryStage.setScene(scene);
                 primaryStage.show();
 
@@ -78,46 +80,48 @@ public class RoborallyUI extends Application{
                 gridPane.setPadding(new Insets(10));
                 gridPane.setHgap(10);
                 gridPane.setVgap(10);
-            
+
                 // Create 5 empty card slots in the first row
                 for (int i = 0; i < 5; i++) {
-                    Pane emptyCardSlot = new Pane();
-                    emptyCardSlot.setMinSize(20, 60);
-                    emptyCardSlot.setStyle("-fx-border-color: #000000; -fx-border-width: 2");
-                    gridPane.add(emptyCardSlot, i, 0);
+                        Pane emptyCardSlot = new Pane();
+                        emptyCardSlot.setMinSize(20, 60);
+                        emptyCardSlot.setStyle("-fx-border-color: #000000; -fx-border-width: 2");
+                        gridPane.add(emptyCardSlot, i, 0);
                 }
-            
+
                 // Shuffle the cards array
                 Collections.shuffle(Arrays.asList(cards));
-            
+
                 // Create the card cells for the 9 randomly generated cards in the second row
                 for (int i = 0; i < 9; i++) {
-                    CardCell cardCell = new CardCell(50, 75, cards[i]);
-                    gridPane.add(cardCell, i, 1);
-            
-                    // Add click event listener
-                    cardCell.setOnMouseClicked(e -> {
-                        ObservableList<Node> cardSlots = gridPane.getChildren();
-                        for (Node slot : cardSlots) {
-                            // Check if the slot is in the first row and is empty
-                            if (GridPane.getRowIndex(slot) == 0 && slot instanceof Pane && ((Pane) slot).getChildren().isEmpty()) {
-                                // Add the clicked card to the empty slot
-                                ImageView cardImage = new ImageView(((ImageView) cardCell.getChildren().get(1)).getImage());
-                                cardImage.setFitWidth(50);
-                                cardImage.setFitHeight(75);
-                                ((Pane) slot).getChildren().add(cardImage);
-            
-                                // Remove the card from the second row
-                                cardCell.getChildren().clear();
-                                cardCell.setStyle("-fx-background-color: transparent");
-                                break;
-                            }
-                        }
-                    });
+                        CardCell cardCell = new CardCell(50, 75, cards[i]);
+                        gridPane.add(cardCell, i, 1);
+
+                        // Add click event listener
+                        cardCell.setOnMouseClicked(e -> {
+                                ObservableList<Node> cardSlots = gridPane.getChildren();
+                                for (Node slot : cardSlots) {
+                                        // Check if the slot is in the first row and is empty
+                                        if (GridPane.getRowIndex(slot) == 0 && slot instanceof Pane
+                                                        && ((Pane) slot).getChildren().isEmpty()) {
+                                                // Add the clicked card to the empty slot
+                                                ImageView cardImage = new ImageView(
+                                                                ((ImageView) cardCell.getChildren().get(1)).getImage());
+                                                cardImage.setFitWidth(50);
+                                                cardImage.setFitHeight(75);
+                                                ((Pane) slot).getChildren().add(cardImage);
+
+                                                // Remove the card from the second row
+                                                cardCell.getChildren().clear();
+                                                cardCell.setStyle("-fx-background-color: transparent");
+                                                break;
+                                        }
+                                }
+                        });
                 }
-            
+
                 return gridPane;
-            }
+        }
 
         private List<Robot> createRobotOnStartTile(GameBoard gameBoard) {
                 Tile[][] board = gameBoard.getTiles();
@@ -127,11 +131,12 @@ public class RoborallyUI extends Application{
 
                 for (int i = 0; i < xDim; i++) {
                         for (int j = 0; j < yDim; j++) {
-                        Tile tile = board[i][j];
-                        if (tile instanceof StartTile) {
-                                Robot robot = new Robot(tile.getPosition(), tile.getDirection(), 5, robots.size() + 1, "Robot" + (robots.size() + 1));
-                                robots.add(robot);
-                        }
+                                Tile tile = board[i][j];
+                                if (tile instanceof StartTile) {
+                                        Robot robot = new Robot(tile.getPosition(), tile.getDirection(), 5,
+                                                        robots.size() + 1, "Robot" + (robots.size() + 1));
+                                        robots.add(robot);
+                                }
                         }
                 }
 
@@ -140,10 +145,9 @@ public class RoborallyUI extends Application{
                 }
 
                 return robots;
-            }
-            
-        
-        private GridPane createHexagonalMap(GameBoard gameBoard, List <Robot> robots) {
+        }
+
+        private GridPane createHexagonalMap(GameBoard gameBoard, List<Robot> robots) {
                 GridPane gridPane = new GridPane();
 
                 Tile[][] board = gameBoard.getTiles();
@@ -170,15 +174,16 @@ public class RoborallyUI extends Application{
                                 if (tile != null) { // Only create cells for tiles
                                         // Create a hexagonal cell for the tile
                                         HexagonalCell hexagonalCell = new HexagonalCell(cellWidth, cellHeight, tile);
-                                        
+
                                         for (Robot robot : robots) {
                                                 if (tile.getPosition().equals(robot.getPosition())) {
                                                         String imagePath = "/images/Mech" + player + ".png";
-                                                        ImageView robotView = new ImageView(new Image(getClass().getResourceAsStream(imagePath)));
+                                                        ImageView robotView = new ImageView(new Image(
+                                                                        getClass().getResourceAsStream(imagePath)));
                                                         robotView.setFitWidth(cellWidth * 0.8);
                                                         robotView.setFitHeight(cellHeight * 0.8);
                                                         hexagonalCell.getChildren().add(robotView);
-                                                        player+=1;
+                                                        player += 1;
                                                         System.out.println("WHAT" + imagePath);
                                                 }
                                         }
@@ -186,11 +191,11 @@ public class RoborallyUI extends Application{
                                         gridPane.add(hexagonalCell, i, j);
 
                                         // Calculate the offset for the hexagonal layout
-                                        double offsetY = (i % 2 == 0) ? (cellHeight / 2) : 0 ;
-                                        
+                                        double offsetY = (i % 2 == 0) ? (cellHeight / 2) : 0;
+
                                         // Set the cell's position in the grid
                                         hexagonalCell.setTranslateY(offsetY);
-                                        if (i != 0){
+                                        if (i != 0) {
                                                 hexagonalCell.setTranslateX(-28.867513459481298 * i / 2);
                                         }
 

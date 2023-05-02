@@ -23,8 +23,8 @@ public class HexagonalCell extends Pane {
         Polygon hexagon = new Polygon();
         Double[] points = calculateHexagonPoints(width, height);
         hexagon.getPoints().addAll(Arrays.asList(points));
-        //hexagon.setFill(Color.TRANSPARENT);
-        hexagon.setStroke(Paint.valueOf("#000000"));
+        // hexagon.setFill(Color.TRANSPARENT);
+        hexagon.setStroke(Paint.valueOf("#FFFFFF"));
         hexagon.setStrokeWidth(5);
         this.getChildren().add(hexagon);
 
@@ -44,12 +44,12 @@ public class HexagonalCell extends Pane {
         System.out.println("Tile position: " + tile.getPosition());
 
         // Add a label to display the position of the tile
-        Label positionLabel = new Label(tile.getPosition().toString());
-        positionLabel.setAlignment(Pos.CENTER);
-        positionLabel.setPrefSize(width, height);
-        positionLabel.setTextFill(Paint.valueOf("FFFFFF"));
-        positionLabel.setFont(new Font(16));
-        this.getChildren().add(positionLabel);
+        // Label positionLabel = new Label(tile.getPosition().toString());
+        // positionLabel.setAlignment(Pos.CENTER);
+        // positionLabel.setPrefSize(width, height);
+        // positionLabel.setTextFill(Paint.valueOf("FFFFFF"));
+        // positionLabel.setFont(new Font(8));
+        // this.getChildren().add(positionLabel);
     }
 
     private Image getTileImage(Tile tile) {
@@ -73,17 +73,17 @@ public class HexagonalCell extends Pane {
     private Double[] calculateHexagonPoints(double width, double height) {
         double centerX = width / 2;
         double centerY = height / 2;
-    
+
         double radius = Math.min(width, height) * 0.5 * 0.95;
         double angle = 0; // Start at 0 for a flat top hexagon
         Double[] points = new Double[12];
-    
+
         for (int i = 0; i < 6; i++) {
             points[2 * i] = centerX + radius * Math.cos(angle);
             points[2 * i + 1] = centerY + radius * Math.sin(angle);
             angle += Math.PI / 3; // Increment by PI/3 (60 degrees) for a hexagon
         }
-    
+
         return points;
     }
 }
