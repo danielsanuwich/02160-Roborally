@@ -135,7 +135,10 @@ public class RoborallyUI extends Application {
                                 if (tile instanceof StartTile) {
                                         Robot robot = new Robot(tile.getPosition(), tile.getDirection(), 5,
                                                         robots.size() + 1, "Robot" + (robots.size() + 1));
-                                        robots.add(robot);
+                                        if(robots.size() <= 1){
+                                                robots.add(robot);
+                                        } else break;
+                                        
                                 }
                         }
                 }
