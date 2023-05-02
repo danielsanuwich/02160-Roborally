@@ -12,7 +12,8 @@ public class PlayerTurnState extends State{
     
     // PlayerTurnState Constructor
     
-    public PlayerTurnState(String nextStateName){
+    public PlayerTurnState(String name, String nextStateName){
+        super(name);
         this.nextStateName = nextStateName;
     }
     

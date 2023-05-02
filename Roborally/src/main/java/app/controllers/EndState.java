@@ -10,7 +10,8 @@ public class EndState extends State{
     
     // EndState Constructor
     
-    public EndState(String nextStateName){
+    public EndState(String name, String nextStateName){
+        super(name);
         this.nextStateName = nextStateName;
     }
     

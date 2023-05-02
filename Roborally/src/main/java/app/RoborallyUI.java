@@ -132,14 +132,21 @@ public class RoborallyUI extends Application {
                 for (int i = 0; i < xDim; i++) {
                         for (int j = 0; j < yDim; j++) {
                                 Tile tile = board[i][j];
+                                // if(tile.getPosition().getX() == 6 && tile.getPosition().getX() == 2){ // robot 1
+                                //         Robot robot = new Robot(tile.getPosition(), new Direction(3), 5, robots.size() + 1, "Robot" + (robots.size() + 1));
+                                //         robots.add(robot);
+                                // }if(tile.getPosition().getX() == 3 && tile.getPosition().getX() == 4){ // Start robot
+                                //         Robot robot = new Robot(tile.getPosition(), tile.getDirection(), 5, robots.size() + 1, "Robot" + (robots.size() + 1));
+                                //         robots.add(robot);
+                                // }
                                 if (tile instanceof StartTile) {
                                         Robot robot = new Robot(tile.getPosition(), tile.getDirection(), 5,
                                                         robots.size() + 1, "Robot" + (robots.size() + 1));
-                                        if(robots.size() <= 1){
+                                        if(robots.size() < 1){
                                                 robots.add(robot);
-                                        } else break;
-                                        
-                                }
+                                        } else break;   
+                                } 
+                                
                         }
                 }
 

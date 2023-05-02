@@ -12,7 +12,8 @@ public class PlayerExecuteState extends State{
     
     // PlayerExecuteState Constructor
     
-    public PlayerExecuteState(String nextStateName){
+    public PlayerExecuteState(String name, String nextStateName){
+        super(name);
         this.nextStateName = nextStateName;
     }
     

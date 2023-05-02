@@ -10,7 +10,8 @@ public class MenuState extends State{
     
     // MenuState Constructor
     
-    public MenuState(String nextStateName){
+    public MenuState(String name, String nextStateName){
+        super(name);
         this.nextStateName = nextStateName;
     }
     
