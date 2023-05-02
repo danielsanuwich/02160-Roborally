@@ -3,6 +3,7 @@ package app.Model.tiles;
 import app.Model.board.Direction;
 import app.Model.board.Position;
 
+
 public class Tile {
 
     // Tile Attributes 
@@ -11,38 +12,31 @@ public class Tile {
     private Direction direction = new Direction(0); // default direction
 
     // Tile Constructors
-    public Tile(){
-        
-    }
-    
+    public Tile(){}
+
     public Tile(Position position) {
         this.position = position;
     }
-
     public Tile(String type, Position position) {
         this.type = type;
         this.position = position;
     }
-
     public Tile(String type, Position position, Direction direction) {
         this.type = type;
         this.position = position;
         this.direction = direction;
     }
+    public Tile(Position inputPosition,Direction inputDirection,String string){}
 
-    public Tile(Position inputPosition,Direction inputDirection,String string){
 
-    }
 
     // Tile Setters
     public void setPosition(Position position) {
         this.position = position;
     }
-
     public void setType(String type) {
         this.type = type;
     }
-
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
@@ -51,11 +45,9 @@ public class Tile {
     public Position getPosition() {
         return this.position;
     }
-
     public String getType() {
         return this.type;
     }
-
     public Direction getDirection() {
         return this.direction;
     }
@@ -71,3 +63,5 @@ public class Tile {
     }
 
 }
+
+

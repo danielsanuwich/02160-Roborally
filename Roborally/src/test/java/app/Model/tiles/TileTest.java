@@ -40,9 +40,9 @@ public class TileTest {
         assertEquals("Test", tile.getType());
 
         // Assert that the position of the tile is the same as the input position
-        assertEquals(position, tile.getPosition());
+        assertEquals(new Position(2,3), tile.getPosition());
 
         // Assert that the direction of the tile is the same as the input direction
-        assertEquals(direction, tile.getDirection());
+        assertEquals(new Direction(1), tile.getDirection());
     }
 }
